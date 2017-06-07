@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.4.0 -->
+    <script>window.materialVersion = "1.4.0"</script>
+
+    <!-- Title -->
+    
+    <title>
+        
+            [译] Emacs Lisp 速成 | 
+        
+        Chan&#39;s Blog
+    </title>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="thychan">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content="null,编程,Emacs,Lisp">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Chan&#39;s Blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="[译] Emacs Lisp 速成 | Chan&#39;s Blog">
+    <meta property="og:image" content="/img/favicon.png" />
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="编程"> <meta property="og:article:tag" content="Emacs"> <meta property="og:article:tag" content="Lisp"> 
+
+    
+        <meta property="article:published_time" content="10月 30, 2016" />
+        <meta property="article:modified_time" content="3月 07, 2017" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="[译] Emacs Lisp 速成 | Chan&#39;s Blog">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="/img/favicon.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://yoursite.com" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yoursite.com/2016/10/30/译-Emacs-Lisp-速成/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Chan&#39;s Blog",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "thychan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "headline": "[译] Emacs Lisp 速成",
+    "url": "http://yoursite.com/2016/10/30/译-Emacs-Lisp-速成/index.html",
+    "datePublished": "10月 30, 2016",
+    "dateModified": "3月 07, 2017",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://yoursite.com"
+    }
+}
+</script>
+
+
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+materialVersion+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(data&&data.indexOf(versionString)===-1){lsloader.removeLS(key)}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload){cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}code=code.split(versionString)[1];if(/\.js?.+$/.test(versionNumber)){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload)}};lsloader.requestResource=function(name,path,cssonload){var that=this;if(/\.js?.+$/.test(path)){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else if(/\.css?.+$/.test(path)){this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import CSS & jQuery -->
+    
+        <style id="css/material.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/material.min.css","/css/material.min.css?fJTiM/K1J3dWIruo3pxtAw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        <style id="css/style.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/style.min.css","/css/style.min.css?oCSEO3ST+aEypEwttTDI9g==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        
+        
+            <style>
+    
+    .footer-sns-facebook {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHptNjU3LjYgODcuOGw0LjggMy44djU1LjJjMCA1NC42IDAgNTUuMi00LjYgNTkuNi00LjQgNC40LTYgNC42LTUwLjIgNS42bC00NS42IDEtNy4yIDUuNmMtMTAuNCA4LTE2LjggMTcuMi0xOS4yIDI3LjQtMSA1LTEuOCAyNC44LTEuOCA0NCAuMiAzOCAxLjYgNDQuNiAxMC44IDQ4IDIuOCAxLjIgMjguNCAyIDU2LjggMiA0Ny44IDAgNTIgLjIgNTYuMiAzLjhsNC44IDMuOHY1NS4yYzAgNTQuNiAwIDU1LjItNC42IDU5LjYtNC40IDQuNi01LjQgNC42LTU3IDUuMi0yOC44LjItNTQuNC44LTU2LjggMS40LTIuNC42LTUuNiAzLTYuOCA1LjQtMS44IDMuMi0yLjQgNDEuNC0yLjYgMTQzLjJsLS4yIDEzOC44LTUuNiA0LjgtNS42IDQuOEg2MDljLTUyLjQgMC01Mi44IDAtNTguMi00LjZsLTUuNC00LjYtLjItMTQwLjYtLjItMTQwLjYtNC44LTMuOGMtNC4yLTMuNC04LTMuOC0zNS42LTMuOC0zMi44IDAtNDEtMS44LTQzLjYtMTAtLjYtMi4yLTEuMi0yNS40LTEuMi01MS40IDAtNjAuOC0uMi01NyAzLjQtNjEuNiAyLjgtMy42IDYtNCAzNy44LTUgMzMtMSAzNS4yLTEuMiAzOS40LTUuNiA0LjYtNC40IDQuNi01LjIgNS44LTcxIDEuMi03My40LjItNjcuMiAxNi42LTk5LjQgOC0xNS44IDEyLjgtMjIgMjgtMzcgMTUuMi0xNS4yIDIxLjQtMTkuNiAzOC4yLTI4IDExLTUuNCAyNC0xMSAyOS0xMi4yIDYuMi0xLjggMjguNi0yLjYgNzEuMi0yLjYgNTguNi0uMiA2Mi42IDAgNjcgMy42eiIvPjwvc3ZnPg==);
+    }
+    
+    
+    .footer-sns-twitter {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHptNTMyLjggMjA1YzEwIDQgMjMgMTAuOCAyOC44IDE1LjIgMTIuNiA5LjIgMTYuNiAxMC42IDI5LjQgOS40IDYuNi0uNiAxMy0zLjIgMjAuNC04LjIgMTEuMi03LjYgMTkuNC05LjIgMjMuNi01IDMuNiAzLjYgMi44IDktMi44IDE4LjYtNy4yIDEyLjQtNiAxOC44IDQuMiAyNC4yIDQuNCAyLjIgOC4yIDUuNiA4LjYgNy40IDEgNC44LTEyLjYgMjQuMi0yMiAzMS44LTExLjggOS4yLTE3LjIgMjIuNi0xOS42IDQ3LjgtNC44IDUwLjQtNy44IDY2LjYtMTYuNCA4NS40LTMgNy03IDE3LjgtOC44IDI0LTEuOCA2LjQtNSAxNC42LTcuNCAxOC40LTIuMiAzLjgtNy40IDEzLTExLjQgMjAuNC0xNy4yIDMwLjgtNDMuNCA2MS40LTcxLjQgODMuOC0yNS42IDIwLjQtNDYgMzMuMi02NC4yIDQwLjItOC40IDMuMi0xOCA3LjYtMjEuNCA5LjYtNy40IDQuNi0yMi40IDguNi01Ny4yIDE1LTYyLjIgMTEuNi03OS4yIDExLjQtMTM1LjYtMS0zMi40LTctMzguNi05LTUyLTE2LjgtMjEuNC0xMi42LTI0LjItMTQuOC0yNC4yLTE5LjQgMC02LjIgMTAuMi05LjIgMzUtMTAuNCAyMi40LTEgMjguNi0yLjYgNTctMTQuMiAyMy44LTkuOCAyOS40LTEyLjggMzAuNC0xNi44IDIuMi04LjItMy0xMy4yLTI2LjgtMjUuNC0yNS44LTEzLjItMzIuMi0xOC40LTQzLjgtMzUuOC05LTEzLjYtMTAtMjEuMi0zLjYtMzMuNiA1LjQtMTAuOCAzLjYtMTUtMTEuOC0yNS40LTktNi0xNC0xMS42LTIwLjgtMjIuNi0yMy40LTM3LjgtMjUtNTAuOC03LjItNTkuOCA0LjgtMi40IDkuNC01LjQgMTAuMi02LjYgMi44LTQuMi0uNC0xNS42LTguNC0yOS0xMS42LTE5LjYtMTMuMi0yNS44LTEzLjItNTUuMiAwLTI4LjggMi42LTM3LjggMTItNDAuMiA5LTIuMiAxNC44IDEgMzUuNiAyMC4yIDI0LjggMjIuOCA0My42IDM2LjYgNjIuOCA0NS44IDggMy44IDE3LjggOS4yIDIyIDEyIDQuMiAyLjggMTQuOCA3IDIzLjQgOS4yIDguNiAyLjIgMjQuMiA2LjggMzQuOCAxMC4yIDEzLjQgNC40IDIzLjYgNi40IDMzIDYuNiAxMi44LjIgMTQuMi0uMiAxOC42LTUuNCA0LTQuOCA0LjgtNy44IDQuOC0xOS4yIDAtMTQuNCA1LjYtMzkuNiAxMS4yLTUwLjYgNC4yLTguNCAyOS4yLTM0LjIgMzkuOC00MS40IDcuOC01LjQgMzUuNi0xNiA1Mi0yMCAxNC4yLTMuNiAzMi42LTEuMiA1Mi40IDYuOHoiLz48L3N2Zz4=);
+    }
+    
+    
+    .footer-sns-gplus {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHpNNDMwIDI5NS40YzQwLjYgMTUuNCA1Ni42IDIzLjggNzIuNiAzOC40IDYuOCA2LjIgNy4yIDE1LjIgMSAyMy40LTYuMiA4LTMzLjYgMzMuOC0zOSAzNi42LTUuNiAyLjgtMTcuNiAyLjgtMjMuMi0uMi0yLjQtMS4yLTguMi01LjItMTMtOC44LTExLjItOC42LTI0LjYtMTEuMi01NS4yLTExLjItMjcuNCAwLTQwLjYgMi42LTUyLjIgMTAuNC00LjQgMi44LTEyLjIgNy42LTE3LjIgMTAuNi0yMyAxMy4yLTUxLjQgNTUtNTUuOCA4Mi40LTIuNiAxNS42LTIuNCAzNC44LjIgNTEgMi44IDE3LjQgMTkuOCA0OC44IDM1LjIgNjUuMiAxNiAxNi42IDQ1IDMzLjYgNjIuOCAzNi42IDI2LjggNC40IDY1LjggMS42IDc5LjQtNS44IDIwLjYtMTEuNCAzMS0xOSA0MS0zMC40IDE4LjgtMjEuNiAyMy40LTM0LjIgMTUuNi00My44LTMuOC00LjgtNC40LTQuOC01MS01LjgtNjAuOC0xLjItNTYuMiAyLjItNTYuMi00My4yIDAtMzIuNC4yLTMzLjIgNC44LTM3IDQuNC0zLjYgOS0zLjggOTItMy44IDc5IDAgODcuOC40IDk0LjIgMy42IDExLjIgNS42IDEzIDExLjQgMTIuOCA0My40IDAgMjUuNC0uOCAzMC44LTcuNiA1OC00IDE2LjYtOS44IDM0LTEyLjYgMzktMi44IDUtOC4yIDE0LjItMTEuNiAyMC42LTguNCAxNS40LTI3LjIgMzYuOC00MC44IDQ2LjYtNS44IDQuNC0xMy44IDEwLjItMTcuNiAxMy4yLTMuOCAzLTExIDctMTYuMiA4LjgtNS4yIDEuOC0xNi4yIDYuNC0yNC40IDEwLTIyLjQgOS42LTM0LjggMTEuNi03MyAxMS42LTM3LjYuMi00Ny0xLjQtNzEtMTItOC4yLTMuNi0xNy42LTcuMi0yMC44LTgtMTUuOC0zLjgtNjctNDUuMi03Ny44LTYyLjgtMi4yLTMuOC03LjYtMTEuNi0xMS44LTE3LjItNC4yLTUuNC05LTE0LTEwLjYtMTktMS44LTQuOC02LjItMTYtMTAtMjQuOC0zLjYtOC44LTcuOC0yMi4yLTkuMi0yOS42LTMuMi0xOC44LTEuNC03OS40IDIuOC05MS40IDEzLjgtNDAuNiAzNS42LTc4IDU4LjgtMTAwLjIgMTQtMTMuNiA0Ny4yLTM2LjQgNTgtMzkuOCA0LjItMS40IDEzLjQtNS4yIDIwLjYtOC40IDIyLTEwIDMyLjgtMTEuNiA3Ni0xMSAzMy44LjYgNDAuNCAxLjIgNTAgNC44em0zNDAuOCA4MC44YzggMy42IDkuNiAxMS4yIDkuMiAzOS4yLS42IDM0LjQtLjYgMzQgNSAzOS42IDQuOCA1IDUuNCA1IDM3LjYgNSA0My40IDAgNDQuNC44IDQzLjIgMzYuMi0uOCAxNy0xLjIgMTguNC02LjQgMjMtNS40IDQuNi02LjYgNC44LTM3LjYgNC44LTMxLjIgMC0zMiAuMi0zNi44IDUtNS42IDUuNC01LjYgNC40LTUgNDEuMi40IDI2LjQuMiAyNy40LTQuNiAzMy00LjggNS42LTYgNS44LTI0LjQgNi40LTIwLjguOC0yOS42LTEuNC0zMy40LTguNC0xLjQtMi42LTItMTUuNi0xLjgtMzUuNi40LTMxLjIuNC0zMS42LTQuNi0zNi42cy01LjYtNS0zNi01Yy0xOC44IDAtMzMtLjgtMzYtMi4yLTcuNi0zLjYtOS42LTExLjItOC44LTMzLjguOC0yOC4yLjQtMjggNDEtMjggNDUuNCAwIDQ1LjQgMCA0NC42LTQyLjYtLjYtMzMtLjYtMzMgNS0zOC40IDQuNC00LjYgNi4yLTUgMjQuOC01IDExIDAgMjIuMiAxIDI1IDIuMnoiLz48L3N2Zz4=);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</style>
+
+        
+        <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+
+
+        <script>lsloader.load("js/jquery.min.js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==")</script>
+    
+    
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Analytics -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#快速开始"><span class="post-toc-number">1.</span> <span class="post-toc-text">快速开始</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#词法"><span class="post-toc-number">2.</span> <span class="post-toc-text">词法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注释"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">注释</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符串"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">字符串</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">字符</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数字"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">数字</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#布尔值"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">布尔值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数组"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">数组</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#列表"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">列表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#序对"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">序对</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#运算符"><span class="post-toc-number">3.</span> <span class="post-toc-text">运算符</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#等号"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">等号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符串-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">字符串</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算术"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">算术</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#语句"><span class="post-toc-number">4.</span> <span class="post-toc-text">语句</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#if-else"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">if/else</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#switch"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">switch</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#while"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">while</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#break-continue"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">break/continue</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#do-while"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">do/while</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#for"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">for</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#for-in"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">for .. in</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数"><span class="post-toc-number">4.8.</span> <span class="post-toc-text">函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#局部变量"><span class="post-toc-number">4.9.</span> <span class="post-toc-text">局部变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用参数"><span class="post-toc-number">4.10.</span> <span class="post-toc-text">引用参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#return"><span class="post-toc-number">4.11.</span> <span class="post-toc-text">return</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#try-catch"><span class="post-toc-number">4.12.</span> <span class="post-toc-text">try/catch</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#try-finally"><span class="post-toc-number">4.13.</span> <span class="post-toc-text">try/finally</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#try-catch-finally"><span class="post-toc-number">4.14.</span> <span class="post-toc-text">try/catch/finally</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#类"><span class="post-toc-number">5.</span> <span class="post-toc-text">类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#缓冲区即类"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">缓冲区即类</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#变量"><span class="post-toc-number">6.</span> <span class="post-toc-text">变量</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">7.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+    
+
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                [译] Emacs Lisp 速成
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>thychan</strong>
+        <span>10月 30, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Emacs/">Emacs</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Lisp/">Lisp</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/编程/">编程</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=[译] Emacs Lisp 速成&url=http://yoursite.com/2016/10/30/译-Emacs-Lisp-速成/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=[译] Emacs Lisp 速成&url=http://yoursite.com/2016/10/30/译-Emacs-Lisp-速成/index.html&via=thychan" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/10/30/译-Emacs-Lisp-速成/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2016/10/30/译-Emacs-Lisp-速成/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>原文见 『<a href="http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html" target="_blank" rel="external">Emergency Elisp</a>』。</p>
+<p>你用着 Emacs 却不懂 Lisp 吧？欢迎阅读这篇 Emacs Lisp 入门教程！它应该能够助你搞定 Emacs Lisp，从而更加自如的驾驭 Emacs。</p>
+<p>有很多种学习 Lisp 的方式，其中有一些方式要比其他方式更为 Lisp。我喜欢的方式是，基于 C++ 或 Java 的编程经验来学习 Lisp。</p>
+<p>本文重点放在 Emacs Lisp 语言本身，因为它才是最难的部分，至于成吨的 Emacs 的 API 的用法，你可以通过阅读 Emacs Lisp 文档来学习。</p>
+<p>有些事（例如编写生成代码的代码）是 Lisp 擅长的，而有些事（例如算数表达式）是它不擅长的。我不打算谈论 Lisp 是好还是坏，只关心如何用它编程。Emacs Lisp 跟其他语言差不多，最终你会习惯它的。</p>
+<p>许多介绍 Lisp 的文章或书籍尝试给你展现 Lisp 之『道』，饱含着奉承、赞颂以及瑜伽之类的东西。事实上，一开始我真正想要的是一本简单的 cookbook，它讲述的是如何用 Lisp 来做一些我日常生活中的事。本文便立意于此，它讲述的是大致是如何用 Emacs Lisp 来写 C，Java 或 JavaScript 就能写的那些代码。</p>
+<p>我们开始吧，看看我能够将这篇文章写的多么短小。我要从挺无聊的词法标记、运算符开始，然后讲述如何实现一些众所周知的语句、声明以及一些程序结构。</p>
+<h1 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h1><p>Lisp 代码是像 <code>(+ 2 3)</code> 的嵌套的括号表达式。这些表达式有时被称为 form（块）。</p>
+<p>也有些不带括号的代码，譬如字符串、数字、符号（必须以单引号为前缀，例如 ‘foo）、向量等，它们被称为原子（基本上可理解为叶结点）。</p>
+<p>注释只能是单行的，分号是注释符。</p>
+<p>要将一个名为 <code>foo</code> 的变量的值设置为 <code>&quot;bar&quot;</code>，只需：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">setq</span> foo <span class="string">"bar"</span>) <span class="comment">; setq means "set quoted"</span></div></pre></td></tr></table></figure>
+<p>要以 <code>&quot;flim&quot;</code> 与 <code>&quot;flam&quot;</code> 作为参数值调用一个名为 <code>foo-bar</code> 的函数，只需：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">foo-bar</span> <span class="string">"flim"</span> <span class="string">"flam"</span>)</div></pre></td></tr></table></figure>
+<p>要进行算 <code>(0x15 * (8.2 + (7 &lt;&lt; 3))) % 2</code>，只需：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(% (<span class="name">*</span> <span class="number">#x15</span> (<span class="name">+</span> <span class="number">8.2</span> (<span class="name">lsh</span> <span class="number">7</span> <span class="number">3</span>))) <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p>也就是说，Lisp 的算数运算用的是前缀表达式，与 Lisp 函数调用方式一致。</p>
+<p>Lisp 没有静态类型系统；你可以在程序运行时判断数据的类型。在 Emacs Lisp 中，谓词函数通常以 <code>p</code> 作为后缀，其含义下文有讲。</p>
+<p><strong>重点</strong>：可以在 Emacs 的 <code>*scratch*</code> 缓冲区中对 Emacs Lisp 表达式进行求值试验，有以下几种基本的求值方式：</p>
+<ul>
+<li>将光标移到表达式最后一个封闭的括号的后面，然后执行 <code>C-j</code>（即 Ctrl + j 键）；</li>
+<li>将光标移到表达式内部，然后执行 <code>M-C-x</code>（即 Alt + Ctrl + x 键）；</li>
+<li>将光标放到表达式最后一个封闭的括号的后面，然后执行 <code>C-x C-e</code>。</li>
+</ul>
+<p>第一种求值方式会将求值结果显示于 <code>*scratch*</code> 缓冲区，其他两种方式会将求值结果显示于 Emacs 的小缓冲区（Minibuffer）。这些求值方式也适用于 Lisp 的原子——数字、字符串、字符以及符号。</p>
+<h1 id="词法"><a href="#词法" class="headerlink" title="词法"></a>词法</h1><p>Lisp 的词法标记（原子级别的程序元素）屈指可数。</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>注释是单行的，由分号领起：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">blah</span> blah blah) <span class="comment">; I am a comment</span></div></pre></td></tr></table></figure>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>带双引号的就是字符串：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"He's said: \"Emacs Rules\" one time too many."</span></div></pre></td></tr></table></figure>
+<p>要让字符串含有换行符，只需：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">"Oh Argentina!</div><div class="line">Your little tin of pink meat</div><div class="line">Soars o'er the Pampas"</div></pre></td></tr></table></figure>
+<h2 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h2><ul>
+<li><code>?</code>x 可以获得字符 x 的 ASCII 码，这里的 x 可以是任意 ASCII 编码的字符。例如 <code>?a</code> 的求值结果是 ASCII 码 <code>97</code>，而 <code>?</code>（问号后面是一个空格）的求知结果是 32。</li>
+<li><code>?</code> 后面尾随的字符，有些需要逃逸，例如 <code>?\(</code>，<code>?\)</code> 以及 <code>?\\</code>。</li>
+<li>Emacs 22+ 支持 Unicode，这超出了本文范围。</li>
+</ul>
+<p>字符本质上只是整型数值，因此你可以对它们做算术运算（例如，从 <code>?a</code> 迭代到 <code>?z</code>）。</p>
+<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><ul>
+<li>整型数的位数是 29 位（并非大家习惯的 32 位）；</li>
+<li>二进制数，前缀是 <code>#b</code>，例如 <code>#b10010110</code>；</li>
+<li>八进制数：<code>#o[0-7]+</code>，例如 <code>#o377</code>；</li>
+<li>十六进制数，前缀是 <code>#x</code>，例如 <code>#xabcd</code>，<code>xDEADBEE</code>；</li>
+<li>浮点数：位数是 64；</li>
+<li>科学计数，例如 <code>5e-10</code>，<code>6.02e23</code>。</li>
+</ul>
+<p>在不支持大整数的 Emacs Lisp 中，变量 <code>most-positive-fixnum</code> 与 <code>most-negative-fixnum</code> 分别是最大的与最小的整型数。Emacs 22+ 提供了一个叫做 <code>calc</code> 的大整数/数学库，以备不时之需。也就是说，Emas Lisp 的算数运算会发生上溢和下溢，如同你在 C 或 Java 中遇到的情况相似。</p>
+<h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><p>符号 <code>t</code> 是 <code>true</code>，符号 <code>nil</code> 是 <code>false</code>（与 <code>null</code> 同义）。</p>
+<p>在 Emacs Lisp 中，<code>nil</code> 是唯一的『假』值，其他非 <code>nil</code> 值皆为『真』值，也就是说像空字串、0、<code>&#39;false</code> 符号以及空向量之类，都是真值。不过，空的列表 <code>&#39;()</code> 与 <code>nil</code> 等价。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>Emacs Lisp 有定长数组，名曰『向量』(Vector)。可使用方括号来构建预先初始化的字面向量，例如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[-2 0 2 4 6 8 10]</div><div class="line">["No" "Sir" "I" "am" "a" "real" "horse"]</div><div class="line">["hi" 22 120 89.6 2748 [3 "a"]]</div></pre></td></tr></table></figure>
+<p>注意，要使用空白字符来隔离数组中的元素，不要使用逗号。</p>
+<p>向量中存储的数据可以是混合类型，也能够对向量进行嵌套。通常是使用 <code>make-vector</code> 来构建向量，因为字面向量是单例，对此不要惊讶。</p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>Lisp 重度依赖链表，因此专门为它提供了词法标记。圆括号里的任何东西都是列表，除非你引用了它，否则 Lisp 解释器就会像函数调用那样对其进行求值。在 Lisp 中有以下几种列表引用形式：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="name">quote</span> (<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>)) <span class="comment">;  产生列表 (1 2 3)，并且不会对列表元素进行求值</span></div><div class="line"></div><div class="line">'(<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>)  <span class="comment">; 单引号是 (quote (...)) 形式的简写，注意它在左括号之外</span></div><div class="line"></div><div class="line">(<span class="name">list</span> <span class="number">1</span> (<span class="name">+</span> <span class="number">1</span> <span class="number">1</span>) <span class="number">3</span>) <span class="comment">; 也可以产生列表 (1 2 3)，因为 Lisp 解释器会首先对列表元素进行求值</span></div><div class="line"></div><div class="line">`(<span class="number">1</span> ,(+ <span class="number">1</span> <span class="number">1</span>) <span class="number">3</span>)  <span class="comment">; 也可以产生列表 (1 2 3)，这是经过『反引号』模板系统产生的</span></div></pre></td></tr></table></figure>
+<p>关于列表还有很多东西可说，但是其他人已经都说过了。</p>
+<h2 id="序对"><a href="#序对" class="headerlink" title="序对"></a>序对</h2><p>你可以直接设定 Lisp 列表的首部与尾部，将其作为 2 个元素的无类型结构来使用。语法是 <code>(head-val . tail-value)</code>，不过必须是引用的形式（见上文）。</p>
+<p>对于较小的数据集，检索表的数据结构通常设计为关联列表（即所谓的 <code>alist</code>），这只不过是带点的序对所构成的列表而已，例如：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">'( (apple . <span class="string">"red"</span>)</div><div class="line">   (banana . <span class="string">"yellow"</span>)</div><div class="line">   (orange . <span class="string">"orange"</span>) )</div></pre></td></tr></table></figure>
+<p>Emacs Lisp 有内建的哈希表，位向量等数据结构，但是它们并没有语法，你只能通过函数来创建它们。</p>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><p>有些运算，在其他语言中体现为运算符的形式，而在 Emacs Lisp 中体现为函数的调用。</p>
+<h2 id="等号"><a href="#等号" class="headerlink" title="等号"></a>等号</h2><p>数值相等判断：<code>(= 2 (+ 1 1))</code>，单个等号，求值结果为 <code>t</code> 或 <code>nil</code>，也能用于浮点数比较。</p>
+<p>数值不相等判断：<code>(/= 2 3)</code>，看上去像相除后赋值，但并不是。</p>
+<p>值相等判断：<code>(eq &#39;foo 2)</code>，类似于 Java 的 <code>==</code>，适用于整型、符号、限定字串（Interned String）以及对象引用的相等比较。对于浮点数，可使用 <code>eql</code>（或者 <code>=</code>）。</p>
+<p>结构的深度相等比较：使用 <code>equal</code>，例如：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">equal</span> '(<span class="number">1</span> <span class="number">2</span> (<span class="number">3</span> <span class="number">4</span>)) (<span class="name">list</span> <span class="number">1</span> <span class="number">2</span> (<span class="name">list</span> <span class="number">3</span> (<span class="name">*</span> <span class="number">2</span> <span class="number">2</span>)))) <span class="comment">; 求值结果为 t</span></div></pre></td></tr></table></figure>
+<p><code>equal</code> 函数类似于 Java 的 <code>Object.equals()</code>，适用于列表、向量、字符串等类型。</p>
+<h2 id="字符串-1"><a href="#字符串-1" class="headerlink" title="字符串"></a>字符串</h2><p>字符串没有任何运算符，只是有很多字符串操作函数，下面是几个常用的函数：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="name">concat</span> <span class="string">"foo"</span> <span class="string">"bar"</span> <span class="string">"baz"</span>)  <span class="comment">; 求值结果为 "foobarbaz"</span></div><div class="line"></div><div class="line">(<span class="name">string=</span> <span class="string">"foo"</span> <span class="string">"baz"</span>)  <span class="comment">; 求值结果为 nil (false)，也可以用 equal</span></div><div class="line"></div><div class="line">(<span class="name">substring</span> <span class="string">"foobar"</span> <span class="number">0</span> <span class="number">3</span>) <span class="comment">; 求值结果为 "foo"</span></div><div class="line"></div><div class="line">(<span class="name">upcase</span> <span class="string">"foobar"</span>)  <span class="comment">; 求值结果为 "FOOBAR"</span></div></pre></td></tr></table></figure>
+<p>使用 <code>M-x apropos RET \bstring\b RET</code> 可查看所有与字符串操作相关的函数说明。</p>
+<h2 id="算术"><a href="#算术" class="headerlink" title="算术"></a>算术</h2><p>还是画个表容易看……</p>
+<p><img src="https://segmentfault.com/img/bVuLDO" alt="img"></p>
+<h1 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h1><p>这一节会给出一些类似 Java 语句的代码片段。它不复杂，仅仅是让你能够上手的方子。</p>
+<h2 id="if-else"><a href="#if-else" class="headerlink" title="if/else"></a>if/else</h2><p>情况 1：无 <code>else</code> 从句（<code>(if test-expr expr)</code>）</p>
+<p>示例：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(<span class="name">if</span> (<span class="name">&gt;=</span> <span class="number">3</span> <span class="number">2</span>)</div><div class="line">  (<span class="name">message</span> <span class="string">"hello there"</span>))</div></pre></td></tr></table></figure>
+<p>情况 2：<code>else</code> 从句（<code>(if test-expr then-expr else-expr)</code>）</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="name">if</span> (<span class="name">today-is-friday</span>)         <span class="comment">; test-expr</span></div><div class="line">    (<span class="name">message</span> <span class="string">"yay, friday"</span>)   <span class="comment">; then-expr</span></div><div class="line">  (<span class="name">message</span> <span class="string">"boo, other day"</span>)) <span class="comment">; else-expr</span></div></pre></td></tr></table></figure>
+<p>如果你需要在 <code>then-expr</code> 中存在多条表达式，可使用 <code>progn</code>——类似于 C 或 Java 的花括号，对这些表达式进行封装：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="name">if</span> (<span class="name">zerop</span> <span class="number">0</span>)</div><div class="line">    (<span class="name">progn</span></div><div class="line">      (<span class="name">do-something</span>)</div><div class="line">      (<span class="name">do-something-else</span>)</div><div class="line">      (<span class="name">etc-etc-etc</span>)))</div></pre></td></tr></table></figure>
+<p>在 <code>else-expr</code> 中没必要使用 <code>progn</code>，因为 <code>then-expr</code> 之后的所有东西都被视为 <code>else-expr</code> 的一部分，例如：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="name">if</span> (<span class="name">today-is-friday</span>)</div><div class="line">    (<span class="name">message</span> <span class="string">"yay, friday"</span>)</div><div class="line">  (<span class="name">message</span> <span class="string">"not friday!"</span>)</div><div class="line">  (<span class="name">non-friday-stuff</span>)</div><div class="line">  (<span class="name">more-non-friday-stuff</span>))</div></pre></td></tr></table></figure>
+<p>情况 3： 通过 <code>if</code> 语句的嵌套可实现 <code>else-if</code> 从句，也可以用 <code>cond</code>（下文有讲）：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="name">if</span> 'sunday</div><div class="line">    (<span class="name">message</span> <span class="string">"sunday!"</span>)      <span class="comment">; then-expr</span></div><div class="line">  (<span class="name">if</span> 'saturday              <span class="comment">; else-if</span></div><div class="line">      (<span class="name">message</span> <span class="string">"saturday!"</span>)  <span class="comment">; next then-expr</span></div><div class="line">    (<span class="name">message</span> (<span class="string">"weekday!"</span>)))) <span class="comment">; final else</span></div></pre></td></tr></table></figure>
+<p>情况 4：无 <code>else-if</code> 的多分支表达式——使用 <code>when</code>：</p>
+<p>如果没有 <code>else</code> 从句，可以使用 <code>when</code>，这是一个宏，它提供了隐式的 <code>progn</code>：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="name">when</span> (<span class="name">&gt;</span> <span class="number">5</span> <span class="number">1</span>)</div><div class="line">  (<span class="name">blah</span>)</div><div class="line">  (<span class="name">blah-blah</span>)</div><div class="line">  (<span class="name">blah</span> blah blah))</div></pre></td></tr></table></figure>
+<p>也可以用 <code>unless</code>，它的测试表达式与 <code>when</code> 反义：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="name">unless</span> (<span class="name">weekend-p</span>)</div><div class="line">  (<span class="name">message</span> <span class="string">"another day at work"</span>)</div><div class="line">  (<span class="name">get-back-to-work</span>))</div></pre></td></tr></table></figure>
+<h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><p>经典的 <code>switch</code> 语句，Emacs Lisp 有两个版本：<code>cond</code> 与 <code>case</code>。</p>
+<p>Emacs Lisp 的 <code>cond</code> 与 <code>case</code> 不具备 <code>switch</code> 的查表优化功能，它们本质上是嵌套的 <code>if-then-else</code> 从句。不过，如果你有多重嵌套，用 <code>cond</code> 或 <code>case</code> 要比 <code>if</code> 表达式更美观一些。<code>cond</code> 的语法如下：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">(<span class="name">cond</span></div><div class="line">  (<span class="name">test-1</span></div><div class="line">    do-stuff-1)</div><div class="line">  (<span class="name">test-2</span></div><div class="line">    do-stuff-2)</div><div class="line">  ...</div><div class="line">  (<span class="name">t</span></div><div class="line">    do-default-stuff))</div></pre></td></tr></table></figure>
+<p><code>do-stuff</code> 部分可以是任意数量的语句，无需用 <code>progn</code> 封装。</p>
+<p>与经典的 <code>switch</code> 不同，<code>cond</code> 可以处理任何测试表达式（它只是依序检验这些表达式），并非仅限于数字。这样所带来的负面影响是，<code>cond</code> 对数字不进行任何特定的转换，因此你不得不将它们与某种东西进行比较。下面是字符串比较的示例：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">(<span class="name">cond</span></div><div class="line"> ((<span class="name">equal</span> value <span class="string">"foo"</span>)  <span class="comment">; case #1 – notice it's a function call to `equal' so it's in parens</span></div><div class="line">  (<span class="name">message</span> <span class="string">"got foo"</span>)  <span class="comment">; action 1</span></div><div class="line">  (<span class="name">+</span> <span class="number">2</span> <span class="number">2</span>))             <span class="comment">; return value for case 1</span></div><div class="line"> ((<span class="name">equal</span> value <span class="string">"bar"</span>)  <span class="comment">; case #2 – also a function call (to `+')</span></div><div class="line">  <span class="literal">nil</span>)                 <span class="comment">; return value for case 2</span></div><div class="line"> (<span class="name">t</span>                    <span class="comment">; default case – not a function call, just literal true</span></div><div class="line">  'hello))             <span class="comment">; return symbol 'hello</span></div></pre></td></tr></table></figure>
+<p>末尾的 <code>t</code> 从句是可选的。若某个从句匹配成功，那么这个从句的求值结果便是整个 <code>cond</code> 表达式的求值结果。</p>
+<p>Emacs <code>&#39;cl</code>（Common Lisp）包（译注：Emacs Lisp 手册推荐使用 <code>&#39;cl-lib</code> ，因为 <code>&#39;cl</code> 过时了），提供了 <code>case</code>，它能够进行数值或符号比较，因此它看上去比较像标准的 <code>switch</code>：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="name">case</span> <span class="number">12</span></div><div class="line">  (<span class="number">5</span> <span class="string">"five"</span>)</div><div class="line">  (<span class="number">1</span> <span class="string">"one"</span>)</div><div class="line">  (<span class="number">12</span> <span class="string">"twelve"</span>)</div><div class="line">  (<span class="name">otherwise</span></div><div class="line">   <span class="string">"I only know five, one and twelve."</span>))  <span class="comment">; result:  "twelve"</span></div></pre></td></tr></table></figure>
+<p>使用 <code>case</code>，默认从句可以用 <code>t</code>，也可以用 <code>otherwise</code>，但它必须最后出现。</p>
+<p>使用 <code>case</code> 更干净一些，但是 <code>cond</code> 更通用。</p>
+<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><p>Emacs Lisp 的 <code>while</code> 函数相对正常一些，其语法为 <code>(while test body-forms)</code>。</p>
+<p>例如，可在 <code>*scratch*</code> 缓冲区中执行以下代码：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="name">setq</span> x <span class="number">10</span></div><div class="line">      total <span class="number">0</span>)</div><div class="line">(<span class="name">while</span> (<span class="name">plusp</span> x)  <span class="comment">; 只要 x 是正数</span></div><div class="line">  (<span class="name">incf</span> total x)  <span class="comment">; total += x</span></div><div class="line">  (<span class="name">decf</span> x))       <span class="comment">; x -= 1</span></div></pre></td></tr></table></figure>
+<p>在上述代码中，我们首先设置了两个全局变量 <code>x=10</code> 与 <code>total=0</code>，然后执行循环。循环结束后，可对 <code>total</code> 进行求值，结果为 55（从 1 到 10 求和结果）。</p>
+<h2 id="break-continue"><a href="#break-continue" class="headerlink" title="break/continue"></a>break/continue</h2><p>Lisp 的 <code>cache/throw</code> 能够实现控制流的向上级转移，它与 Java 或 C++ 的异常处理相似，尽管功能上要弱一些。</p>
+<p>在 Emacs Lisp 中要 <code>break</code> 一个循环，可以将 <code>(cache &#39;break ...)</code> 置于循环外部，然后在循环内部需要中断的地方放置 <code>(throw &#39;break value)</code>，例如：</p>
+<p><img src="https://segmentfault.com/img/bVuLDP" alt="img"></p>
+<p>符号 <code>&#39;break</code> 不是 Lisp 语法，而是自己取的名字——要取容易理解的名字，譬如对于多重循环，可在 <code>cache</code> 表达式中用 <code>&#39;break-outer</code> 与 <code>&#39;break-inner</code> 之类的名字。</p>
+<p>如果你不关心 <code>while</code> 循环的『返回值』，可以 <code>(throw &#39;break nil)</code>。</p>
+<p>要实现循环中的 <code>continue</code>，可将 <code>cache</code> 置入循环内部之首。例如，对从 1 到 99 的整数求和，并且在该过程中避开能被 5 整除的数（这是个蹩脚的例子，只是为了演示 <code>continue</code> 的用法）:</p>
+<p><img src="https://segmentfault.com/img/bVuLDQ" alt="img"></p>
+<p>可将这些示例组合起来，在同一个循环内实现 <code>break</code> 与 <code>continue</code>：</p>
+<p><img src="https://segmentfault.com/img/bVuLDS" alt="img"></p>
+<p>上面的循环的计算结果为 4000，即 <code>total</code> 的值。要得到这个结果，还有更好的计算方式，不过我需要足够简单的东西来讲述如何在 Lisp 中实现 <code>break</code> 与 <code>continue</code>。</p>
+<p><code>catch/throw</code> 机制能够像异常那样跨函数使用。不过，它的设计并非真的是面向异常或错误处理——Emacs Lisp 另外有一套机制来做这些事，也就是后文的 <code>try/catch</code> 这一节所讨论东西。你应该习惯在 Emacs Lisp 代码中使用 <code>catch/throw</code> 进行控制流转移。</p>
+<h2 id="do-while"><a href="#do-while" class="headerlink" title="do/while"></a>do/while</h2><p>Emacs Lisp 中最容易使用的循环机制是 Common Lisp 包提供的 <code>loop</code> 宏。要使用这个宏，需要加载 <code>cl-lib</code> 包：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">require</span> 'cl-lib) <span class="comment">; 获取大量的 Common Lisp 里的好东西</span></div></pre></td></tr></table></figure>
+<p><code>loop</code> 宏是带有大量特征的微语言，值得好好观摩一番。我主要用它来演示如何构造一些基本的循环。</p>
+<p>基于 <code>loop</code> 所实现的 <code>do/while</code> 机制如下：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="name">loop</span> do</div><div class="line">  (<span class="name">setq</span> x (<span class="number">1</span>+ x))</div><div class="line">  while</div><div class="line">  (<span class="name">&lt;</span> x <span class="number">10</span>))</div></pre></td></tr></table></figure>
+<p>在 <code>do</code> 与 <code>while</code> 之间可以有任意数量的 Lisp 表达式。</p>
+<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><p>C 风格的 <code>for</code> 循环由四种成分构成：变量初始化，循环体，条件测试以及自增。用 <code>loop</code> 宏也能模拟出这种循环结构。例如，像下面的 JavaScript 的循环结构：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var result = [];</div><div class="line">for (var i = 10, j = 0; j &lt;= 10; i--, j += 2) &#123;</div><div class="line">  result.push(i+j);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>对于这样的循环结构，基于 Emacs Lisp 的 <code>loop</code> 可将其模拟为：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">(<span class="name">loop</span> with result = '()         <span class="comment">; 初始化：只被执行一次</span></div><div class="line">      for i downfrom <span class="number">10</span>         <span class="comment">; i 从 10 递减</span></div><div class="line">      for j from <span class="number">0</span> by <span class="number">2</span>         <span class="comment">; j 从 0 开始自增 2</span></div><div class="line">      while (<span class="name">&lt;</span> j <span class="number">10</span>)            <span class="comment">; j &gt;= 10 时循环终止</span></div><div class="line">      do</div><div class="line">      (<span class="name">push</span> (<span class="name">+</span> i j) result)     <span class="comment">; 将 i + j 的求值结果入栈</span></div><div class="line">      finally</div><div class="line">      return (<span class="name">nreverse</span> result)) <span class="comment">; 将 result 中存储的数据次序逆转，然后作为求值结果</span></div></pre></td></tr></table></figure>
+<p>由于 <code>loop</code> 表达式有很多选项，这样写虽然繁琐，但是容易理解。</p>
+<p>注意，上述代码中，<code>loop</code> 声明了一个数组 result，然后将它作为『返回』值。事实上，<code>loop</code>　也能处理循环之外的变量，这种情况下就不需要　<code>finally return</code>　从句了。</p>
+<p><code>loop</code>　宏出人意料的灵活。有关它的全面介绍超出了本文范畴，但是如果你想驾驭　Emacs Lisp，那么你有必要花一些时间揣摩一下它。</p>
+<h2 id="for-in"><a href="#for-in" class="headerlink" title="for .. in"></a>for .. in</h2><p>如果你迭代访问一个集合，Java　提供了『智能』的　<code>for</code>　循环，JavaScript　提供了　<code>for .. in</code> 与　<code>for each .. in</code>。这些，在 Lisp 里也能做到，但是你可能需要对 <code>loop</code> 宏有很好的理解，它可以为迭代过程提供一站式服务。</p>
+<p>最基本的方式是 <code>loop for var in sequence</code>，然后针对特定结果做一些处理。例如，你可以将 <code>sequence</code> 中的东西收集起来（或者将一个函数作用与它们）：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(<span class="name">loop</span> for i in '(<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span>)</div><div class="line">    collect (<span class="name">*</span> i i))            <span class="comment">;  结果为 (1 4 9 16 25 36)</span></div></pre></td></tr></table></figure>
+<p><code>loop</code> 宏能够迭代列表元素、列表单元、向量、哈希键序列、哈希值序列、缓冲区、窗口、窗框、符号以及你想遍历的任何东西。请参阅 Emacs 手册获得更多信息。</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>用 <code>defun</code>（<strong>de</strong>fine <strong>fun</strong>ction）定义函数。</p>
+<p>语法：<code>(defun 函数名 参数列表 [可选的文档化注释] 函数体)</code></p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="name">defun</span> square (<span class="name">x</span>)</div><div class="line">  <span class="string">"Return X squared."</span></div><div class="line">  (<span class="name">*</span> x x))</div></pre></td></tr></table></figure>
+<p>对于无参函数，只需让参数列表为空即可：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="name">defun</span> hello ()</div><div class="line">  <span class="string">"Print the string `hello' to the minibuffer."</span></div><div class="line">  (<span class="name">message</span> <span class="string">"hello!"</span>))</div></pre></td></tr></table></figure>
+<p>函数体可由任意数量的表达式构成，函数的返回值是最后那个表达式的求值结果。由于函数的返回类型没有声明，因此有必要在文档化注释中注明函数的返回类型。对函数进行求值之后，其文档化注释可通过 <code>M-x describe-function</code> 查看。</p>
+<p>Emacs Lisp 不支持函数/方法的重载，但是它支持 Python 和 Ruby 所提供的那种可选参数与 rest 参数。你可以使用 Common Lisp 化的参数列表，在使用 <code>defun*</code> 宏代替 <code>defun</code> 时，可支持关键字参数（keyword arguments，见后文的 <code>defstruct</code> 一节）。<code>defun*</code> 宏也允许使用 <code>(return &quot;foo&quot;)</code> 这种控制流转移方式来代替 <code>catch/throw</code> 机制。</p>
+<p>如果你像让自己定义的函数能够作为 <code>M-x</code> 命令来执行，只需将 <code>(interactive)</code> 作为函数体内的第一个表达式，亦即位于文档化注释字串之后。</p>
+<h2 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h2><p>在函数中要声明局部变量，可使用 <code>let</code> 表达式。基本语法是 <code>(let var-decl var-decl)</code>：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="name">let</span> ((<span class="name">name1</span> value1)</div><div class="line">      (<span class="name">name2</span> value2)</div><div class="line">      name3</div><div class="line">      name4</div><div class="line">      (<span class="name">name5</span> value5)</div><div class="line">      name6</div><div class="line">      ...))</div></pre></td></tr></table></figure>
+<p>每个 <code>var-decl</code> 要么仅仅是变量名，要么就是 <code>(变量名 初始值)</code> 形式。初始化的变量与未初始化的变量出现的次序是任意的。未初始化的变量，其值为 <code>nil</code>。</p>
+<p>在一个函数中可以有多条 <code>let</code> 表达式，但是为了性能起见，通常是将变量声明都放到开始的 <code>let</code> 表达式中，这样会快一点。不过，你应该写清晰的代码。</p>
+<h2 id="引用参数"><a href="#引用参数" class="headerlink" title="引用参数"></a>引用参数</h2><p>C++ 有引用参数，函数可以修改调用者堆栈中的变量。Java 没有这个功能，因此有时你不得不迂回的向函数传递单元素数组，或一个对象，或别的什么东西来模拟这个功能。</p>
+<p>Emacs Lisp 也没有真正的向函数传递引用的机制，但是它有动态域（Dynamic Scope），这意味着你可以用任何方式修改位于调用者堆栈中的变量。看下面这两个函数：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="name">defun</span> foo ()</div><div class="line">  (<span class="name">let</span> ((<span class="name">x</span> <span class="number">6</span>))  <span class="comment">; 定义了一个（栈中的）局部变量 x，将其初始化为 6</span></div><div class="line">    (<span class="name">bar</span>)       <span class="comment">; 调用 bar 函数</span></div><div class="line">    x))         <span class="comment">; 返回 x</span></div><div class="line"></div><div class="line">(<span class="name">defun</span> bar ()</div><div class="line">  (<span class="name">setq</span> x <span class="number">7</span>))   <span class="comment">; 在调用者的栈中搜索 x 并修改它的值</span></div></pre></td></tr></table></figure>
+<p>如果你调用了 <code>(foo)</code>，返回值为 7。</p>
+<p>动态域通常被认为是近乎邪恶的坏设计，但是它有时也能派上用场。即使它真的很糟糕，通过它也能了解一些 Emacs 的内幕。</p>
+<blockquote>
+<p>译注：Emacs 24 对词法域（Lexical Scope）提供了支持，但是 Emacs Lisp 默认依然是动态域。要开启词法域功能，可在 .el 文件的第一行添加以下信息：</p>
+</blockquote>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">;; -*- lexical-binding: t -*-</span></div></pre></td></tr></table></figure>
+<h2 id="return"><a href="#return" class="headerlink" title="return"></a>return</h2><p>Lisp 函数默认是返回最后一个被求值的表达式的结果。通过一些构造技巧，也可以让每个可能的返回结果安排在函数的尾部位置。例如：</p>
+<p><img src="https://segmentfault.com/img/bVuLDT" alt="img"></p>
+<p>上述 Lisp 函数 <code>day-name</code> 的返回值是最后一个表达式的求值结果，因此无论我们怎么嵌套 <code>if</code>，都能自动产生一个结果返回，因此这里不需要显式的 <code>return</code> 语句。</p>
+<p>不过，有时用 <code>if</code> 嵌套的方式来重构函数的返回形式会不太方便，它较适合一些小的函数。对于一些规模较大并且嵌套较深的函数，你可能希望函数能够在较早的时机返回。在 Emacs Lisp 中，这一需求可基于 <code>break</code> 与 <code>continue</code> 来实现。上文中的 <code>day-name</code> 可重构为：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">(<span class="name">defun</span> day-name ()</div><div class="line">  (<span class="name">let</span> ((<span class="name">date</span> (<span class="name">calendar-day-of-week</span></div><div class="line">               (<span class="name">calendar-current-date</span>))))  <span class="comment">; 0-6</span></div><div class="line">    (<span class="name">catch</span> 'return</div><div class="line">      (<span class="name">case</span> date</div><div class="line">        (<span class="number">0</span></div><div class="line">         (<span class="name">throw</span> 'return <span class="string">"Sunday"</span>))</div><div class="line">        (<span class="number">6</span></div><div class="line">         (<span class="name">throw</span> 'return <span class="string">"Saturday"</span>))</div><div class="line">        (<span class="name">t</span></div><div class="line">         (<span class="name">throw</span> 'return <span class="string">"weekday"</span>))))))</div></pre></td></tr></table></figure>
+<p>显然，使用 <code>catch/throw</code> 会降低程序性能，但是有时你会需要用它来消除太深的嵌套结构。</p>
+<h2 id="try-catch"><a href="#try-catch" class="headerlink" title="try/catch"></a>try/catch</h2><p>前文已经讲了 <code>catch/throw</code>，它类似于异常，可用于控制流转移。</p>
+<p>Emacs 真正的错误处理机制叫做『条件』系统，本文不打算对此予以全面介绍，仅涉及如何捕捉异常以及如何忽略它们。</p>
+<p>下面是一个一般化的 <code>condition-case</code> 结构，而且我也给出了 Java 的等价描述。</p>
+<p><img src="https://segmentfault.com/img/bVuLDX" alt="img"></p>
+<p>如果你想让 <code>cache</code> 块为空，可使用 <code>ignore-errorse</code>：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="name">ignore-errors</span></div><div class="line">  (<span class="name">do-something</span>)</div><div class="line">  (<span class="name">do-something-else</span>))</div></pre></td></tr></table></figure>
+<p>有时你的启动文件（译注：可能是 .emacs 或init.el文件）可能不是总是正确工作。可以使用 <code>ignore-errors</code> 来封装 Emacs Lisp 代码，这样即使被封装的代码出错，也不会导致 Emacs 启动失败。</p>
+<p><code>condition-case nil</code> 的意思是『错误信息不赋给已命名的变量』。Emacs Lisp 允许你捕获不同的错误类别并对错误信息进行排查。这方面的知识请从 Emacs Lisp 手册获取。</p>
+<p>在 <code>condition-case</code> 块内如果存在多条表达式需要求值，必须用 <code>progn</code> 将它们封装起来。</p>
+<p><code>condition-case</code> 不会捕捉 <code>throw</code> 扔出来的值——这两个系统是彼此独立的。</p>
+<h2 id="try-finally"><a href="#try-finally" class="headerlink" title="try/finally"></a>try/finally</h2><p>Emacs Lisp 提供了类似 finally 的功能 <code>unwind-protect</code>：</p>
+<p><img src="https://segmentfault.com/img/bVuLDZ" alt="img"></p>
+<p>与 <code>condition-case</code> 相似，<code>unwind-protect</code> 接受单个体块（body-form，译注：try 部分），后面跟随着一条或多条善后的表达式，因此你需要用 <code>progn</code> 将体块内的表达式封装起来。</p>
+<h2 id="try-catch-finally"><a href="#try-catch-finally" class="headerlink" title="try/catch/finally"></a>try/catch/finally</h2><p>如果让 <code>condition-case</code>（等价于 <code>try/catch</code>）成为 <code>unwind-protect</code>（等价于 <code>try/finally</code>）的体块，那么就可以得到 <code>try/catch/finally</code> 的效果：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">(<span class="name">unwind-protect</span>                 <span class="comment">; finally</span></div><div class="line">    (<span class="name">condition-case</span> <span class="literal">nil</span>         <span class="comment">; try</span></div><div class="line">        (<span class="name">progn</span>                  <span class="comment">; &#123;</span></div><div class="line">          (<span class="name">do-something</span>)        <span class="comment">;   body-1</span></div><div class="line">          (<span class="name">do-something-else</span>))  <span class="comment">;   body-2 &#125;</span></div><div class="line">      (<span class="name">error</span>                    <span class="comment">; catch</span></div><div class="line">       (<span class="name">message</span> <span class="string">"oh no!"</span>)       <span class="comment">; &#123; catch 1</span></div><div class="line">       (<span class="name">poop-pants</span>)))           <span class="comment">;   catch 2 &#125;</span></div><div class="line">  (<span class="name">first-finally-expr</span>)          <span class="comment">; &#123; finally 1</span></div><div class="line">  (<span class="name">second-finally-expr</span>))        <span class="comment">;   finally 2 &#125;</span></div></pre></td></tr></table></figure>
+<h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><p>Emacs Lisp 不是标准意义上的面向对象编程语言，它没有类、继承以及多态等语法。Emacs 的 Common Lisp 包（现在的 <code>cl-lib</code>）提供了一个有用的特性 <code>defstruct</code>，通过它可以实现简单的 OOP 支持。下面我会给出一个简单的示例。</p>
+<p>下面的 Emacs Lisp 代码与 Java 代码本质上是等价的：</p>
+<p><img src="https://segmentfault.com/img/bVuLD0" alt="img"></p>
+<p><code>defstruct</code> 宏提供了一个灵活的默认构造器，但是你也可以根据自己的需要来定义相适的构造器。</p>
+<p><code>defstruct</code> 宏在创建对象实例时，也创建了一组判定函数，它们的用法如下：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">(<span class="name">person-p</span> (<span class="name">make-person</span>))</div><div class="line"><span class="literal">t</span></div><div class="line">(<span class="name">employee-p</span> (<span class="name">make-person</span>))</div><div class="line"><span class="literal">nil</span></div><div class="line">(<span class="name">employee-p</span> (<span class="name">make-employee</span>))</div><div class="line"><span class="literal">t</span></div><div class="line">(<span class="name">person-p</span> (<span class="name">make-employee</span>))  <span class="comment">; yes, it inherits from person</span></div><div class="line"><span class="literal">t</span></div></pre></td></tr></table></figure>
+<p>Java 在对象构造器方面可能挺糟糕，不过 Emacs 在域（类成员）的设置方面挺糟糕。要设置类（结构体）的域，必须使用 <code>setf</code> 函数，然后将类名作为域名的前缀：</p>
+<p><img src="https://segmentfault.com/img/bVuLD2" alt="img"></p>
+<p>这样看上去，Lisp 并不是太糟糕，但是在实践中（因为 Emacs Lisp 不支持命名空间，并且也没有 <code>with-slots</code> 宏），你会被卷入很长的类名与域名中的，例如：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="name">setf</span> (<span class="name">js2-compiler-data-current-script-or-function</span> compiler-data) current-script</div><div class="line">      (<span class="name">js2-compiler-data-line-number</span> compiler-data) current-line</div><div class="line">      (<span class="name">js2-compiler-data-allow-member-expr-as-function-name</span> compiler-data) allow</div><div class="line">      (<span class="name">js2-compiler-data-language-version</span> compiler-data) language-version)</div></pre></td></tr></table></figure>
+<p>要获取域的值，需要将类名与域名连接起来，然后作为函数来用：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">person-name</span> steve) <span class="comment">; yields "Steve"</span></div></pre></td></tr></table></figure>
+<p><code>defstruct</code> 还能做很多事——它的功能非常得体，该考虑的事都考虑了，尽管它没能形成一个完善的面向对象系统。</p>
+<h2 id="缓冲区即类"><a href="#缓冲区即类" class="headerlink" title="缓冲区即类"></a>缓冲区即类</h2><p>在 Emacs Lisp 编程中，将缓冲区视为类的实例往往很有用。因为 Emacs 支持缓冲区级别的局部变量的概念——无论变量以那种方式设置（译注，例如通过 <code>setq</code> 设置的变量），它们都会自动变成缓冲区内部的局部变量。因此，这些变量的行为就像是被封装在实例中的变量。</p>
+<p>可以用 <code>make-variable-buffer-local</code> 函数将一个变量声明为缓冲区级别的局部变量，通常这个函数会在 <code>devar</code> 或 <code>defconst</code>之后出现（见下文）。</p>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>在 Emacs Lisp 中，可以用 <code>defvar</code> 或 <code>defconst</code> 声明变量，也可以为变量提供文档化注释：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">defconst</span> pi <span class="number">3.14159</span> <span class="string">"A gross approximation of pi."</span>)</div></pre></td></tr></table></figure>
+<p>语法为 <code>(defvar 变量名 值 [文档化注释])</code>。</p>
+<p>不过，会让你大跌眼镜的是，<code>defconst</code> 定义的是变量，而 <code>defvar</code> 定义的是常量，至少在重新求值时是这样。要改变 <code>defvar</code> 变量的值，需要使用 <code>makeunbound</code> 来解除变量的绑定。不过，总是可以使用 <code>setq</code> 来修改 <code>defvar</code> 或 <code>defconst</code> 变量的值。这两种变量形式，仅有的区别是，<code>defconst</code> 可以表达一种意图：你定义的是一个常量。</p>
+<p>可以使用 <code>setq</code> 来创建全新的变量，但是如果用 <code>defvar</code>，Emacs Lisp 的字节码编译器能捕捉到一些错误信息。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Emacs Lisp 是一种真正的编程语言。它有编译器、调试器、性能分析器、效果显示器、运行时文档、库、输入/输出、网络、进程控制等。无论 Emacs Lisp 有多么古怪和烦人，只要你上手了，它就能让你体验到编程的快乐。作为一种编程语言，它并不伟大，而且每个人都期望它是 Common Lisp 或 Scheme 或其他某种更好的 Lisp 方言。有些人甚至认为它根本不是 Lisp。</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2016/11/07/HeadFirst-设计模式-Chapter3-装饰者/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/10/23/常用排序算法总结（性能-代码）/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="thychan's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">18</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">5</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Chan's Blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+
+    <script>lsloader.load("js/lazyload.min.js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==")</script>
+    <script>lsloader.load("js/js.min.js","/js/js.min.js?oAl/+lvaqTFV31JXTmbrNA==")</script>
+
+
+
+    <script>lsloader.load("js/nprogress.js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==")</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Window Load-->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Bing Background -->
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

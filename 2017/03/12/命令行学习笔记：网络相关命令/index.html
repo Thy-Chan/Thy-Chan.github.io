@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.4.0 -->
+    <script>window.materialVersion = "1.4.0"</script>
+
+    <!-- Title -->
+    
+    <title>
+        
+            命令行学习笔记：网络相关命令 | 
+        
+        Chan&#39;s Blog
+    </title>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="thychan">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content="null,编程,命令,计算机网络">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Chan&#39;s Blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="命令行学习笔记：网络相关命令 | Chan&#39;s Blog">
+    <meta property="og:image" content="/img/favicon.png" />
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="编程"> <meta property="og:article:tag" content="命令"> <meta property="og:article:tag" content="计算机网络"> 
+
+    
+        <meta property="article:published_time" content="3月 12, 2017" />
+        <meta property="article:modified_time" content="3月 13, 2017" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="命令行学习笔记：网络相关命令 | Chan&#39;s Blog">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="/img/favicon.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://yoursite.com" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yoursite.com/2017/03/12/命令行学习笔记：网络相关命令/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Chan&#39;s Blog",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "thychan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "headline": "命令行学习笔记：网络相关命令",
+    "url": "http://yoursite.com/2017/03/12/命令行学习笔记：网络相关命令/index.html",
+    "datePublished": "3月 12, 2017",
+    "dateModified": "3月 13, 2017",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://yoursite.com"
+    }
+}
+</script>
+
+
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+materialVersion+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(data&&data.indexOf(versionString)===-1){lsloader.removeLS(key)}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload){cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}code=code.split(versionString)[1];if(/\.js?.+$/.test(versionNumber)){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload)}};lsloader.requestResource=function(name,path,cssonload){var that=this;if(/\.js?.+$/.test(path)){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else if(/\.css?.+$/.test(path)){this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import CSS & jQuery -->
+    
+        <style id="css/material.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/material.min.css","/css/material.min.css?fJTiM/K1J3dWIruo3pxtAw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        <style id="css/style.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/style.min.css","/css/style.min.css?oCSEO3ST+aEypEwttTDI9g==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        
+        
+            <style>
+    
+    .footer-sns-facebook {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHptNjU3LjYgODcuOGw0LjggMy44djU1LjJjMCA1NC42IDAgNTUuMi00LjYgNTkuNi00LjQgNC40LTYgNC42LTUwLjIgNS42bC00NS42IDEtNy4yIDUuNmMtMTAuNCA4LTE2LjggMTcuMi0xOS4yIDI3LjQtMSA1LTEuOCAyNC44LTEuOCA0NCAuMiAzOCAxLjYgNDQuNiAxMC44IDQ4IDIuOCAxLjIgMjguNCAyIDU2LjggMiA0Ny44IDAgNTIgLjIgNTYuMiAzLjhsNC44IDMuOHY1NS4yYzAgNTQuNiAwIDU1LjItNC42IDU5LjYtNC40IDQuNi01LjQgNC42LTU3IDUuMi0yOC44LjItNTQuNC44LTU2LjggMS40LTIuNC42LTUuNiAzLTYuOCA1LjQtMS44IDMuMi0yLjQgNDEuNC0yLjYgMTQzLjJsLS4yIDEzOC44LTUuNiA0LjgtNS42IDQuOEg2MDljLTUyLjQgMC01Mi44IDAtNTguMi00LjZsLTUuNC00LjYtLjItMTQwLjYtLjItMTQwLjYtNC44LTMuOGMtNC4yLTMuNC04LTMuOC0zNS42LTMuOC0zMi44IDAtNDEtMS44LTQzLjYtMTAtLjYtMi4yLTEuMi0yNS40LTEuMi01MS40IDAtNjAuOC0uMi01NyAzLjQtNjEuNiAyLjgtMy42IDYtNCAzNy44LTUgMzMtMSAzNS4yLTEuMiAzOS40LTUuNiA0LjYtNC40IDQuNi01LjIgNS44LTcxIDEuMi03My40LjItNjcuMiAxNi42LTk5LjQgOC0xNS44IDEyLjgtMjIgMjgtMzcgMTUuMi0xNS4yIDIxLjQtMTkuNiAzOC4yLTI4IDExLTUuNCAyNC0xMSAyOS0xMi4yIDYuMi0xLjggMjguNi0yLjYgNzEuMi0yLjYgNTguNi0uMiA2Mi42IDAgNjcgMy42eiIvPjwvc3ZnPg==);
+    }
+    
+    
+    .footer-sns-twitter {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHptNTMyLjggMjA1YzEwIDQgMjMgMTAuOCAyOC44IDE1LjIgMTIuNiA5LjIgMTYuNiAxMC42IDI5LjQgOS40IDYuNi0uNiAxMy0zLjIgMjAuNC04LjIgMTEuMi03LjYgMTkuNC05LjIgMjMuNi01IDMuNiAzLjYgMi44IDktMi44IDE4LjYtNy4yIDEyLjQtNiAxOC44IDQuMiAyNC4yIDQuNCAyLjIgOC4yIDUuNiA4LjYgNy40IDEgNC44LTEyLjYgMjQuMi0yMiAzMS44LTExLjggOS4yLTE3LjIgMjIuNi0xOS42IDQ3LjgtNC44IDUwLjQtNy44IDY2LjYtMTYuNCA4NS40LTMgNy03IDE3LjgtOC44IDI0LTEuOCA2LjQtNSAxNC42LTcuNCAxOC40LTIuMiAzLjgtNy40IDEzLTExLjQgMjAuNC0xNy4yIDMwLjgtNDMuNCA2MS40LTcxLjQgODMuOC0yNS42IDIwLjQtNDYgMzMuMi02NC4yIDQwLjItOC40IDMuMi0xOCA3LjYtMjEuNCA5LjYtNy40IDQuNi0yMi40IDguNi01Ny4yIDE1LTYyLjIgMTEuNi03OS4yIDExLjQtMTM1LjYtMS0zMi40LTctMzguNi05LTUyLTE2LjgtMjEuNC0xMi42LTI0LjItMTQuOC0yNC4yLTE5LjQgMC02LjIgMTAuMi05LjIgMzUtMTAuNCAyMi40LTEgMjguNi0yLjYgNTctMTQuMiAyMy44LTkuOCAyOS40LTEyLjggMzAuNC0xNi44IDIuMi04LjItMy0xMy4yLTI2LjgtMjUuNC0yNS44LTEzLjItMzIuMi0xOC40LTQzLjgtMzUuOC05LTEzLjYtMTAtMjEuMi0zLjYtMzMuNiA1LjQtMTAuOCAzLjYtMTUtMTEuOC0yNS40LTktNi0xNC0xMS42LTIwLjgtMjIuNi0yMy40LTM3LjgtMjUtNTAuOC03LjItNTkuOCA0LjgtMi40IDkuNC01LjQgMTAuMi02LjYgMi44LTQuMi0uNC0xNS42LTguNC0yOS0xMS42LTE5LjYtMTMuMi0yNS44LTEzLjItNTUuMiAwLTI4LjggMi42LTM3LjggMTItNDAuMiA5LTIuMiAxNC44IDEgMzUuNiAyMC4yIDI0LjggMjIuOCA0My42IDM2LjYgNjIuOCA0NS44IDggMy44IDE3LjggOS4yIDIyIDEyIDQuMiAyLjggMTQuOCA3IDIzLjQgOS4yIDguNiAyLjIgMjQuMiA2LjggMzQuOCAxMC4yIDEzLjQgNC40IDIzLjYgNi40IDMzIDYuNiAxMi44LjIgMTQuMi0uMiAxOC42LTUuNCA0LTQuOCA0LjgtNy44IDQuOC0xOS4yIDAtMTQuNCA1LjYtMzkuNiAxMS4yLTUwLjYgNC4yLTguNCAyOS4yLTM0LjIgMzkuOC00MS40IDcuOC01LjQgMzUuNi0xNiA1Mi0yMCAxNC4yLTMuNiAzMi42LTEuMiA1Mi40IDYuOHoiLz48L3N2Zz4=);
+    }
+    
+    
+    .footer-sns-gplus {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHpNNDMwIDI5NS40YzQwLjYgMTUuNCA1Ni42IDIzLjggNzIuNiAzOC40IDYuOCA2LjIgNy4yIDE1LjIgMSAyMy40LTYuMiA4LTMzLjYgMzMuOC0zOSAzNi42LTUuNiAyLjgtMTcuNiAyLjgtMjMuMi0uMi0yLjQtMS4yLTguMi01LjItMTMtOC44LTExLjItOC42LTI0LjYtMTEuMi01NS4yLTExLjItMjcuNCAwLTQwLjYgMi42LTUyLjIgMTAuNC00LjQgMi44LTEyLjIgNy42LTE3LjIgMTAuNi0yMyAxMy4yLTUxLjQgNTUtNTUuOCA4Mi40LTIuNiAxNS42LTIuNCAzNC44LjIgNTEgMi44IDE3LjQgMTkuOCA0OC44IDM1LjIgNjUuMiAxNiAxNi42IDQ1IDMzLjYgNjIuOCAzNi42IDI2LjggNC40IDY1LjggMS42IDc5LjQtNS44IDIwLjYtMTEuNCAzMS0xOSA0MS0zMC40IDE4LjgtMjEuNiAyMy40LTM0LjIgMTUuNi00My44LTMuOC00LjgtNC40LTQuOC01MS01LjgtNjAuOC0xLjItNTYuMiAyLjItNTYuMi00My4yIDAtMzIuNC4yLTMzLjIgNC44LTM3IDQuNC0zLjYgOS0zLjggOTItMy44IDc5IDAgODcuOC40IDk0LjIgMy42IDExLjIgNS42IDEzIDExLjQgMTIuOCA0My40IDAgMjUuNC0uOCAzMC44LTcuNiA1OC00IDE2LjYtOS44IDM0LTEyLjYgMzktMi44IDUtOC4yIDE0LjItMTEuNiAyMC42LTguNCAxNS40LTI3LjIgMzYuOC00MC44IDQ2LjYtNS44IDQuNC0xMy44IDEwLjItMTcuNiAxMy4yLTMuOCAzLTExIDctMTYuMiA4LjgtNS4yIDEuOC0xNi4yIDYuNC0yNC40IDEwLTIyLjQgOS42LTM0LjggMTEuNi03MyAxMS42LTM3LjYuMi00Ny0xLjQtNzEtMTItOC4yLTMuNi0xNy42LTcuMi0yMC44LTgtMTUuOC0zLjgtNjctNDUuMi03Ny44LTYyLjgtMi4yLTMuOC03LjYtMTEuNi0xMS44LTE3LjItNC4yLTUuNC05LTE0LTEwLjYtMTktMS44LTQuOC02LjItMTYtMTAtMjQuOC0zLjYtOC44LTcuOC0yMi4yLTkuMi0yOS42LTMuMi0xOC44LTEuNC03OS40IDIuOC05MS40IDEzLjgtNDAuNiAzNS42LTc4IDU4LjgtMTAwLjIgMTQtMTMuNiA0Ny4yLTM2LjQgNTgtMzkuOCA0LjItMS40IDEzLjQtNS4yIDIwLjYtOC40IDIyLTEwIDMyLjgtMTEuNiA3Ni0xMSAzMy44LjYgNDAuNCAxLjIgNTAgNC44em0zNDAuOCA4MC44YzggMy42IDkuNiAxMS4yIDkuMiAzOS4yLS42IDM0LjQtLjYgMzQgNSAzOS42IDQuOCA1IDUuNCA1IDM3LjYgNSA0My40IDAgNDQuNC44IDQzLjIgMzYuMi0uOCAxNy0xLjIgMTguNC02LjQgMjMtNS40IDQuNi02LjYgNC44LTM3LjYgNC44LTMxLjIgMC0zMiAuMi0zNi44IDUtNS42IDUuNC01LjYgNC40LTUgNDEuMi40IDI2LjQuMiAyNy40LTQuNiAzMy00LjggNS42LTYgNS44LTI0LjQgNi40LTIwLjguOC0yOS42LTEuNC0zMy40LTguNC0xLjQtMi42LTItMTUuNi0xLjgtMzUuNi40LTMxLjIuNC0zMS42LTQuNi0zNi42cy01LjYtNS0zNi01Yy0xOC44IDAtMzMtLjgtMzYtMi4yLTcuNi0zLjYtOS42LTExLjItOC44LTMzLjguOC0yOC4yLjQtMjggNDEtMjggNDUuNCAwIDQ1LjQgMCA0NC42LTQyLjYtLjYtMzMtLjYtMzMgNS0zOC40IDQuNC00LjYgNi4yLTUgMjQuOC01IDExIDAgMjIuMiAxIDI1IDIuMnoiLz48L3N2Zz4=);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</style>
+
+        
+        <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+
+
+        <script>lsloader.load("js/jquery.min.js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==")</script>
+    
+    
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Analytics -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#学习内容"><span class="post-toc-number">1.</span> <span class="post-toc-text">学习内容</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#个人总结"><span class="post-toc-number">2.</span> <span class="post-toc-text">个人总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ping"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">ping</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#telnett"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">telnett</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#curl"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">curl</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#netstat"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">netstat</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置IP地址"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">配置IP地址</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置DNS地址："><span class="post-toc-number">2.6.</span> <span class="post-toc-text">配置DNS地址：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#导出配置文件"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">导出配置文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改之后导入本机配置"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">修改之后导入本机配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+    
+
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                命令行学习笔记：网络相关命令
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>thychan</strong>
+        <span>3月 12, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/命令/">命令</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/编程/">编程</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/计算机网络/">计算机网络</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=命令行学习笔记：网络相关命令&url=http://yoursite.com/2017/03/12/命令行学习笔记：网络相关命令/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=命令行学习笔记：网络相关命令&url=http://yoursite.com/2017/03/12/命令行学习笔记：网络相关命令/index.html&via=thychan" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/03/12/命令行学习笔记：网络相关命令/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2017/03/12/命令行学习笔记：网络相关命令/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="学习内容"><a href="#学习内容" class="headerlink" title="学习内容"></a>学习内容</h1><blockquote>
+<p>网络相关：ping, telnet, curl, netstat，修改ip, dns, hosts</p>
+</blockquote>
+<h1 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h1><hr>
+<h2 id="ping"><a href="#ping" class="headerlink" title="ping"></a><strong>ping</strong></h2><p><strong>简述：</strong><br>Linux 系统的ping 命令是常用的网络命令，它<strong>通常用来测试与目标主机的连通性</strong>。比如：我们经常说的ping一下某主机看是否能够访问到、不能打开网页的时候先ping 网关地址192.168.1.1尝试默认网关是否能够联通。它通过发送ICMP ECHO_REQUEST数据包到网络主机（send ICMP ECHO_REQUEST to network hosts），并显示响应情况，这样我们就可以根据它输出的信息来确定目标主机是否可访问（但这不是绝对的）。有些服务器为了防止通过ping探测到，通过防火墙设置了禁止ping或者在内核参数中禁止ping，这样就不能通过ping确定该主机是否还处于开启状态.</p>
+<p><strong>命令格式：</strong><br><code>ping [参数] [主机名或IP地址]</code></p>
+<p><strong>功能：</strong></p>
+<ul>
+<li>确定网络和各外部主机的状态；</li>
+<li>跟踪和隔离硬件和软件问题；</li>
+<li>测试、评估和管理网络。</li>
+</ul>
+<p>如果主机正在运行并连在网上，它就对回送信号进行响应。每个回送信号请求包含一个网际协议（IP）和 ICMP 头，后面紧跟一个 tim 结构，以及来填写这个信息包的足够的字节。缺省情况是连续发送回送信号请求直到接收到中断信号（Ctrl-C）。</p>
+<p><strong>参数：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">-d 使用Socket的SO_DEBUG功能。</div><div class="line">-f  极限检测。大量且快速地送网络封包给一台机器，看它的回应。</div><div class="line">-n 只输出数值。</div><div class="line">-q 不显示任何传送封包的信息，只显示最后的结果。</div><div class="line">-r 忽略普通的Routing Table，直接将数据包送到远端主机上。通常是查看本机的网络接口是否有问题。</div><div class="line">-R 记录路由过程。</div><div class="line">-v 详细显示指令的执行过程。</div><div class="line">&lt;p&gt;-c 数目：在发送指定数目的包后停止。</div><div class="line">-i 秒数：设定间隔几秒送一个网络封包给一台机器，预设值是一秒送一次。</div><div class="line">-I 网络界面：使用指定的网络界面送出数据包。</div><div class="line">-l 前置载入：设置在送出要求信息之前，先行发出的数据包。</div><div class="line">-p 范本样式：设置填满数据包的范本样式。</div><div class="line">-s 字节数：指定发送的数据字节数，预设值是56，加上8字节的ICMP头，一共是64ICMP数据字节。</div><div class="line">-t 存活数值：设置存活数值TTL的大小。</div></pre></td></tr></table></figure>
+<p><strong>实例：</strong></p>
+<ul>
+<li>ping 不通的情况</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">➜  ~ ping 192.168.1.99</div><div class="line">PING 192.168.1.99 (192.168.1.99) 56(84) bytes of data.</div><div class="line">From 192.168.1.196 icmp_seq=1 Destination Host Unreachable</div><div class="line">From 192.168.1.196 icmp_seq=2 Destination Host Unreachable</div><div class="line">From 192.168.1.196 icmp_seq=3 Destination Host Unreachable</div><div class="line">From 192.168.1.196 icmp_seq=4 Destination Host Unreachable</div><div class="line">From 192.168.1.196 icmp_seq=5 Destination Host Unreachable</div><div class="line">From 192.168.1.196 icmp_seq=6 Destination Host Unreachable</div><div class="line">From 192.168.1.196 icmp_seq=7 Destination Host Unreachable</div><div class="line">From 192.168.1.196 icmp_seq=8 Destination Host Unreachable</div><div class="line">From 192.168.1.196 icmp_seq=9 Destination Host Unreachable</div><div class="line">^C</div><div class="line">--- 192.168.1.99 ping statistics ---</div><div class="line">12 packets transmitted, 0 received, +9 errors, 100% packet loss, time 11064ms</div><div class="line">pipe 3</div></pre></td></tr></table></figure>
+<ul>
+<li>ping 通的情况</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">➜  ~ ping 192.168.1.123</div><div class="line">PING 192.168.1.123 (192.168.1.123) 56(84) bytes of data.</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=1 ttl=128 time=1.65 ms</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=2 ttl=128 time=0.844 ms</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=3 ttl=128 time=0.959 ms</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=4 ttl=128 time=0.736 ms</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=5 ttl=128 time=0.732 ms</div><div class="line">^C</div><div class="line">--- 192.168.1.123 ping statistics ---</div><div class="line">5 packets transmitted, 5 received, 0% packet loss, time 4002ms</div><div class="line">rtt min/avg/max/mdev = 0.732/0.984/1.653/0.346 ms</div></pre></td></tr></table></figure>
+<ul>
+<li>ping 网关</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">➜  ~ ping -b 192.168.1.1</div><div class="line">PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.</div><div class="line">64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=0.211 ms</div><div class="line">64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=0.225 ms</div><div class="line">64 bytes from 192.168.1.1: icmp_seq=3 ttl=64 time=0.222 ms</div><div class="line">64 bytes from 192.168.1.1: icmp_seq=4 ttl=64 time=0.182 ms</div><div class="line">64 bytes from 192.168.1.1: icmp_seq=5 ttl=64 time=0.464 ms</div><div class="line">64 bytes from 192.168.1.1: icmp_seq=6 ttl=64 time=0.224 ms</div><div class="line">^C</div><div class="line">--- 192.168.1.1 ping statistics ---</div><div class="line">6 packets transmitted, 6 received, 0% packet loss, time 4999ms</div><div class="line">rtt min/avg/max/mdev = 0.182/0.254/0.464/0.096 ms</div></pre></td></tr></table></figure>
+<ul>
+<li>ping 指定次数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">➜  ~ ping -c 3 192.168.1.1</div><div class="line">PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.</div><div class="line">64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=1.22 ms</div><div class="line">64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=0.360 ms</div><div class="line">64 bytes from 192.168.1.1: icmp_seq=3 ttl=64 time=0.382 ms</div><div class="line"></div><div class="line">--- 192.168.1.1 ping statistics ---</div><div class="line">3 packets transmitted, 3 received, 0% packet loss, time 2000ms</div><div class="line">rtt min/avg/max/mdev = 0.360/0.654/1.221/0.401 ms</div></pre></td></tr></table></figure>
+<ul>
+<li>ping 指定时间间隔</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">➜  ~ ping -i 0.5 192.168.1.123</div><div class="line">PING 192.168.1.123 (192.168.1.123) 56(84) bytes of data.</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=1 ttl=128 time=1.14 ms</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=2 ttl=128 time=0.999 ms</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=3 ttl=128 time=0.822 ms</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=4 ttl=128 time=0.952 ms</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=5 ttl=128 time=0.847 ms</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=6 ttl=128 time=0.957 ms</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=7 ttl=128 time=0.848 ms</div><div class="line">^C</div><div class="line">--- 192.168.1.123 ping statistics ---</div><div class="line">7 packets transmitted, 7 received, 0% packet loss, time 3001ms</div><div class="line">rtt min/avg/max/mdev = 0.822/0.938/1.141/0.103 ms</div></pre></td></tr></table></figure>
+<ul>
+<li>ping 指定时间间隔和指定次数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">➜  ~ ping -c5 -i 0.5 192.168.1.123</div><div class="line">PING 192.168.1.123 (192.168.1.123) 56(84) bytes of data.</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=1 ttl=128 time=0.775 ms</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=2 ttl=128 time=0.941 ms</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=3 ttl=128 time=0.888 ms</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=4 ttl=128 time=0.761 ms</div><div class="line">64 bytes from 192.168.1.123: icmp_seq=5 ttl=128 time=0.991 ms</div><div class="line"></div><div class="line">--- 192.168.1.123 ping statistics ---</div><div class="line">5 packets transmitted, 5 received, 0% packet loss, time 2000ms</div><div class="line">rtt min/avg/max/mdev = 0.761/0.871/0.991/0.092 ms</div></pre></td></tr></table></figure>
+<ul>
+<li>ping 公网上站点</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">➜  ~ ping -c 5 www.sina.com</div><div class="line">PING cernetnews.sina.com.cn (121.194.0.239) 56(84) bytes of data.</div><div class="line">64 bytes from 121.194.0.239: icmp_seq=1 ttl=50 time=21.3 ms</div><div class="line">64 bytes from 121.194.0.239: icmp_seq=2 ttl=50 time=18.7 ms</div><div class="line">64 bytes from 121.194.0.239: icmp_seq=3 ttl=50 time=17.8 ms</div><div class="line">64 bytes from 121.194.0.239: icmp_seq=4 ttl=50 time=19.7 ms</div><div class="line">64 bytes from 121.194.0.239: icmp_seq=5 ttl=50 time=18.3 ms</div><div class="line"></div><div class="line">--- cernetnews.sina.com.cn ping statistics ---</div><div class="line">5 packets transmitted, 5 received, 0% packet loss, time 4007ms</div><div class="line">rtt min/avg/max/mdev = 17.860/19.218/21.344/1.248 ms</div></pre></td></tr></table></figure>
+<ul>
+<li>ping 多参数使用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">➜  ~ ping -i 0.5 -c 5 -s 512 -t 255 192.168.1.123</div><div class="line">PING 192.168.1.123 (192.168.1.123) 512(540) bytes of data.</div><div class="line">520 bytes from 192.168.1.123: icmp_seq=1 ttl=128 time=1.64 ms</div><div class="line">520 bytes from 192.168.1.123: icmp_seq=2 ttl=128 time=1.05 ms</div><div class="line">520 bytes from 192.168.1.123: icmp_seq=3 ttl=128 time=1.68 ms</div><div class="line">520 bytes from 192.168.1.123: icmp_seq=4 ttl=128 time=1.45 ms</div><div class="line">520 bytes from 192.168.1.123: icmp_seq=5 ttl=128 time=1.66 ms</div><div class="line"></div><div class="line">--- 192.168.1.123 ping statistics ---</div><div class="line">5 packets transmitted, 5 received, 0% packet loss, time 2004ms</div><div class="line">rtt min/avg/max/mdev = 1.051/1.500/1.683/0.239 ms</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="telnett"><a href="#telnett" class="headerlink" title="telnett"></a><strong>telnett</strong></h2><p>  <strong>简述：　　telnet命令通常用来远程登录。</strong> <strong>telnet程序</strong>是基于<code>TELNET协议</code>的<code>远程登录客户端程序</code>。<strong>Telnet协议</strong>是<code>TCP/IP协议族中的一员</code>，是<code>Internet远程登陆服务的标准协议和主要方式</code>。它为用户提供了在本地计算机上完成远程主机工作的 能力。在终端使用者的电脑上使用telnet程序，用它连接到服务器。终端使用者可以在telnet程序中输入命令，这些命令会在服务器上运行，就像直接在服务器的控制台上输入一样。可以在本地就能控制服务器。要开始一个 telnet会话，必须输入用户名和密码来登录服务器。<strong>Telnet是常用的远程控制Web服务器的方法</strong>。<br>  　　<strong>但是，telnet因为采用明文传送报文，安全性不好，很多Linux服务器都不开放telnet服务，而改用更安全的ssh方式了</strong>。但仍然有很多别的系统可能采用了telnet方式来提供远程登录，因此弄清楚telnet客户端的使用方式仍是很有必要的。<br>  　　telnet命令还可做<strong>别的用途</strong>，比如<em>确定远程服务的状态</em>，比如<em>确定远程服务器的某个端口是否能访问</em>。</p>
+<p><strong>命令格式</strong><br><code>telnet [参数][主机]</code></p>
+<p><strong>功能</strong><br>执行 telnett 命令开启终端机器阶段作业，并登入远端主机。</p>
+<p><strong>参数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">-8 允许使用8位字符资料，包括输入与输出。</div><div class="line">-a 尝试自动登入远端系统。</div><div class="line">-b&lt;主机别名&gt; 使用别名指定远端主机名称。</div><div class="line">-c 不读取用户专属目录里的.telnetrc文件。</div><div class="line">-d 启动排错模式。</div><div class="line">-e&lt;脱离字符&gt; 设置脱离字符。</div><div class="line">-E 滤除脱离字符。</div><div class="line">-f 此参数的效果和指定&quot;-F&quot;参数相同。</div><div class="line">-F 使用Kerberos V5认证时，加上此参数可把本地主机的认证数据上传到远端主机。</div><div class="line">-k&lt;域名&gt; 使用Kerberos认证时，加上此参数让远端主机采用指定的领域名，而非该主机的域名。</div><div class="line">-K 不自动登入远端主机。</div><div class="line">-l&lt;用户名称&gt; 指定要登入远端主机的用户名称。</div><div class="line">-L 允许输出8位字符资料。</div><div class="line">-n&lt;记录文件&gt; 指定文件记录相关信息。</div><div class="line">-r 使用类似rlogin指令的用户界面。</div><div class="line">-S&lt;服务类型&gt; 设置telnet连线所需的IP TOS信息。</div><div class="line">-x 假设主机有支持数据加密的功能，就使用它。</div><div class="line">-X&lt;认证形态&gt; 关闭指定的认证形态。</div></pre></td></tr></table></figure>
+<p><strong>实例</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">zhyingjia@zhyingjia-Inspiron-5437:~$ telnet 192.168.1.243 22</div><div class="line">Trying 192.168.1.243...</div><div class="line">Connected to 192.168.1.243.</div><div class="line">Escape character is &apos;^]&apos;.</div><div class="line">SSH-2.0-OpenSSH_5.3</div><div class="line"></div><div class="line">Protocol mismatch.</div><div class="line">Connection closed by foreign host.</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="curl"><a href="#curl" class="headerlink" title="curl"></a><strong>curl</strong></h2><p><strong>简述：</strong>curl是一个利用URL规则在命令行下工作的文件传输工具。它支持文件的上传和下载，所以是综合传输工具，但按传统，习惯称url为下载工具。<br><strong>参数：</strong><br>参数太多啦, 用的时候在搜~<br><strong>实例：</strong></p>
+<ul>
+<li>抓取页面内容<br><code>curl -o/--output filename link</code> 把输出写到该文件中。<br><code>curl -O url</code>　后面的url要具体到某个文件，不然抓不下来。我们还可以用正则来抓取东西</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">➜  newDir ls</div><div class="line">➜  newDir curl -o shouhui.html http://www.jianshu.com/p/5dcce74fc415</div><div class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</div><div class="line">                                 Dload  Upload   Total   Spent    Left  Speed</div><div class="line">100 41120  100 41120    0     0  82488      0 --:--:-- --:--:-- --:--:-- 82404</div><div class="line">➜  newDir ls</div><div class="line">shouhui.html</div><div class="line">➜  newDir </div><div class="line"></div><div class="line">➜  newDir curl -O http://www.jianshu.com/p/5ead3cfb630b                 </div><div class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</div><div class="line">                                 Dload  Upload   Total   Spent    Left  Speed</div><div class="line">100 47028  100 47028    0     0    97k      0 --:--:-- --:--:-- --:--:--   97k</div><div class="line">➜  newDir ls</div><div class="line">5ead3cfb630b  shouhui.html</div><div class="line">➜  newDir</div></pre></td></tr></table></figure>
+<ul>
+<li>模拟登录<br><code>curl -c &lt;file&gt;</code> 操作结束后把cookie写入到这个文件中<br><code>curl -F &lt;name=content&gt;</code> 模拟http表单提交数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">➜  newDir curl -c ./cookie_c.txt -F log=aaaa -F pwd=****** http://www.2cto.com /wp-login.php</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;&lt;title&gt;405 Not Allowed&lt;/title&gt;&lt;/head&gt;</div><div class="line">&lt;body bgcolor=&quot;white&quot;&gt;</div><div class="line">&lt;center&gt;&lt;h1&gt;405 Not Allowed&lt;/h1&gt;&lt;/center&gt;</div><div class="line">&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line">curl: (3) &lt;url&gt; malformed</div></pre></td></tr></table></figure>
+<ul>
+<li>显示下载进度条<br><code>curl -#</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">➜  newDir ls</div><div class="line">5ead3cfb630b  shouhui.html</div><div class="line">➜  newDir curl -O -# http://www.jianshu.com/p/230efbd68016</div><div class="line">######################################################################## 100.0%</div><div class="line">➜  newDir ls</div><div class="line">230efbd68016  5ead3cfb630b  shouhui.html</div><div class="line">➜  newDir</div></pre></td></tr></table></figure>
+<ul>
+<li>断点续传<br><code>curl -C -O url</code> 下载比较打的文件可以使用 <code>-C</code>.</li>
+</ul>
+<hr>
+<h2 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a><strong>netstat</strong></h2><p><strong>简述 ：</strong><br><code>netstat命令</code> <strong>用于显示与IP、TCP、UDP和ICMP协议相关的统计数据，一般用于检验本机各端口的网络连接情况</strong>。netstat是在内核中访问网络及相关信息的程序，它能提供TCP连接，TCP和UDP监听，进程内存管理的相关报告.<br><strong>常用参数：</strong><br><code>netstat -a</code> 显示端口信息<br><code>netstat -nu</code> 显示当前ＵＤＰ连接情况<br><code>netstat -apu</code> 显示当前ＵＤＰ端口号使用情况<br><code>netstat -i</code> 显示网卡列表<br><code>netstat -g</code>显示组播关系<br><code>netstat -l</code>显示监听的套接口<br><code>netstat -n</code>显示多有已建立的连接<br><code>netstat -e</code>显示关于以太网的统计数据<br><code>netstat -r</code>显示路由表信息<br><code>netstat -at</code>列出所有ＴＣＰ端口</p>
+<p><strong>实例：</strong></p>
+<ul>
+<li>无参数使用</li>
+</ul>
+<p><code>netstat</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">Active Internet connections (w/o servers)</div><div class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State      </div><div class="line">tcp        0      1 192.168.1.197:38870     www.google.com.gr:https SYN_SENT   </div><div class="line">tcp        1      1 192.168.1.197:48054     121.194.7.192:http      LAST_ACK   </div><div class="line">tcp        0      1 192.168.1.197:38854     www.google.com.gr:https SYN_SENT   </div><div class="line">tcp        0      1 192.168.1.197:38860     www.google.com.gr:https SYN_SENT   </div><div class="line">tcp        0      1 192.168.1.197:38856     www.google.com.gr:https SYN_SENT   </div><div class="line">tcp        0      1 192.168.1.197:34186     prg03s05-in-f14.1:https SYN_SENT   </div><div class="line">tcp        1      1 192.168.1.197:36790     121.194.7.19:http       LAST_ACK   </div><div class="line">tcp        0      1 192.168.1.197:38858     www.google.com.gr:https SYN_SENT   </div><div class="line">tcp        0      1 192.168.1.197:38880     www.google.com.gr:https SYN_SENT   </div><div class="line">tcp        0      1 192.168.1.197:38852     www.google.com.gr:https SYN_SENT   </div><div class="line">tcp        0      1 192.168.1.197:38864     www.google.com.gr:https SYN_SENT   </div><div class="line">tcp        0      1 192.168.1.197:38884     www.google.com.gr:https SYN_SENT   </div><div class="line">tcp        1      1 192.168.1.197:45486     23.248.163.147:http     LAST_ACK   </div><div class="line">tcp        0      0 192.168.1.197:50202     hn.kd.ny.adsl:82        ESTABLISHED</div><div class="line"></div><div class="line">　　　... ... </div><div class="line">Active UNIX domain sockets (w/o servers)</div><div class="line">Proto RefCnt Flags       Type       State         I-Node   Path</div><div class="line">unix  2      [ ]         DGRAM                    22602    /run/user/1000/systemd/notify</div><div class="line">unix  8      [ ]         DGRAM                    568      /run/systemd/journal/socket</div><div class="line">unix  17     [ ]         DGRAM                    11639    /run/systemd/journal/dev-log</div><div class="line">unix  2      [ ]         DGRAM                    11642    /run/systemd/journal/syslog</div><div class="line">unix  3      [ ]         SEQPACKET  CONNECTED     31602    @0001b</div><div class="line">unix  2      [ ]         DGRAM                    17911    /run/wpa_supplicant/wlp6s0</div><div class="line">unix  3      [ ]         DGRAM                    556      /run/systemd/notify</div><div class="line">unix  3      [ ]         SEQPACKET  CONNECTED     27350    </div><div class="line">unix  3      [ ]         STREAM     CONNECTED     26055    /run/systemd/journal/stdout</div><div class="line">unix  3      [ ]         STREAM     CONNECTED     24124    </div><div class="line">unix  3      [ ]         STREAM     CONNECTED     23298    @/tmp/dbus-sYzUcwM148</div><div class="line">unix  3      [ ]         STREAM     CONNECTED     25062    @/tmp/dbus-sYzUcwM148</div><div class="line">unix  3      [ ]         STREAM     CONNECTED     22310    </div><div class="line">unix  3      [ ]         STREAM     CONNECTED     29561    </div><div class="line">unix  3      [ ]         STREAM     CONNECTED     23338    @/tmp/dbus-NFWQkgLokd</div><div class="line">unix  3      [ ]         STREAM     CONNECTED     24598    @/tmp/.X11-unix/X0</div><div class="line">... ...</div></pre></td></tr></table></figure>
+<p><strong>说明：</strong><br><code>netstat</code>　命令输出结果分为两部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">１． Active Internet connections　：　有源 TCP 连接　</div><div class="line">          Recv-Q　：　接受队列</div><div class="line">          Send-Q　：　发送队列 (这两列一般情况下为０，如果为１，则表示有软件包在队列中堆积)</div><div class="line">２．Active UNIX domain sockets　：　有源ＵＮＩＸ域套接口(和网络套接字一样，但是只能用于本机通信，性能可以提高一倍)</div><div class="line">　　　    Proto　　：　显示连接使用的协议</div><div class="line">   　　　RefCnt　　：    表示连接到本套接口上的进程号</div><div class="line">　　　　   Types　　：    显示套接口的类型</div><div class="line">　　     State 　　：　显示套接口当前的状态</div><div class="line">　　       Path　　：　表示连接到套接口的其它进程使用的路径名</div></pre></td></tr></table></figure>
+<p>状态字段说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">LISTEN：侦听来自远方的TCP端口的连接请求</div><div class="line">SYN-SENT：再发送连接请求后等待匹配的连接请求（如果有大量这样的状态包，检查是否中招了）</div><div class="line">SYN-RECEIVED：再收到和发送一个连接请求后等待对方对连接请求的确认（如有大量此状态，估计被flood攻击了）</div><div class="line">ESTABLISHED：代表一个打开的连接</div><div class="line">FIN-WAIT-1：等待远程TCP连接中断请求，或先前的连接中断请求的确认</div><div class="line">FIN-WAIT-2：从远程TCP等待连接中断请求</div><div class="line">CLOSE-WAIT：等待从本地用户发来的连接中断请求</div><div class="line">CLOSING：等待远程TCP对连接中断的确认</div><div class="line">LAST-ACK：等待原来的发向远程TCP的连接中断请求的确认（不是什么好东西，此项出现，检查是否被攻击）</div><div class="line">TIME-WAIT：等待足够的时间以确保远程TCP接收到连接中断请求的确认</div><div class="line">CLOSED：没有任何连接状态</div></pre></td></tr></table></figure>
+<ul>
+<li>显示端口信息<br><code>netstat -a</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">➜  ~ netstat -a</div><div class="line">Active Internet connections (servers and established)</div><div class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State      </div><div class="line">tcp        0      0 localhost:mysql         *:*                     LISTEN     </div><div class="line">tcp        0      0 zhyingjia-Inspir:domain *:*                     LISTEN     </div><div class="line">tcp        0      0 *:ssh                   *:*                     LISTEN     </div><div class="line">tcp        0      1 192.168.1.197:39094     www.google.com.gr:https SYN_SENT   </div><div class="line">tcp        0      0 192.168.1.197:56872     106.75.2.241:http       ESTABLISHED</div><div class="line">tcp        0      1 192.168.1.197:39088     www.google.com.gr:https SYN_SENT   </div><div class="line">tcp        0      1 192.168.1.197:39092     www.google.com.gr:https SYN_SENT   </div><div class="line">tcp        1      1 192.168.1.197:45848     23.248.163.147:http     LAST_ACK   </div><div class="line">tcp        0      1 192.168.1.197:39098     www.google.com.gr:https SYN_SENT</div></pre></td></tr></table></figure>
+<hr>
+<p>  <strong>简述：</strong><br>  安全外壳协议（SSH）是一种在不安全网络上提供安全远程登录及其它安全网络服务的协议。<br>  <strong>命令格式：</strong><br>  <code>ssh [-l login_name] [-p port] [user@]hostname</code><br>  <strong>常用参数：</strong><br>  <code>ssh -p port [user@]hostname</code> 远程登录指定 IP 主机的端口<br>  <code>ssh -u login_name [user@]hostname</code> 指定用户</p>
+<p><strong>实例：</strong></p>
+<ul>
+<li>指定用户<br><code>ssh -l long_name ip</code><br><code>ssh login_name@ip</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">➜  ~ ssh -l root 192.168.1.222</div><div class="line">root@192.168.1.222&apos;s password: </div><div class="line"></div><div class="line"></div><div class="line">BusyBox v1.20.2 () built-in shell (ash)</div><div class="line">Enter &apos;help&apos; for a list of built-in commands.</div><div class="line"></div><div class="line">this board is EasyARM-iMX283</div><div class="line">root@EasyARM-iMX28x ~# </div><div class="line"></div><div class="line">➜  ~ ssh root@192.168.1.222</div><div class="line">root@192.168.1.222&apos;s password: </div><div class="line"></div><div class="line"></div><div class="line">BusyBox v1.20.2 () built-in shell (ash)</div><div class="line">Enter &apos;help&apos; for a list of built-in commands.</div><div class="line"></div><div class="line">this board is EasyARM-iMX283</div><div class="line">root@EasyARM-iMX28x ~#</div></pre></td></tr></table></figure>
+<ul>
+<li>指定端口(若不指定端口，ssh 命令默认登录 22 端口)<br><code>ssh -l long_name -p port ip</code><br><code>ssh -p port login_name@ip</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">➜  ~ ssh -l root -p 22 192.168.1.222</div><div class="line">root@192.168.1.222&apos;s password: </div><div class="line"></div><div class="line"></div><div class="line">BusyBox v1.20.2 () built-in shell (ash)</div><div class="line">Enter &apos;help&apos; for a list of built-in commands.</div><div class="line"></div><div class="line">this board is EasyARM-iMX283</div><div class="line">root@EasyARM-iMX28x ~# </div><div class="line"></div><div class="line">➜  ~ ssh -p 22 root@192.168.1.222</div><div class="line">root@192.168.1.222&apos;s password: </div><div class="line"></div><div class="line"></div><div class="line">BusyBox v1.20.2 () built-in shell (ash)</div><div class="line">Enter &apos;help&apos; for a list of built-in commands.</div><div class="line"></div><div class="line">this board is EasyARM-iMX283</div><div class="line">root@EasyARM-iMX28x ~#</div></pre></td></tr></table></figure>
+<ul>
+<li>更改 ssh 默认端口<br>１．修改配置文件　：<code>/etc/ssh/sshd_config</code><br>２．重启服务　：<code>service sshd restart</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">➜  ~ sudo vim /etc/ssh/sshd_config</div><div class="line">//  修改端口</div><div class="line">修改 Port 22  -&gt;  Port 23   :wq 保存并退出</div><div class="line">➜  ~ cat /etc/ssh/sshd_config</div><div class="line"># Package generated configuration file</div><div class="line"># See the sshd_config(5) manpage for details</div><div class="line"></div><div class="line"># What ports, IPs and protocols we listen for</div><div class="line">Port 23</div><div class="line"># Use these options to restrict which interfaces/protocols sshd will bind to</div><div class="line">  ... ... </div><div class="line">➜  ~ service sshd restart           </div><div class="line">➜  ~ ssh root@192.168.1.222</div><div class="line">root@192.168.1.222&apos;s password: </div><div class="line"></div><div class="line"></div><div class="line">BusyBox v1.20.2 () built-in shell (ash)</div><div class="line">Enter &apos;help&apos; for a list of built-in commands.</div><div class="line"></div><div class="line">this board is EasyARM-iMX283</div><div class="line">root@EasyARM-iMX28x ~#</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li><strong>scp</strong><br><code>scp &lt;file-name&gt; &lt;user-name&gt;@&lt;des-ip&gt;:[des-path]</code> 　远程传输文件<br><code>scp -r &lt;dir-name&gt; &lt;user-name&gt;@&lt;des-ip&gt;:[des-path]</code>　远程传输文件夹</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"> //  发送方</div><div class="line">[root@hadoop1 ~]# scp client1.c zhyingjia@192.168.1.196:</div><div class="line">The authenticity of host &apos;192.168.1.196 (192.168.1.196)&apos; can&apos;t be established.</div><div class="line">RSA key fingerprint is b4:8a:27:96:37:e5:27:4b:67:9f:6f:bc:51:c3:9e:f3.</div><div class="line">Are you sure you want to continue connecting (yes/no)? yes</div><div class="line">Warning: Permanently added &apos;192.168.1.196&apos; (RSA) to the list of known hosts.</div><div class="line">zhyingjia@192.168.1.196&apos;s password: </div><div class="line">client1.c                                     100% 5320     5.2KB/s   00:00  </div><div class="line"></div><div class="line"></div><div class="line">[root@hadoop1 ~]# scp -r testDir/ zhyingjia@192.168.1.196:</div><div class="line">zhyingjia@192.168.1.196&apos;s password: </div><div class="line">[root@hadoop1 ~]# ls</div><div class="line"></div><div class="line">// 接收前</div><div class="line">➜  /home ls </div><div class="line">zhyingjia</div><div class="line">➜  /home cd zhyingjia </div><div class="line">➜  ~ ls</div><div class="line">Book              IdeaProjects        Public            Videos</div><div class="line">client1.c         logs                Ruby              WebstormProjects</div><div class="line">Desktop           Music               RubymineProjects  wince3+1</div><div class="line">Documents         newDir              sshd.txt</div><div class="line">Downloads         newRamlProject      Templates</div><div class="line">Pictures     </div><div class="line"></div><div class="line">// 接收后</div><div class="line">➜  /home ls </div><div class="line">zhyingjia</div><div class="line">➜  /home cd zhyingjia </div><div class="line">➜  ~ ls</div><div class="line">Book              IdeaProjects        Public            Videos</div><div class="line">client1.c         logs                Ruby              WebstormProjects</div><div class="line">Desktop           Music               RubymineProjects  wince3+1</div><div class="line">Documents         newDir              sshd.txt</div><div class="line">Downloads         newRamlProject      Templates</div><div class="line">Pictures          testDir</div><div class="line"></div><div class="line">// 文件夹已经传送过来。</div></pre></td></tr></table></figure>
+<h2 id="配置IP地址"><a href="#配置IP地址" class="headerlink" title="配置IP地址"></a><strong>配置IP地址</strong></h2><p>  <strong>IP地址为动态获取：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netsh interface ip set address name=&quot;本地连接&quot; source=dhcp</div></pre></td></tr></table></figure>
+<p><strong>设置静态IP地址：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netsh interface ip set address name=&quot;本地连接&quot; source=static addr=192.168.1.100mask=255.255.255.0 gateway=192.168.1.1</div></pre></td></tr></table></figure>
+<p><strong>清空IP地址：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netsh interface ip set address name=&quot;本地连接&quot; source=dhcp</div></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">1.name：网络连接名称，一般为“本地连接”。你可以在“控制面板”-&gt;“网络连接”中看到。</div><div class="line"></div><div class="line">2.source：获取IP的途径。动态获取，则为dhcp，手动设置，则为static。</div><div class="line"></div><div class="line">3.addr：要设置的IP地址。</div><div class="line"></div><div class="line">4.mask：子网掩码。</div><div class="line"></div><div class="line">5.gateway：网关地址。</div><div class="line"></div><div class="line">6.gwmetric：网关跃点数，可以设置为整型数值，也可以设置为“自动”：auto</div></pre></td></tr></table></figure>
+<h2 id="配置DNS地址："><a href="#配置DNS地址：" class="headerlink" title="配置DNS地址："></a><strong>配置DNS地址：</strong></h2><p> <strong>DNS为动态获取的命令：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netsh interface ip set dns name=&quot;本地连接&quot; source=dhcp</div></pre></td></tr></table></figure>
+<p><strong>设置首选DNS地址：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netsh interface ip set dns name=&quot;本地连接&quot; source=static addr=202.200.100.3register=primary</div></pre></td></tr></table></figure>
+<p><strong>设置多个DNS地址：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">netsh interface ip set dns name=&quot;本地连接&quot; source=static addr = 202.200.100.3register=primary</div><div class="line"></div><div class="line">netsh interface ip add dns name=&quot;本地连接&quot; addr=61.134.100.14</div></pre></td></tr></table></figure>
+<p><strong>清空DNS地址：</strong></p>
+<p>netsh interface ip set dns name=”本地连接” source=dhcp</p>
+<p><strong>参数说明：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">1.name：网络连接名称，一般为“本地连接”。你可以在“控制面板”-&gt;“网络连接”中看到。</div><div class="line"></div><div class="line">2.source：获取IP的途径。动态获取，则为dhcp，手动设置，则为static。</div><div class="line"></div><div class="line">3.addr：要设置的IP地址。</div><div class="line"></div><div class="line">4.register：</div><div class="line"></div><div class="line">5.none: 禁用动态 DNS 注册。</div><div class="line"></div><div class="line">6.primary: 只在主 DNS 后缀下注册。</div><div class="line"></div><div class="line">7.both: 在主 DNS 后缀下注册，也在特定连接后缀下注册。</div><div class="line"></div><div class="line">8.index：设置的DNS的顺序号。</div></pre></td></tr></table></figure>
+<h2 id="导出配置文件"><a href="#导出配置文件" class="headerlink" title="导出配置文件"></a><strong>导出配置文件</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netsh -c interface dump&gt;c:\ip.txt</div></pre></td></tr></table></figure>
+<h2 id="修改之后导入本机配置"><a href="#修改之后导入本机配置" class="headerlink" title="修改之后导入本机配置"></a><strong>修改之后导入本机配置</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netsh -f c:\ip.txt</div></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li>每天一个 Linux 命令：ping<br><a href="http://www.cnblogs.com/peida/archive/2013/03/06/2945407.html" target="_blank" rel="external">http://www.cnblogs.com/peida/archive/2013/03/06/2945407.html</a></li>
+<li>每天一个Ｌinux命令：telnet<br><a href="http://www.cnblogs.com/peida/archive/2013/03/13/2956992.html" target="_blank" rel="external">http://www.cnblogs.com/peida/archive/2013/03/13/2956992.html</a></li>
+<li>每天一个Ｌinux命令：netstat<br><a href="http://www.cnblogs.com/peida/archive/2013/03/08/2949194.html" target="_blank" rel="external">http://www.cnblogs.com/peida/archive/2013/03/08/2949194.html</a></li>
+</ul>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/03/12/网络命令详解ping、arp、ipconfig、tracert、route详解/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/03/12/Git-命令大全/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="thychan's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">18</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">5</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Chan's Blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+
+    <script>lsloader.load("js/lazyload.min.js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==")</script>
+    <script>lsloader.load("js/js.min.js","/js/js.min.js?oAl/+lvaqTFV31JXTmbrNA==")</script>
+
+
+
+    <script>lsloader.load("js/nprogress.js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==")</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Window Load-->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Bing Background -->
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

@@ -12,7 +12,7 @@
     
     <title>
         
-            归档 | 
+            手把手教你构建 C 语言编译器（4）——递归下降 | 
         
         Chan&#39;s Blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="thychan">
     <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,编程,编译器">
 
     <!-- Site Verification -->
     
@@ -65,15 +65,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档 | Chan&#39;s Blog">
+    <meta property="og:title" content="手把手教你构建 C 语言编译器（4）——递归下降 | Chan&#39;s Blog">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="">
-    
+    <meta property="og:article:tag" content="编程"> <meta property="og:article:tag" content="编译器"> 
 
+    
+        <meta property="article:published_time" content="3月 12, 2017" />
+        <meta property="article:modified_time" content="3月 12, 2017" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="归档 | Chan&#39;s Blog">
+    <meta name="twitter:title" content="手把手教你构建 C 语言编译器（4）——递归下降 | Chan&#39;s Blog">
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -81,13 +84,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/archives/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2017/03/12/write-a-C-interpreter-4/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Chan&#39;s Blog",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "thychan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "headline": "手把手教你构建 C 语言编译器（4）——递归下降",
+    "url": "http://yoursite.com/2017/03/12/write-a-C-interpreter-4/index.html",
+    "datePublished": "3月 12, 2017",
+    "dateModified": "3月 12, 2017",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://yoursite.com"
+    }
+}
+</script>
 
 
     
@@ -275,636 +308,267 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#什么是递归下降"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是递归下降</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#终结符与非终结符"><span class="post-toc-number">2.</span> <span class="post-toc-text">终结符与非终结符</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#四则运算的递归下降"><span class="post-toc-number">3.</span> <span class="post-toc-text">四则运算的递归下降</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#为什么选择递归下降"><span class="post-toc-number">4.</span> <span class="post-toc-text">为什么选择递归下降</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#左递归"><span class="post-toc-number">5.</span> <span class="post-toc-text">左递归</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#四则运算的实现"><span class="post-toc-number">6.</span> <span class="post-toc-text">四则运算的实现</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#小结"><span class="post-toc-number">7.</span> <span class="post-toc-text">小结</span></a></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/01/message/">本博客暂停维护</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            本博客暂停维护,即将转移(域名为
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/04/01/message/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>4月 01, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/生活/">生活</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/28/rip_config_experiment/">rip协议配置</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            课题:  实验1__rip2协议配置
-Group7 
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/28/rip_config_experiment/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 28, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/14/三个实体型之间的多对多联系和两两之间的三个多对多联系的区别/">三个实体型之间的多对多联系和两两之间的三个多对多联系的区别</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            ​    
-​    3 个实体型之间的多对多联系和 3 个实体型两两之间的 3 个多对多联系是不等价，因为它们拥有不同的语义，不同的...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/14/三个实体型之间的多对多联系和两两之间的三个多对多联系的区别/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 14, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/网络命令详解ping、arp、ipconfig、tracert、route详解/">网络命令详解ping、arp、ipconfig、tracert、route详解</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            1、PIN...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/网络命令详解ping、arp、ipconfig、tracert、route详解/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/命令行学习笔记：网络相关命令/">命令行学习笔记：网络相关命令</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            学习内容
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/命令行学习笔记：网络相关命令/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/Git-命令大全/">Git 命令大全</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            注:转载自
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/Git-命令大全/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/ADB-用法大全/">ADB 用法大全</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/ADB-用法大全/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/write-a-C-interpreter-9/">手把手教你构建 C 语言编译器（9）——总结</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            恭喜你完成了自己的 C 语言编译器，本章中我们发一发牢骚，说一说编写编译器值得注意的一些问题；编写编译器时遇到的一些难题。
-[注: 该...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/write-a-C-interpreter-9/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/write-a-C-interpreter-8/">手把手教你构建 C 语言编译器（8）——表达式</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            这是整个编译器的最后一部分，解析表达式。什么是表达式？表达式是将各种语言要素的一个组合，用来求值。例如：函数调用、变量赋值、运算符运算等等。...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/write-a-C-interpreter-8/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/write-a-C-interpreter-7/">手把手教你构建 C 语言编译器（7）——语句</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            整个编译器还剩下最后两个部分：语句和表达式的解析。它们的内容比较多，主要涉及如何将语句和表达式编译成汇编代码。这章讲解语句的解析，相对于表达式来说它...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/write-a-C-interpreter-7/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-    <!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_forward</i></button></a>
-        </nav>
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                手把手教你构建 C 语言编译器（4）——递归下降
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>thychan</strong>
+        <span>3月 12, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/编程/">编程</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/编译器/">编译器</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=手把手教你构建 C 语言编译器（4）——递归下降&url=http://yoursite.com/2017/03/12/write-a-C-interpreter-4/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=手把手教你构建 C 语言编译器（4）——递归下降&url=http://yoursite.com/2017/03/12/write-a-C-interpreter-4/index.html&via=thychan" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/03/12/write-a-C-interpreter-4/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2017/03/12/write-a-C-interpreter-4/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>本章我们将讲解递归下降的方法，并用它完成一个基本的四则运算的语法分析器。</p>
+<p>[注: 该系列转载自<a href="http://lotabout.me" target="_blank" rel="external">三点水</a>]</p>
+<p>手把手教你构建 C 语言编译器系列共有10个部分：</p>
+<ol>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-0/" target="_blank" rel="external">手把手教你构建 C 语言编译器（0）——前言</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-1/" target="_blank" rel="external">手把手教你构建 C 语言编译器（1）——设计</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-2/" target="_blank" rel="external">手把手教你构建 C 语言编译器（2）——虚拟机</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-3/" target="_blank" rel="external">手把手教你构建 C 语言编译器（3）——词法分析器</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-4/" target="_blank" rel="external">手把手教你构建 C 语言编译器（4）——递归下降</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-5/" target="_blank" rel="external">手把手教你构建 C 语言编译器（5）——变量定义</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-6/" target="_blank" rel="external">手把手教你构建 C 语言编译器（6）——函数定义</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-7/" target="_blank" rel="external">手把手教你构建 C 语言编译器（7）——语句</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-8/" target="_blank" rel="external">手把手教你构建 C 语言编译器（8）——表达式</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-9/" target="_blank" rel="external">手把手教你构建 C 语言编译器（9）——总结</a></li>
+</ol>
+<h1 id="什么是递归下降"><a href="#什么是递归下降" class="headerlink" title="什么是递归下降"></a>什么是递归下降</h1><p>传统上，编写语法分析器有两种方法，一种是自顶向下，一种是自底向上。自顶向下是从起始非终结符开始，不断地对非终结符进行分解，直到匹配输入的终结符；自底向上是不断地将终结符进行合并，直到合并成起始的非终结符。</p>
+<p>其中的自顶向下方法就是我们所说的递归下降。</p>
+<h1 id="终结符与非终结符"><a href="#终结符与非终结符" class="headerlink" title="终结符与非终结符"></a>终结符与非终结符</h1><p>没有学过编译原理的话可能并不知道什么是“终结符”，“非终结符”。这里我简单介绍一下。首先是 <a href="https://zh.wikipedia.org/wiki/%E5%B7%B4%E7%A7%91%E6%96%AF%E8%8C%83%E5%BC%8F" target="_blank" rel="external">BNF</a> 范式，就是一种用来描述语法的语言，例如，四则运算的规则可以表示如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;expr&gt; ::= &lt;expr&gt; + &lt;term&gt;</div><div class="line">         | &lt;expr&gt; - &lt;term&gt;</div><div class="line">         | &lt;term&gt;</div><div class="line"></div><div class="line">&lt;term&gt; ::= &lt;term&gt; * &lt;factor&gt;</div><div class="line">         | &lt;term&gt; / &lt;factor&gt;</div><div class="line">         | &lt;factor&gt;</div><div class="line"></div><div class="line">&lt;factor&gt; ::= ( &lt;expr&gt; )</div><div class="line">           | Num</div></pre></td></tr></table></figure>
+<p>用尖括号 <code>&lt;&gt;</code> 括起来的就称作 <strong>非终结符</strong> ，因为它们可以用 <code>::=</code> 右侧的式子代替。<code>|</code> 表示选择，如 <code>&lt;expr&gt;</code> 可以是 <code>&lt;expr&gt; + &lt;term&gt;</code>、<code>&lt;expr&gt; - &lt;term&gt;</code>或 <code>&lt;term&gt;</code> 中的一种。而没有出现在<code>::=</code>左边的就称作 <strong>终结符</strong> ，一般终结符对应于词法分析器输出的标记。</p>
+<h1 id="四则运算的递归下降"><a href="#四则运算的递归下降" class="headerlink" title="四则运算的递归下降"></a>四则运算的递归下降</h1><p>例如，我们对 <code>3 * (4 + 2)</code> 进行语法分析。我们假设词法分析器已经正确地将其中的数字识别成了标记 <code>Num</code>。</p>
+<p>递归下降是从起始的非终结符开始（顶），本例中是 <code>&lt;expr&gt;</code>，实际中可以自己指定，不指定的话一般认为是第一个出现的非终结符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">1. &lt;expr&gt; =&gt; &lt;expr&gt;</div><div class="line">2.           =&gt; &lt;term&gt;        * &lt;factor&gt;</div><div class="line">3.              =&gt; &lt;factor&gt;     |</div><div class="line">4.                 =&gt; Num (3)   |</div><div class="line">5.                              =&gt; ( &lt;expr&gt; )</div><div class="line">6.                                   =&gt; &lt;expr&gt;           + &lt;term&gt;</div><div class="line">7.                                      =&gt; &lt;term&gt;          |</div><div class="line">8.                                         =&gt; &lt;factor&gt;     |</div><div class="line">9.                                            =&gt; Num (4)   |</div><div class="line">10.                                                        =&gt; &lt;factor&gt;</div><div class="line">11.                                                           =&gt; Num (2)</div></pre></td></tr></table></figure>
+<p>可以看到，整个解析的过程是在不断对非终结符进行替换（向下），直到遇见了终结符（底）。而我们可以从解析的过程中看出，一些非终结符如<code>&lt;expr&gt;</code>被递归地使用了。</p>
+<h1 id="为什么选择递归下降"><a href="#为什么选择递归下降" class="headerlink" title="为什么选择递归下降"></a>为什么选择递归下降</h1><p>从上小节对四则运算的递归下降解析可以看出，整个解析的过程和语法的 BNF 表示是十分接近的，更为重要的是，我们可以很容易地直接将 BNF 表示转换成实际的代码。方法是为每个产生式（即 <code>非终结符 ::= ...</code>）生成一个同名的函数。</p>
+<p>这里会有一个疑问，就是上例中，当一个终结符有多个选择时，如何确定具体选择哪一个？如为什么用 <code>&lt;expr&gt; ::= &lt;term&gt; * &lt;factor&gt;</code> 而不是 <code>&lt;expr&gt; ::= &lt;term&gt; / &lt;factor&gt;</code> ？这就用到了上一章中提到的“向前看 k 个标记”的概念了。我们向前看一个标记，发现是 <code>*</code>，而这个标记足够让我们确定用哪个表达式了。</p>
+<p>另外，递归下下降方法对 BNF 方法本身有一定的要求，否则会有一些问题，如经典的“左递归”问题。</p>
+<h1 id="左递归"><a href="#左递归" class="headerlink" title="左递归"></a>左递归</h1><p>原则上我们是不讲这么深入，但我们上面的四则运算的文法就是左递归的，而左递归的语法是没法直接使用递归下降的方法实现的。因此我们要消除左递归，消除后的文法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;expr&gt; ::= &lt;term&gt; &lt;expr_tail&gt;</div><div class="line">&lt;expr_tail&gt; ::= + &lt;term&gt; &lt;expr_tail&gt;</div><div class="line">              | - &lt;term&gt; &lt;expr_tail&gt;</div><div class="line">              | &lt;empty&gt;</div><div class="line"></div><div class="line">&lt;term&gt; ::= &lt;factor&gt; &lt;term_tail&gt;</div><div class="line">&lt;term_tail&gt; ::= * &lt;factor&gt; &lt;term_tail&gt;</div><div class="line">              | / &lt;factor&gt; &lt;term_tail&gt;</div><div class="line">              | &lt;empty&gt;</div><div class="line"></div><div class="line">&lt;factor&gt; ::= ( &lt;expr&gt; )</div><div class="line">           | Num</div></pre></td></tr></table></figure>
+<p>消除左递归的相关方法，这里不再多说，请自行查阅相关的资料。</p>
+<h1 id="四则运算的实现"><a href="#四则运算的实现" class="headerlink" title="四则运算的实现"></a>四则运算的实现</h1><p>本节中我们专注语法分析器部分的实现，具体实现很容易，我们直接贴上代码，就是上述的消除左递归后的文法直接转换而来的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">int expr();</div><div class="line"></div><div class="line">int factor() &#123;</div><div class="line">    int value = 0;</div><div class="line">    if (token == &apos;(&apos;) &#123;</div><div class="line">        match(&apos;(&apos;);</div><div class="line">        value = expr();</div><div class="line">        match(&apos;)&apos;);</div><div class="line">    &#125; else &#123;</div><div class="line">        value = token_val;</div><div class="line">        match(Num);</div><div class="line">    &#125;</div><div class="line">    return value;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int term_tail(int lvalue) &#123;</div><div class="line">    if (token == &apos;*&apos;) &#123;</div><div class="line">        match(&apos;*&apos;);</div><div class="line">        int value = lvalue * factor();</div><div class="line">        return term_tail(value);</div><div class="line">    &#125; else if (token == &apos;/&apos;) &#123;</div><div class="line">        match(&apos;/&apos;);</div><div class="line">        int value = lvalue / factor();</div><div class="line">        return term_tail(value);</div><div class="line">    &#125; else &#123;</div><div class="line">        return lvalue;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int term() &#123;</div><div class="line">    int lvalue = factor();</div><div class="line">    return term_tail(lvalue);</div><div class="line">&#125;</div><div class="line"></div><div class="line">int expr_tail(int lvalue) &#123;</div><div class="line">    if (token == &apos;+&apos;) &#123;</div><div class="line">        match(&apos;+&apos;);</div><div class="line">        int value = lvalue + term();</div><div class="line">        return expr_tail(value);</div><div class="line">    &#125; else if (token == &apos;-&apos;) &#123;</div><div class="line">        match(&apos;-&apos;);</div><div class="line">        int value = lvalue - term();</div><div class="line">        return expr_tail(value);</div><div class="line">    &#125; else &#123;</div><div class="line">        return lvalue;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int expr() &#123;</div><div class="line">    int lvalue = term();</div><div class="line">    return expr_tail(lvalue);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到，有了BNF方法后，采用递归向下的方法来实现编译器是很直观的。</p>
+<p>我们把词法分析器的代码一并贴上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line"></div><div class="line">enum &#123;Num&#125;;</div><div class="line">int token;</div><div class="line">int token_val;</div><div class="line">char *line = NULL;</div><div class="line">char *src = NULL;</div><div class="line"></div><div class="line">void next() &#123;</div><div class="line">    // skip white space</div><div class="line">    while (*src == &apos; &apos; || *src == &apos;\t&apos;) &#123;</div><div class="line">        src ++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    token = *src++;</div><div class="line"></div><div class="line">    if (token &gt;= &apos;0&apos; &amp;&amp; token &lt;= &apos;9&apos; ) &#123;</div><div class="line">        token_val = token - &apos;0&apos;;</div><div class="line">        token = Num;</div><div class="line"></div><div class="line">        while (*src &gt;= &apos;0&apos; &amp;&amp; *src &lt;= &apos;9&apos;) &#123;</div><div class="line">            token_val = token_val*10 + *src - &apos;0&apos;;</div><div class="line">            src ++;</div><div class="line">        &#125;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void match(int tk) &#123;</div><div class="line">    if (token != tk) &#123;</div><div class="line">        printf(&quot;expected token: %d(%c), got: %d(%c)\n&quot;, tk, tk, token, token);</div><div class="line">        exit(-1);</div><div class="line">    &#125;</div><div class="line">    next();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后是<code>main</code>函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">int main(int argc, char *argv[])</div><div class="line">&#123;</div><div class="line">    size_t linecap = 0;</div><div class="line">    ssize_t linelen;</div><div class="line">    while ((linelen = getline(&amp;line, &amp;linecap, stdin)) &gt; 0) &#123;</div><div class="line">        src = line;</div><div class="line">        next();</div><div class="line">        printf(&quot;%d\n&quot;, expr());</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本章中我们介绍了递归下降的方法，并用它来实现了四则运算的语法分析器。</p>
+<p>花这么大精力讲解递归下降方法，是因为几乎所有手工编写的语法分析器都或多或少地有它的影子。换句话说，掌握了递归下降的方法，就可以应付大多数的语法分析器编写。</p>
+<p>同时我们也用实例看到了理论（BNF 语法，左递归的消除）是如何帮助我们的工程实现的。尽管理论不是必需的，但如果能掌握它，对于提高我们的水平还是很有帮助的。</p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/03/12/write-a-C-interpreter-5/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/03/12/write-a-C-interpreter-3/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     

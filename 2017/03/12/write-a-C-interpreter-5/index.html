@@ -12,7 +12,7 @@
     
     <title>
         
-            归档 | 
+            手把手教你构建 C 语言编译器（5）——变量定义 | 
         
         Chan&#39;s Blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="thychan">
     <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,编程,编译器">
 
     <!-- Site Verification -->
     
@@ -65,15 +65,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档 | Chan&#39;s Blog">
+    <meta property="og:title" content="手把手教你构建 C 语言编译器（5）——变量定义 | Chan&#39;s Blog">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="">
-    
+    <meta property="og:article:tag" content="编程"> <meta property="og:article:tag" content="编译器"> 
 
+    
+        <meta property="article:published_time" content="3月 12, 2017" />
+        <meta property="article:modified_time" content="3月 12, 2017" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="归档 | Chan&#39;s Blog">
+    <meta name="twitter:title" content="手把手教你构建 C 语言编译器（5）——变量定义 | Chan&#39;s Blog">
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -81,13 +84,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/archives/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2017/03/12/write-a-C-interpreter-5/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Chan&#39;s Blog",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "thychan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "headline": "手把手教你构建 C 语言编译器（5）——变量定义",
+    "url": "http://yoursite.com/2017/03/12/write-a-C-interpreter-5/index.html",
+    "datePublished": "3月 12, 2017",
+    "dateModified": "3月 12, 2017",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://yoursite.com"
+    }
+}
+</script>
 
 
     
@@ -275,636 +308,270 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#EBNF-表示"><span class="post-toc-number">1.</span> <span class="post-toc-text">EBNF 表示</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解析变量的定义"><span class="post-toc-number">2.</span> <span class="post-toc-text">解析变量的定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#program"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">program()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#global-declaration"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">global_declaration()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#enum-declaration"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">enum_declaration()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#其它"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">其它</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#代码"><span class="post-toc-number">3.</span> <span class="post-toc-text">代码</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#小结"><span class="post-toc-number">4.</span> <span class="post-toc-text">小结</span></a></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/01/message/">本博客暂停维护</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            本博客暂停维护,即将转移(域名为
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/04/01/message/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>4月 01, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/生活/">生活</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/28/rip_config_experiment/">rip协议配置</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            课题:  实验1__rip2协议配置
-Group7 
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/28/rip_config_experiment/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 28, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/14/三个实体型之间的多对多联系和两两之间的三个多对多联系的区别/">三个实体型之间的多对多联系和两两之间的三个多对多联系的区别</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            ​    
-​    3 个实体型之间的多对多联系和 3 个实体型两两之间的 3 个多对多联系是不等价，因为它们拥有不同的语义，不同的...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/14/三个实体型之间的多对多联系和两两之间的三个多对多联系的区别/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 14, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/网络命令详解ping、arp、ipconfig、tracert、route详解/">网络命令详解ping、arp、ipconfig、tracert、route详解</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            1、PIN...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/网络命令详解ping、arp、ipconfig、tracert、route详解/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/命令行学习笔记：网络相关命令/">命令行学习笔记：网络相关命令</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            学习内容
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/命令行学习笔记：网络相关命令/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/Git-命令大全/">Git 命令大全</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            注:转载自
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/Git-命令大全/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/ADB-用法大全/">ADB 用法大全</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/ADB-用法大全/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/write-a-C-interpreter-9/">手把手教你构建 C 语言编译器（9）——总结</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            恭喜你完成了自己的 C 语言编译器，本章中我们发一发牢骚，说一说编写编译器值得注意的一些问题；编写编译器时遇到的一些难题。
-[注: 该...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/write-a-C-interpreter-9/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/write-a-C-interpreter-8/">手把手教你构建 C 语言编译器（8）——表达式</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            这是整个编译器的最后一部分，解析表达式。什么是表达式？表达式是将各种语言要素的一个组合，用来求值。例如：函数调用、变量赋值、运算符运算等等。...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/write-a-C-interpreter-8/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/write-a-C-interpreter-7/">手把手教你构建 C 语言编译器（7）——语句</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            整个编译器还剩下最后两个部分：语句和表达式的解析。它们的内容比较多，主要涉及如何将语句和表达式编译成汇编代码。这章讲解语句的解析，相对于表达式来说它...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/write-a-C-interpreter-7/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-    <!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_forward</i></button></a>
-        </nav>
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                手把手教你构建 C 语言编译器（5）——变量定义
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>thychan</strong>
+        <span>3月 12, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/编程/">编程</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/编译器/">编译器</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=手把手教你构建 C 语言编译器（5）——变量定义&url=http://yoursite.com/2017/03/12/write-a-C-interpreter-5/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=手把手教你构建 C 语言编译器（5）——变量定义&url=http://yoursite.com/2017/03/12/write-a-C-interpreter-5/index.html&via=thychan" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/03/12/write-a-C-interpreter-5/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2017/03/12/write-a-C-interpreter-5/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>本章中我们用 EBNF 来大致描述我们实现的 C 语言的文法，并实现其中解析变量定义部分。</p>
+<p>由于语法分析本身比较复杂，所以我们将它拆分成 3 个部分进行讲解，分别是：变量定义、函数定义、表达式。</p>
+<p>[注: 该系列转载自<a href="http://lotabout.me" target="_blank" rel="external">三点水</a>]</p>
+<p>手把手教你构建 C 语言编译器系列共有10个部分：</p>
+<ol>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-0/" target="_blank" rel="external">手把手教你构建 C 语言编译器（0）——前言</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-1/" target="_blank" rel="external">手把手教你构建 C 语言编译器（1）——设计</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-2/" target="_blank" rel="external">手把手教你构建 C 语言编译器（2）——虚拟机</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-3/" target="_blank" rel="external">手把手教你构建 C 语言编译器（3）——词法分析器</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-4/" target="_blank" rel="external">手把手教你构建 C 语言编译器（4）——递归下降</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-5/" target="_blank" rel="external">手把手教你构建 C 语言编译器（5）——变量定义</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-6/" target="_blank" rel="external">手把手教你构建 C 语言编译器（6）——函数定义</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-7/" target="_blank" rel="external">手把手教你构建 C 语言编译器（7）——语句</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-8/" target="_blank" rel="external">手把手教你构建 C 语言编译器（8）——表达式</a></li>
+<li><a href="http://thychan.cn/2017/03/12/write-a-C-interpreter-9/" target="_blank" rel="external">手把手教你构建 C 语言编译器（9）——总结</a></li>
+</ol>
+<h1 id="EBNF-表示"><a href="#EBNF-表示" class="headerlink" title="EBNF 表示"></a>EBNF 表示</h1><p>EBNF 是对前一章提到的 BNF 的扩展，它的语法更容易理解，实现起来也更直观。但真正看起来还是很烦，如果不想看可以跳过。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">program ::= &#123;global_declaration&#125;+</div><div class="line"></div><div class="line">global_declaration ::= enum_decl | variable_decl | function_decl</div><div class="line"></div><div class="line">enum_decl ::= &apos;enum&apos; [id] &apos;&#123;&apos; id [&apos;=&apos; &apos;num&apos;] &#123;&apos;,&apos; id [&apos;=&apos; &apos;num&apos;] &apos;&#125;&apos;</div><div class="line"></div><div class="line">variable_decl ::= type &#123;&apos;*&apos;&#125; id &#123; &apos;,&apos; &#123;&apos;*&apos;&#125; id &#125; &apos;;&apos;</div><div class="line"></div><div class="line">function_decl ::= type &#123;&apos;*&apos;&#125; id &apos;(&apos; parameter_decl &apos;)&apos; &apos;&#123;&apos; body_decl &apos;&#125;&apos;</div><div class="line"></div><div class="line">parameter_decl ::= type &#123;&apos;*&apos;&#125; id &#123;&apos;,&apos; type &#123;&apos;*&apos;&#125; id&#125;</div><div class="line"></div><div class="line">body_decl ::= &#123;variable_decl&#125;, &#123;statement&#125;</div><div class="line"></div><div class="line">statement ::= non_empty_statement | empty_statement</div><div class="line"></div><div class="line">non_empty_statement ::= if_statement | while_statement | &apos;&#123;&apos; statement &apos;&#125;&apos;</div><div class="line">                     | &apos;return&apos; expression | expression &apos;;&apos;</div><div class="line"></div><div class="line">if_statement ::= &apos;if&apos; &apos;(&apos; expression &apos;)&apos; statement [&apos;else&apos; non_empty_statement]</div><div class="line"></div><div class="line">while_statement ::= &apos;while&apos; &apos;(&apos; expression &apos;)&apos; non_empty_statement</div></pre></td></tr></table></figure>
+<p>其中 <code>expression</code> 相关的内容我们放到后面解释，主要原因是我们的语言不支持跨函数递归，而为了实现自举，实际上我们也不能使用递归（亏我们说了一章的递归下降）。</p>
+<p>P.S. 我是先写程序再总结上面的文法，所以实际上它们间的对应关系并不是特别明显。</p>
+<h1 id="解析变量的定义"><a href="#解析变量的定义" class="headerlink" title="解析变量的定义"></a>解析变量的定义</h1><p>本章要讲解的就是上节文法中的 <code>enum_decl</code> 和 <code>variable_decl</code> 部分。</p>
+<h2 id="program"><a href="#program" class="headerlink" title="program()"></a>program()</h2><p>首先是之前定义过的 <code>program</code> 函数，将它改成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">void program() &#123;</div><div class="line">    // get next token</div><div class="line">    next();</div><div class="line">    while (token &gt; 0) &#123;</div><div class="line">        global_declaration();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我知道 <code>global_declaration</code> 函数还没有出现过，但没有关系，采用自顶向下的编写方法就是要不断地实现我们需要的内容。下面是 <code>global_declaration</code> 函数的内容：</p>
+<h2 id="global-declaration"><a href="#global-declaration" class="headerlink" title="global_declaration()"></a>global_declaration()</h2><p>即全局的定义语句，包括变量定义，类型定义（只支持枚举）及函数定义。代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line">int basetype;    // the type of a declaration, make it global for convenience</div><div class="line">int expr_type;   // the type of an expression</div><div class="line"></div><div class="line">void global_declaration() &#123;</div><div class="line">    // global_declaration ::= enum_decl | variable_decl | function_decl</div><div class="line">    //</div><div class="line">    // enum_decl ::= &apos;enum&apos; [id] &apos;&#123;&apos; id [&apos;=&apos; &apos;num&apos;] &#123;&apos;,&apos; id [&apos;=&apos; &apos;num&apos;&#125; &apos;&#125;&apos;</div><div class="line">    //</div><div class="line">    // variable_decl ::= type &#123;&apos;*&apos;&#125; id &#123; &apos;,&apos; &#123;&apos;*&apos;&#125; id &#125; &apos;;&apos;</div><div class="line">    //</div><div class="line">    // function_decl ::= type &#123;&apos;*&apos;&#125; id &apos;(&apos; parameter_decl &apos;)&apos; &apos;&#123;&apos; body_decl &apos;&#125;&apos;</div><div class="line"></div><div class="line"></div><div class="line">    int type; // tmp, actual type for variable</div><div class="line">    int i; // tmp</div><div class="line"></div><div class="line">    basetype = INT;</div><div class="line"></div><div class="line">    // parse enum, this should be treated alone.</div><div class="line">    if (token == Enum) &#123;</div><div class="line">        // enum [id] &#123; a = 10, b = 20, ... &#125;</div><div class="line">        match(Enum);</div><div class="line">        if (token != &apos;&#123;&apos;) &#123;</div><div class="line">            match(Id); // skip the [id] part</div><div class="line">        &#125;</div><div class="line">        if (token == &apos;&#123;&apos;) &#123;</div><div class="line">            // parse the assign part</div><div class="line">            match(&apos;&#123;&apos;);</div><div class="line">            enum_declaration();</div><div class="line">            match(&apos;&#125;&apos;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        match(&apos;;&apos;);</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // parse type information</div><div class="line">    if (token == Int) &#123;</div><div class="line">        match(Int);</div><div class="line">    &#125;</div><div class="line">    else if (token == Char) &#123;</div><div class="line">        match(Char);</div><div class="line">        basetype = CHAR;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // parse the comma seperated variable declaration.</div><div class="line">    while (token != &apos;;&apos; &amp;&amp; token != &apos;&#125;&apos;) &#123;</div><div class="line">        type = basetype;</div><div class="line">        // parse pointer type, note that there may exist `int ****x;`</div><div class="line">        while (token == Mul) &#123;</div><div class="line">            match(Mul);</div><div class="line">            type = type + PTR;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (token != Id) &#123;</div><div class="line">            // invalid declaration</div><div class="line">            printf(&quot;%d: bad global declaration\n&quot;, line);</div><div class="line">            exit(-1);</div><div class="line">        &#125;</div><div class="line">        if (current_id[Class]) &#123;</div><div class="line">            // identifier exists</div><div class="line">            printf(&quot;%d: duplicate global declaration\n&quot;, line);</div><div class="line">            exit(-1);</div><div class="line">        &#125;</div><div class="line">        match(Id);</div><div class="line">        current_id[Type] = type;</div><div class="line"></div><div class="line">        if (token == &apos;(&apos;) &#123;</div><div class="line">            current_id[Class] = Fun;</div><div class="line">            current_id[Value] = (int)(text + 1); // the memory address of function</div><div class="line">            function_declaration();</div><div class="line">        &#125; else &#123;</div><div class="line">            // variable declaration</div><div class="line">            current_id[Class] = Glo; // global variable</div><div class="line">            current_id[Value] = (int)data; // assign memory address</div><div class="line">            data = data + sizeof(int);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (token == &apos;,&apos;) &#123;</div><div class="line">            match(&apos;,&apos;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    next();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看了上面的代码，能大概理解吗？这里我们讲解其中的一些细节。</p>
+<p><strong>向前看标记</strong> ：其中的 <code>if (token == xxx)</code> 语句就是用来向前查看标记以确定使用哪一个产生式，例如只要遇到 <code>enum</code> 我们就知道是需要解析枚举类型。而如果只解析到类型，如 <code>int identifier</code> 时我们并不能确定 <code>identifier</code> 是一个普通的变量还是一个函数，所以还需要继续查看后续的标记，如果遇到 <code>(</code> 则可以断定是函数了，反之则是变量。</p>
+<p><strong>变量类型的表示</strong> ：我们的编译器支持指针类型，那意味着也支持指针的指针，如 <code>int **data;</code>。那么我们如何表示指针类型呢？前文中我们定义了支持的类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// types of variable/function</div><div class="line">enum &#123; CHAR, INT, PTR &#125;;</div></pre></td></tr></table></figure>
+<p>所以一个类型首先有基本类型，如 <code>CHAR</code> 或 <code>INT</code>，当它是一个指向基本类型的指针时，如 <code>int *data</code>，我们就将它的类型加上 <code>PTR</code> 即代码中的：<code>type = type + PTR;</code>。同理，如果是指针的指针，则再加上 <code>PTR</code>。</p>
+<h2 id="enum-declaration"><a href="#enum-declaration" class="headerlink" title="enum_declaration()"></a>enum_declaration()</h2><p>用于解析枚举类型的定义。主要的逻辑用于解析用逗号（<code>,</code>）分隔的变量，值得注意的是在编译器中如何保存枚举变量的信息。</p>
+<p>即我们将该变量的类别设置成了 <code>Num</code>，这样它就成了全局的常量了，而注意到上节中，正常的全局变量的类别则是 <code>Glo</code>，类别信息在后面章节中解析 <code>expression</code> 会使用到。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">void enum_declaration() &#123;</div><div class="line">    // parse enum [id] &#123; a = 1, b = 3, ...&#125;</div><div class="line">    int i;</div><div class="line">    i = 0;</div><div class="line">    while (token != &apos;&#125;&apos;) &#123;</div><div class="line">        if (token != Id) &#123;</div><div class="line">            printf(&quot;%d: bad enum identifier %d\n&quot;, line, token);</div><div class="line">            exit(-1);</div><div class="line">        &#125;</div><div class="line">        next();</div><div class="line">        if (token == Assign) &#123;</div><div class="line">            // like &#123;a=10&#125;</div><div class="line">            next();</div><div class="line">            if (token != Num) &#123;</div><div class="line">                printf(&quot;%d: bad enum initializer\n&quot;, line);</div><div class="line">                exit(-1);</div><div class="line">            &#125;</div><div class="line">            i = token_val;</div><div class="line">            next();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        current_id[Class] = Num;</div><div class="line">        current_id[Type] = INT;</div><div class="line">        current_id[Value] = i++;</div><div class="line"></div><div class="line">        if (token == &apos;,&apos;) &#123;</div><div class="line">            next();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>其中的 <code>function_declaration</code> 函数我们将放到下一章中讲解。<code>match</code> 函数是一个辅助函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">void match(int tk) &#123;</div><div class="line">    if (token == tk) &#123;</div><div class="line">        next();</div><div class="line">    &#125; else &#123;</div><div class="line">        printf(&quot;%d: expected token: %d\n&quot;, line, tk);</div><div class="line">        exit(-1);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>它将 <code>next</code> 函数包装起来，如果不是预期的标记则报错并退出。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>本章的代码可以在 <a href="https://github.com/lotabout/write-a-C-interpreter/tree/step-3" target="_blank" rel="external">Github</a> 上下载，也可以直接 clone</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone -b step-3 https://github.com/lotabout/write-a-C-interpreter</div></pre></td></tr></table></figure>
+<p>本章的代码还无法正常运行，因为还有许多功能没有实现，但如果有兴趣的话，可以自己先试着去实现它。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本章的内容应该不难，除了开头的 EBNF 表达式可能相对不好理解一些，但如果你查看了 EBNF 的具体表示方法后就不难理解了。</p>
+<p>剩下的内容就是按部就班地将 EBNF 的产生式转换成函数的过程，如果你理解了上一章中的内容，相信这部分也不难理解。</p>
+<p>下一章中我们将介绍如何解析函数的定义，敬请期待。</p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/03/12/write-a-C-interpreter-6/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/03/12/write-a-C-interpreter-4/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     

@@ -12,7 +12,7 @@
     
     <title>
         
-            归档 | 
+            rip协议配置 | 
         
         Chan&#39;s Blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="thychan">
     <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,编程,网络,实验">
 
     <!-- Site Verification -->
     
@@ -65,15 +65,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档 | Chan&#39;s Blog">
+    <meta property="og:title" content="rip协议配置 | Chan&#39;s Blog">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="">
-    
+    <meta property="og:article:tag" content="编程"> <meta property="og:article:tag" content="网络"> <meta property="og:article:tag" content="实验"> 
 
+    
+        <meta property="article:published_time" content="3月 28, 2017" />
+        <meta property="article:modified_time" content="3月 28, 2017" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="归档 | Chan&#39;s Blog">
+    <meta name="twitter:title" content="rip协议配置 | Chan&#39;s Blog">
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -81,13 +84,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/archives/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2017/03/28/rip_config_experiment/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Chan&#39;s Blog",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "thychan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "headline": "rip协议配置",
+    "url": "http://yoursite.com/2017/03/28/rip_config_experiment/index.html",
+    "datePublished": "3月 28, 2017",
+    "dateModified": "3月 28, 2017",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://yoursite.com"
+    }
+}
+</script>
 
 
     
@@ -275,636 +308,320 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概要"><span class="post-toc-number">1.</span> <span class="post-toc-text">概要</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#路由-routing"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">路由(routing)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RIP路由协议"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">RIP路由协议</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实验配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">实验配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实验情景1"><span class="post-toc-number">3.</span> <span class="post-toc-text">实验情景1</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实验情景2"><span class="post-toc-number">4.</span> <span class="post-toc-text">实验情景2</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实验情景3"><span class="post-toc-number">5.</span> <span class="post-toc-text">实验情景3</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number"></span> <span class="post-toc-text">总结</span></a>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/01/message/">本博客暂停维护</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            本博客暂停维护,即将转移(域名为
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/04/01/message/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>4月 01, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/生活/">生活</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/28/rip_config_experiment/">rip协议配置</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            课题:  实验1__rip2协议配置
-Group7 
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/28/rip_config_experiment/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 28, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/14/三个实体型之间的多对多联系和两两之间的三个多对多联系的区别/">三个实体型之间的多对多联系和两两之间的三个多对多联系的区别</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            ​    
-​    3 个实体型之间的多对多联系和 3 个实体型两两之间的 3 个多对多联系是不等价，因为它们拥有不同的语义，不同的...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/14/三个实体型之间的多对多联系和两两之间的三个多对多联系的区别/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 14, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/网络命令详解ping、arp、ipconfig、tracert、route详解/">网络命令详解ping、arp、ipconfig、tracert、route详解</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            1、PIN...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/网络命令详解ping、arp、ipconfig、tracert、route详解/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/命令行学习笔记：网络相关命令/">命令行学习笔记：网络相关命令</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            学习内容
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/命令行学习笔记：网络相关命令/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/Git-命令大全/">Git 命令大全</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            注:转载自
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/Git-命令大全/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/ADB-用法大全/">ADB 用法大全</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/ADB-用法大全/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/write-a-C-interpreter-9/">手把手教你构建 C 语言编译器（9）——总结</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            恭喜你完成了自己的 C 语言编译器，本章中我们发一发牢骚，说一说编写编译器值得注意的一些问题；编写编译器时遇到的一些难题。
-[注: 该...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/write-a-C-interpreter-9/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/write-a-C-interpreter-8/">手把手教你构建 C 语言编译器（8）——表达式</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            这是整个编译器的最后一部分，解析表达式。什么是表达式？表达式是将各种语言要素的一个组合，用来求值。例如：函数调用、变量赋值、运算符运算等等。...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/write-a-C-interpreter-8/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/write-a-C-interpreter-7/">手把手教你构建 C 语言编译器（7）——语句</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            整个编译器还剩下最后两个部分：语句和表达式的解析。它们的内容比较多，主要涉及如何将语句和表达式编译成汇编代码。这章讲解语句的解析，相对于表达式来说它...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/write-a-C-interpreter-7/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>3月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-    <!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_forward</i></button></a>
-        </nav>
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                rip协议配置
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>thychan</strong>
+        <span>3月 28, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/实验/">实验</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/编程/">编程</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/网络/">网络</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=rip协议配置&url=http://yoursite.com/2017/03/28/rip_config_experiment/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=rip协议配置&url=http://yoursite.com/2017/03/28/rip_config_experiment/index.html&via=thychan" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/03/28/rip_config_experiment/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2017/03/28/rip_config_experiment/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p><strong>课题: </strong> 实验1__rip2协议配置</p>
+<p><strong>Group7 </strong></p>
+<p><strong>环境:</strong> eNSP</p>
+<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><h3 id="路由-routing"><a href="#路由-routing" class="headerlink" title="路由(routing)"></a>路由(routing)</h3><p>​    就是通过互联的网络把信息从源地址传输到目的地址的活动。 <strong>路由</strong>发生在OSI网络参考模型中的第三层即网路层。 <strong>路由</strong>引导分组转送，经过一些中间的节点后，到它们最后的目的地。 作成硬件的话，则称为路由器。</p>
+<ul>
+<li><p>路由是指导IP报文发送的路径信息</p>
+</li>
+<li><p>路由的来源（Protocol）</p>
+<p>(1). 链路层协议发现的路由</p>
+<p>​    开销小，配置简单，无需人工维护。只能发现本接口所属网段的路由。</p>
+<p>(2). 手工配置静态路由</p>
+<p>​    无开销，配置简单，需人工维护，适合简单拓朴结构的网络。</p>
+<p>(3). 动态路由协议发现的路由</p>
+<p>​    开销大，配置复杂，无需人工维护，适合复杂拓朴结构的网络。</p>
+</li>
+<li><p>从优先级最高的协议获取的路由最先被优先选择加入路由表中。</p>
+</li>
+<li><p>路由的花费表示到达这条路由所指的目的地址的代价，通常以下因素会影响到路由的花费值。</p>
+<p>​    线路延迟、带宽、线路占有率、线路可信度、跳数、最大传输单元</p>
+</li>
+<li><p>静态路由的花费值为0。不同的动态路由协议会选择以上的一种或几种因素来计算花费值。该花费值只在同一种路由协议内有比较意义。不同的路由协议之间的路由花费值没有可比性，也不存在换算关系.</p>
+</li>
+<li><p>动态路由协议是做什么的</p>
+<p>​    计算路由的．计算本地路由器到网络中其它网段的路由．</p>
+</li>
+<li><p>如何做到这一点</p>
+<p>​    每台路由器将自己已知的路由相关信息发给相邻的路由器，由于大家都这样做，最终每台路由器都会收到网络中所有的路由信息．然后运行某种算法，计算出最终的路由来．（实际上需要计算的是该条路由的下一跳和花费）</p>
+</li>
+<li><p>由同一机构管理，使用同一组选路策略的路由器的集合</p>
+</li>
+</ul>
+<h3 id="RIP路由协议"><a href="#RIP路由协议" class="headerlink" title="RIP路由协议"></a>RIP路由协议</h3><p>​    RIP(Routing information Protocol)是应用较早、使用较普遍的内部网关协议(Interior Gateway Protocol,简称IGP)，适用于小型同类网络，是典型的距离向量(distance-vector)协议。文档见RFC1058、RFC1723。    RIP 通过广播UDP报文来交换路由信息，每30秒发送一次路由信息更新。RIP提供跳跃计数(hop count)作为尺度来衡量路由距离，跳跃计数是一个包到达目标所必须经过的路由器的数目。如果到相同目标有二个不等速或不同带宽的路由器，但跳跃计数相 同，则RIP认为两个路由是等距离的。RIP最多支持的跳数为15，即在源和目的网间所要经过的最多路由器的数目为15，跳数16表示不可达。</p>
+<ul>
+<li>RIP是Routing Information Protocol（路由信息协议）的简称</li>
+<li>RIP路由协议是距离矢量路由协议的一个具体实现</li>
+<li>RIP协议适用于中小型网络，有RIP-1和RIP-2</li>
+<li>RIP-2使用组播（224.0.0.9）发送，支持验证和VLSM</li>
+</ul>
+<p><strong>RIP1和RIP2的区别：</strong></p>
+<p>​       RIP分为RIP1与RIP2两个版本，区别如下：</p>
+<ol>
+<li>RIP1是一个有类路由协议，即所有的更新包中不含子网掩码，不支持VLSM， 所以就要求网络中所有设备必须使用相同的子网掩码，否则就会出错，而RIP2是一个无类的路由协议，它使用子网掩码。</li>
+<li>RIP1是发送更新包的时候使用的是广播包，而RIP2默认使用的是组播224.0.0.9，也支持广播发送，这样相对于RIP1来说就节省了一部分网络带宽。</li>
+<li>RIP2支持明文或者是 MD5验证，要求两台路由器在同步路由表的时候必须进行验证，通过才可以进行路由同步，这样可以加强安全性。</li>
+</ol>
+<h2 id="实验配置"><a href="#实验配置" class="headerlink" title="实验配置"></a>实验配置</h2><p><strong>网络拓扑图: </strong></p>
+<p> <img src="\imgs\net\rip2\1.png" alt="1"></p>
+<p> <strong><code>RTA</code> CLI配置命令</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;Huawei&gt;sys</div><div class="line">[Huawei]sysname RTA</div><div class="line">[RTA]</div><div class="line">[RTA]interface GigabitEthernet0/0/0</div><div class="line">[RTA-GigabitEthernet0/0/0]ip address 11.0.0.11 255.0.0.0</div><div class="line">[RTA-GigabitEthernet0/0/0]rip version 2 broadcast</div><div class="line">[RTA-GigabitEthernet0/0/0]q</div><div class="line">[RTA]</div><div class="line">[RTA]interface Serial 0/0/0</div><div class="line">[RTA-Serial0/0/0]link-protocol ppp</div><div class="line">[RTA-Serial0/0/0]ip address 1.1.1.1 255.0.0.0</div><div class="line">[RTA-Serial0/0/0]rip version 2 broadcast</div><div class="line">[RTA-Serial0/0/0]rip authentication-mode md5 usual abc</div><div class="line">[RTA-Serial0/0/0]q</div><div class="line">[RTA]</div><div class="line">[RTA]rip </div><div class="line">[RTA-rip-1]network 11.0.0.0</div><div class="line">[RTA-rip-1]network 1.0.0.0</div></pre></td></tr></table></figure>
+<p><strong><code>RTB</code> CLI配置命令</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;Huawei&gt;sys</div><div class="line">[Huawei]sysname RTB</div><div class="line">[RTB]</div><div class="line">[RTB]interface GigabitEthernet0/0/0</div><div class="line">[RTB-GigabitEthernet0/0/0]ip address 12.0.0.1 255.0.0.0</div><div class="line">[RTB-GigabitEthernet0/0/0]rip version 2 broadcast</div><div class="line">[RTB-GigabitEthernet0/0/0]q</div><div class="line">[RTB]</div><div class="line">[RTB]interface Serial 0/0/0</div><div class="line">[RTB-Serial0/0/0]link-protocol ppp</div><div class="line">[RTB-Serial0/0/0]ip address 1.1.1.2 255.0.0.0</div><div class="line">[RTB-Serial0/0/0]rip version 2 broadcast</div><div class="line">[RTB-Serial0/0/0]rip authentication-mode md5 usual abc</div><div class="line">[RTB-Serial0/0/0]q</div><div class="line">[RTB]</div><div class="line">[RTB]interface Serial 0/0/1</div><div class="line">[RTB-Serial0/0/1]link-protocol fr</div><div class="line">[RTB-Serial0/0/1]ip address 2.1.1.2 255.0.0.0</div><div class="line">[RTB-Serial0/0/1]rip version 2 broadcast</div><div class="line">[RTB]rip </div><div class="line">[RTB-rip-1]peer 2.1.1.1</div><div class="line">[RTB-rip-1]network 1.0.0.0</div><div class="line">[RTB-rip-1]network 2.0.0.0</div><div class="line">[RTB-rip-1]network 12.0.0.0</div></pre></td></tr></table></figure>
+<p><strong><code>RTC</code> CLI配置命令</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;Huawei&gt;sys</div><div class="line">[Huawei]sysname RTC</div><div class="line">[RTC]</div><div class="line">[RTC]interface GigabitEthernet0/0/0</div><div class="line">[RTC-GigabitEthernet0/0/0]ip address 13.0.0.1 255.0.0.0</div><div class="line">[RTC-GigabitEthernet0/0/0]rip version 2 broadcast</div><div class="line">[RTC-GigabitEthernet0/0/0]q</div><div class="line">[RTC]</div><div class="line">[RTC]interface Serial 0/0/1</div><div class="line">[RTC-Serial0/0/1]link-protocol fr</div><div class="line">[RTC-Serial0/0/1]fr interface-type DCE</div><div class="line">[RTC-Serial0/0/1]fr dlci 20</div><div class="line">[RTC-fr-dlci-Serial0/0/1-20]ip address 2.1.1.2 255.0.0.0</div><div class="line">[RTC-Serial0/0/1]rip version 2 broadcast</div><div class="line">[RTC]rip </div><div class="line">[RTB-rip-1]peer 2.1.1.2</div><div class="line">[RTC-rip-1]network 2.0.0.0</div><div class="line">[RTC-rip-1]network 13.0.0.0</div></pre></td></tr></table></figure>
+<h2 id="实验情景1"><a href="#实验情景1" class="headerlink" title="实验情景1"></a>实验情景1</h2><p><strong><em>PC-A只rip E0,  PC-B rip E0,S0,S1,  PC-C ping A 是否能够ping 通？</em></strong></p>
+<p>解：按照拓扑图配置好各路由端口，PC的IP，同时还原情景1.</p>
+<p><code>RTA</code> CLI配置命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;RTA&gt;sys</div><div class="line">[RTA]undo rip 1</div><div class="line">[RTA]rip</div><div class="line">[RTA-rip-1]network 11.0.0.0</div></pre></td></tr></table></figure>
+<p><code>RTB</code> CLI配置命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;RTB&gt;sys</div><div class="line">[RTB]undo rip 1</div><div class="line">[RTB]rip</div><div class="line">[RTB-rip-1]network 1.0.0.0</div><div class="line">[RTB-rip-1]network 2.0.0.0</div><div class="line">[RTB-rip-1]network 12.0.0.0</div></pre></td></tr></table></figure>
+<p>PC-A 的rip截图如下：</p>
+<p> <img src="\imgs\net\rip2\2.png" alt="2"></p>
+<p>PC-B 的rip截图如下</p>
+<p> <img src="\imgs\net\rip2\7.png" alt="7"></p>
+<p>PC-C ping PC-A截图如下： <img src="\imgs\net\rip2\3.png" alt="3"></p>
+<p>PC-C ping PC-B截图如下：</p>
+<p><img src="\imgs\net\rip2\4.png" alt="4"></p>
+<h2 id="实验情景2"><a href="#实验情景2" class="headerlink" title="实验情景2"></a>实验情景2</h2><p><strong><em>PC-A rip E0, S0，PC-B只 rip E0, S1, C ping A 是否能够ping 通？</em></strong></p>
+<p>解：按照拓扑图配置好各路由端口，PC的IP，同时还原情景2.</p>
+<p><code>RTA</code> CLI配置命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;RTA&gt;sys</div><div class="line">[RTA]undo rip 1</div><div class="line">[RTA]rip</div><div class="line">[RTA-rip-1]network 1.0.0.0</div><div class="line">[RTA-rip-1]network 11.0.0.0</div></pre></td></tr></table></figure>
+<p><code>RTB</code> CLI配置命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;RTB&gt;sys</div><div class="line">[RTB]undo rip 1</div><div class="line">[RTB]rip</div><div class="line">[RTB-rip-1]network 2.0.0.0</div><div class="line">[RTB-rip-1]network 12.0.0.0</div></pre></td></tr></table></figure>
+<p>PC-A 的rip截图如下：</p>
+<p>  <img src="\imgs\net\rip2\5.png" alt="5"></p>
+<p>PC-B 的rip截图如下：</p>
+<p><img src="\imgs\net\rip2\8.png" alt="8"></p>
+<p>PC-C ping PC-A截图如下： <img src="\imgs\net\rip2\10.png" alt="10"></p>
+<h2 id="实验情景3"><a href="#实验情景3" class="headerlink" title="实验情景3"></a>实验情景3</h2><p><strong><em>A，B同时rip E0，S0, C ping A 是否能够ping 通？</em></strong></p>
+<p>解：按照拓扑图配置好各路由端口，PC的IP，同时还原情景2.</p>
+<p><code>RTA</code> CLI配置命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;RTA&gt;sys</div><div class="line">[RTA]undo rip 1</div><div class="line">[RTA]rip</div><div class="line">[RTA-rip-1]network 1.0.0.0</div><div class="line">[RTA-rip-1]network 11.0.0.0</div></pre></td></tr></table></figure>
+<p><code>RTB</code> CLI配置命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;RTB&gt;sys</div><div class="line">[RTB]undo rip 1</div><div class="line">[RTB]rip</div><div class="line">[RTA-rip-1]network 1.0.0.0</div><div class="line">[RTB-rip-1]network 2.0.0.0</div><div class="line">[RTB-rip-1]network 12.0.0.0</div></pre></td></tr></table></figure>
+<p>PC-A 的rip截图如下：</p>
+<p> <img src="\imgs\net\rip2\5.png" alt="5"></p>
+<p>PC-B 的rip截图如下：</p>
+<p> <img src="\imgs\net\rip2\9.png" alt="9"></p>
+<p>PC-C ping PC-A截图如下：</p>
+<p><img src="\imgs\net\rip2\6.png" alt="6"></p>
+<p>PC-C 的路由表截图如下：</p>
+<p><img src="\imgs\net\rip2\11.png" alt="11"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>​    动态路由是网络中路由器之间互相通信，传递路由信息，利用收到的路由信息更新路由表的过程。它能实时地适应网络结构的变化。如果路由更新信息表明网络发生了变化，路由选择软件会重新计算路由，并发出新的路由更新信息。这信息通过各个网络，引起各路由器重新启动其路由算法，并更新各自的路由表以动态地反映网络拓扑的变化。</p>
+<p>​    路由器接受到相邻路由器发送来的路由信息，会与自己的路由表中的条目进行比较，如果路由表中已经存在这条路由信息，路由器会比较新接收到的路由信息是否优于现在的条目，如果优于现在的条目，路由器会用新的路由信息替换原有的路由条目。反之，则路由器比较这条路由信息与原有的条目是否来自同一个源，如果来自同一个源，则更新，否则就忽略这条路由信息。</p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/04/01/message/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/03/14/三个实体型之间的多对多联系和两两之间的三个多对多联系的区别/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     

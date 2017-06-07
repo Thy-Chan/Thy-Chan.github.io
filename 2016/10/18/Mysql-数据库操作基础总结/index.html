@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.4.0 -->
+    <script>window.materialVersion = "1.4.0"</script>
+
+    <!-- Title -->
+    
+    <title>
+        
+            MySQL 数据库操作基础总结 | 
+        
+        Chan&#39;s Blog
+    </title>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="thychan">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content="null,MySQL,网络,数据库">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Chan&#39;s Blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="MySQL 数据库操作基础总结 | Chan&#39;s Blog">
+    <meta property="og:image" content="/img/favicon.png" />
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="MySQL"> <meta property="og:article:tag" content="网络"> <meta property="og:article:tag" content="数据库"> 
+
+    
+        <meta property="article:published_time" content="10月 18, 2016" />
+        <meta property="article:modified_time" content="11月 26, 2016" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="MySQL 数据库操作基础总结 | Chan&#39;s Blog">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="/img/favicon.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://yoursite.com" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yoursite.com/2016/10/18/Mysql-数据库操作基础总结/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Chan&#39;s Blog",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "thychan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "headline": "MySQL 数据库操作基础总结",
+    "url": "http://yoursite.com/2016/10/18/Mysql-数据库操作基础总结/index.html",
+    "datePublished": "10月 18, 2016",
+    "dateModified": "11月 26, 2016",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://yoursite.com"
+    }
+}
+</script>
+
+
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+materialVersion+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(data&&data.indexOf(versionString)===-1){lsloader.removeLS(key)}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload){cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}code=code.split(versionString)[1];if(/\.js?.+$/.test(versionNumber)){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload)}};lsloader.requestResource=function(name,path,cssonload){var that=this;if(/\.js?.+$/.test(path)){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else if(/\.css?.+$/.test(path)){this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import CSS & jQuery -->
+    
+        <style id="css/material.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/material.min.css","/css/material.min.css?fJTiM/K1J3dWIruo3pxtAw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        <style id="css/style.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/style.min.css","/css/style.min.css?oCSEO3ST+aEypEwttTDI9g==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        
+        
+            <style>
+    
+    .footer-sns-facebook {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHptNjU3LjYgODcuOGw0LjggMy44djU1LjJjMCA1NC42IDAgNTUuMi00LjYgNTkuNi00LjQgNC40LTYgNC42LTUwLjIgNS42bC00NS42IDEtNy4yIDUuNmMtMTAuNCA4LTE2LjggMTcuMi0xOS4yIDI3LjQtMSA1LTEuOCAyNC44LTEuOCA0NCAuMiAzOCAxLjYgNDQuNiAxMC44IDQ4IDIuOCAxLjIgMjguNCAyIDU2LjggMiA0Ny44IDAgNTIgLjIgNTYuMiAzLjhsNC44IDMuOHY1NS4yYzAgNTQuNiAwIDU1LjItNC42IDU5LjYtNC40IDQuNi01LjQgNC42LTU3IDUuMi0yOC44LjItNTQuNC44LTU2LjggMS40LTIuNC42LTUuNiAzLTYuOCA1LjQtMS44IDMuMi0yLjQgNDEuNC0yLjYgMTQzLjJsLS4yIDEzOC44LTUuNiA0LjgtNS42IDQuOEg2MDljLTUyLjQgMC01Mi44IDAtNTguMi00LjZsLTUuNC00LjYtLjItMTQwLjYtLjItMTQwLjYtNC44LTMuOGMtNC4yLTMuNC04LTMuOC0zNS42LTMuOC0zMi44IDAtNDEtMS44LTQzLjYtMTAtLjYtMi4yLTEuMi0yNS40LTEuMi01MS40IDAtNjAuOC0uMi01NyAzLjQtNjEuNiAyLjgtMy42IDYtNCAzNy44LTUgMzMtMSAzNS4yLTEuMiAzOS40LTUuNiA0LjYtNC40IDQuNi01LjIgNS44LTcxIDEuMi03My40LjItNjcuMiAxNi42LTk5LjQgOC0xNS44IDEyLjgtMjIgMjgtMzcgMTUuMi0xNS4yIDIxLjQtMTkuNiAzOC4yLTI4IDExLTUuNCAyNC0xMSAyOS0xMi4yIDYuMi0xLjggMjguNi0yLjYgNzEuMi0yLjYgNTguNi0uMiA2Mi42IDAgNjcgMy42eiIvPjwvc3ZnPg==);
+    }
+    
+    
+    .footer-sns-twitter {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHptNTMyLjggMjA1YzEwIDQgMjMgMTAuOCAyOC44IDE1LjIgMTIuNiA5LjIgMTYuNiAxMC42IDI5LjQgOS40IDYuNi0uNiAxMy0zLjIgMjAuNC04LjIgMTEuMi03LjYgMTkuNC05LjIgMjMuNi01IDMuNiAzLjYgMi44IDktMi44IDE4LjYtNy4yIDEyLjQtNiAxOC44IDQuMiAyNC4yIDQuNCAyLjIgOC4yIDUuNiA4LjYgNy40IDEgNC44LTEyLjYgMjQuMi0yMiAzMS44LTExLjggOS4yLTE3LjIgMjIuNi0xOS42IDQ3LjgtNC44IDUwLjQtNy44IDY2LjYtMTYuNCA4NS40LTMgNy03IDE3LjgtOC44IDI0LTEuOCA2LjQtNSAxNC42LTcuNCAxOC40LTIuMiAzLjgtNy40IDEzLTExLjQgMjAuNC0xNy4yIDMwLjgtNDMuNCA2MS40LTcxLjQgODMuOC0yNS42IDIwLjQtNDYgMzMuMi02NC4yIDQwLjItOC40IDMuMi0xOCA3LjYtMjEuNCA5LjYtNy40IDQuNi0yMi40IDguNi01Ny4yIDE1LTYyLjIgMTEuNi03OS4yIDExLjQtMTM1LjYtMS0zMi40LTctMzguNi05LTUyLTE2LjgtMjEuNC0xMi42LTI0LjItMTQuOC0yNC4yLTE5LjQgMC02LjIgMTAuMi05LjIgMzUtMTAuNCAyMi40LTEgMjguNi0yLjYgNTctMTQuMiAyMy44LTkuOCAyOS40LTEyLjggMzAuNC0xNi44IDIuMi04LjItMy0xMy4yLTI2LjgtMjUuNC0yNS44LTEzLjItMzIuMi0xOC40LTQzLjgtMzUuOC05LTEzLjYtMTAtMjEuMi0zLjYtMzMuNiA1LjQtMTAuOCAzLjYtMTUtMTEuOC0yNS40LTktNi0xNC0xMS42LTIwLjgtMjIuNi0yMy40LTM3LjgtMjUtNTAuOC03LjItNTkuOCA0LjgtMi40IDkuNC01LjQgMTAuMi02LjYgMi44LTQuMi0uNC0xNS42LTguNC0yOS0xMS42LTE5LjYtMTMuMi0yNS44LTEzLjItNTUuMiAwLTI4LjggMi42LTM3LjggMTItNDAuMiA5LTIuMiAxNC44IDEgMzUuNiAyMC4yIDI0LjggMjIuOCA0My42IDM2LjYgNjIuOCA0NS44IDggMy44IDE3LjggOS4yIDIyIDEyIDQuMiAyLjggMTQuOCA3IDIzLjQgOS4yIDguNiAyLjIgMjQuMiA2LjggMzQuOCAxMC4yIDEzLjQgNC40IDIzLjYgNi40IDMzIDYuNiAxMi44LjIgMTQuMi0uMiAxOC42LTUuNCA0LTQuOCA0LjgtNy44IDQuOC0xOS4yIDAtMTQuNCA1LjYtMzkuNiAxMS4yLTUwLjYgNC4yLTguNCAyOS4yLTM0LjIgMzkuOC00MS40IDcuOC01LjQgMzUuNi0xNiA1Mi0yMCAxNC4yLTMuNiAzMi42LTEuMiA1Mi40IDYuOHoiLz48L3N2Zz4=);
+    }
+    
+    
+    .footer-sns-gplus {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHpNNDMwIDI5NS40YzQwLjYgMTUuNCA1Ni42IDIzLjggNzIuNiAzOC40IDYuOCA2LjIgNy4yIDE1LjIgMSAyMy40LTYuMiA4LTMzLjYgMzMuOC0zOSAzNi42LTUuNiAyLjgtMTcuNiAyLjgtMjMuMi0uMi0yLjQtMS4yLTguMi01LjItMTMtOC44LTExLjItOC42LTI0LjYtMTEuMi01NS4yLTExLjItMjcuNCAwLTQwLjYgMi42LTUyLjIgMTAuNC00LjQgMi44LTEyLjIgNy42LTE3LjIgMTAuNi0yMyAxMy4yLTUxLjQgNTUtNTUuOCA4Mi40LTIuNiAxNS42LTIuNCAzNC44LjIgNTEgMi44IDE3LjQgMTkuOCA0OC44IDM1LjIgNjUuMiAxNiAxNi42IDQ1IDMzLjYgNjIuOCAzNi42IDI2LjggNC40IDY1LjggMS42IDc5LjQtNS44IDIwLjYtMTEuNCAzMS0xOSA0MS0zMC40IDE4LjgtMjEuNiAyMy40LTM0LjIgMTUuNi00My44LTMuOC00LjgtNC40LTQuOC01MS01LjgtNjAuOC0xLjItNTYuMiAyLjItNTYuMi00My4yIDAtMzIuNC4yLTMzLjIgNC44LTM3IDQuNC0zLjYgOS0zLjggOTItMy44IDc5IDAgODcuOC40IDk0LjIgMy42IDExLjIgNS42IDEzIDExLjQgMTIuOCA0My40IDAgMjUuNC0uOCAzMC44LTcuNiA1OC00IDE2LjYtOS44IDM0LTEyLjYgMzktMi44IDUtOC4yIDE0LjItMTEuNiAyMC42LTguNCAxNS40LTI3LjIgMzYuOC00MC44IDQ2LjYtNS44IDQuNC0xMy44IDEwLjItMTcuNiAxMy4yLTMuOCAzLTExIDctMTYuMiA4LjgtNS4yIDEuOC0xNi4yIDYuNC0yNC40IDEwLTIyLjQgOS42LTM0LjggMTEuNi03MyAxMS42LTM3LjYuMi00Ny0xLjQtNzEtMTItOC4yLTMuNi0xNy42LTcuMi0yMC44LTgtMTUuOC0zLjgtNjctNDUuMi03Ny44LTYyLjgtMi4yLTMuOC03LjYtMTEuNi0xMS44LTE3LjItNC4yLTUuNC05LTE0LTEwLjYtMTktMS44LTQuOC02LjItMTYtMTAtMjQuOC0zLjYtOC44LTcuOC0yMi4yLTkuMi0yOS42LTMuMi0xOC44LTEuNC03OS40IDIuOC05MS40IDEzLjgtNDAuNiAzNS42LTc4IDU4LjgtMTAwLjIgMTQtMTMuNiA0Ny4yLTM2LjQgNTgtMzkuOCA0LjItMS40IDEzLjQtNS4yIDIwLjYtOC40IDIyLTEwIDMyLjgtMTEuNiA3Ni0xMSAzMy44LjYgNDAuNCAxLjIgNTAgNC44em0zNDAuOCA4MC44YzggMy42IDkuNiAxMS4yIDkuMiAzOS4yLS42IDM0LjQtLjYgMzQgNSAzOS42IDQuOCA1IDUuNCA1IDM3LjYgNSA0My40IDAgNDQuNC44IDQzLjIgMzYuMi0uOCAxNy0xLjIgMTguNC02LjQgMjMtNS40IDQuNi02LjYgNC44LTM3LjYgNC44LTMxLjIgMC0zMiAuMi0zNi44IDUtNS42IDUuNC01LjYgNC40LTUgNDEuMi40IDI2LjQuMiAyNy40LTQuNiAzMy00LjggNS42LTYgNS44LTI0LjQgNi40LTIwLjguOC0yOS42LTEuNC0zMy40LTguNC0xLjQtMi42LTItMTUuNi0xLjgtMzUuNi40LTMxLjIuNC0zMS42LTQuNi0zNi42cy01LjYtNS0zNi01Yy0xOC44IDAtMzMtLjgtMzYtMi4yLTcuNi0zLjYtOS42LTExLjItOC44LTMzLjguOC0yOC4yLjQtMjggNDEtMjggNDUuNCAwIDQ1LjQgMCA0NC42LTQyLjYtLjYtMzMtLjYtMzMgNS0zOC40IDQuNC00LjYgNi4yLTUgMjQuOC01IDExIDAgMjIuMiAxIDI1IDIuMnoiLz48L3N2Zz4=);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</style>
+
+        
+        <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+
+
+        <script>lsloader.load("js/jquery.min.js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==")</script>
+    
+    
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Analytics -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">数据库介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装和配置-MySQL-数据库"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装和配置 MySQL 数据库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库的存储结构"><span class="post-toc-number">3.</span> <span class="post-toc-text">数据库的存储结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建数据库和表"><span class="post-toc-number">4.</span> <span class="post-toc-text">创建数据库和表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建数据库"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">创建数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看数据库"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">查看数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除数据库"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">删除数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#选择数据库"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">选择数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看当前使用的数据库"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">查看当前使用的数据库</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据类型"><span class="post-toc-number">5.</span> <span class="post-toc-text">数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#整数类型"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">整数类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#浮点型"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">浮点型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#时间和日期类型"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">时间和日期类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CHAR和VARCHAR"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">CHAR和VARCHAR</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本操作"><span class="post-toc-number">6.</span> <span class="post-toc-text">基本操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看表结构"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">查看表结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改数据表"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">修改数据表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除数据表"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">删除数据表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表的约束"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">表的约束</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主键约束"><span class="post-toc-number">6.4.1.</span> <span class="post-toc-text">主键约束</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#非空约束"><span class="post-toc-number">6.4.2.</span> <span class="post-toc-text">非空约束</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#唯一约束"><span class="post-toc-number">6.4.3.</span> <span class="post-toc-text">唯一约束</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#默认约束"><span class="post-toc-number">6.4.4.</span> <span class="post-toc-text">默认约束</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置表的字段值自动增加"><span class="post-toc-number">6.5.</span> <span class="post-toc-text">设置表的字段值自动增加</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加、更新与删除数据"><span class="post-toc-number">7.</span> <span class="post-toc-text">添加、更新与删除数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加数据"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">添加数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为表中所有字段添加数据"><span class="post-toc-number">7.1.1.</span> <span class="post-toc-text">为表中所有字段添加数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#按照指定列添加数据："><span class="post-toc-number">7.1.2.</span> <span class="post-toc-text">按照指定列添加数据：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#同时添加多条记录"><span class="post-toc-number">7.1.3.</span> <span class="post-toc-text">同时添加多条记录</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更新全部数据："><span class="post-toc-number">7.2.</span> <span class="post-toc-text">更新全部数据：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#按条件更新："><span class="post-toc-number">7.2.1.</span> <span class="post-toc-text">按条件更新：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#条件可以使用的运算符："><span class="post-toc-number">7.2.2.</span> <span class="post-toc-text">条件可以使用的运算符：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除数据："><span class="post-toc-number">7.3.</span> <span class="post-toc-text">删除数据：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#删除全部数据"><span class="post-toc-number">7.3.1.</span> <span class="post-toc-text">删除全部数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#根据条件删除："><span class="post-toc-number">7.3.2.</span> <span class="post-toc-text">根据条件删除：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#初始化"><span class="post-toc-number">7.3.3.</span> <span class="post-toc-text">初始化</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单表查询"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">单表查询</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简单查询"><span class="post-toc-number">7.4.1.</span> <span class="post-toc-text">简单查询</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查询表中所有数据："><span class="post-toc-number">7.4.2.</span> <span class="post-toc-text">查询表中所有数据：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#按照指定列查询表中所有数据："><span class="post-toc-number">7.4.3.</span> <span class="post-toc-text">按照指定列查询表中所有数据：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#根据条件查询数据："><span class="post-toc-number">7.4.4.</span> <span class="post-toc-text">根据条件查询数据：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多表查询："><span class="post-toc-number">7.4.5.</span> <span class="post-toc-text">多表查询：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查询总记录数："><span class="post-toc-number">7.4.6.</span> <span class="post-toc-text">查询总记录数：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#聚合函数"><span class="post-toc-number">7.4.7.</span> <span class="post-toc-text">聚合函数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#对查询结果排序"><span class="post-toc-number">7.4.8.</span> <span class="post-toc-text">对查询结果排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分组查询"><span class="post-toc-number">7.4.9.</span> <span class="post-toc-text">分组查询</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分页查询一个例子"><span class="post-toc-number">7.4.10.</span> <span class="post-toc-text">分页查询一个例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为表和字段区别名"><span class="post-toc-number">7.5.</span> <span class="post-toc-text">为表和字段区别名</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为表取别名"><span class="post-toc-number">7.5.1.</span> <span class="post-toc-text">为表取别名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为字段取别名"><span class="post-toc-number">7.5.2.</span> <span class="post-toc-text">为字段取别名</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多表操作"><span class="post-toc-number">7.6.</span> <span class="post-toc-text">多表操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#外键"><span class="post-toc-number">7.6.1.</span> <span class="post-toc-text">外键</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为表添加外键约束"><span class="post-toc-number">7.6.2.</span> <span class="post-toc-text">为表添加外键约束</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#删除外键约束"><span class="post-toc-number">7.6.3.</span> <span class="post-toc-text">删除外键约束</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#操作关联表"><span class="post-toc-number">7.7.</span> <span class="post-toc-text">操作关联表</span></a></li></ol></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+    
+
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                MySQL 数据库操作基础总结
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>thychan</strong>
+        <span>10月 18, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/MySQL/">MySQL</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/数据库/">数据库</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/网络/">网络</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=MySQL 数据库操作基础总结&url=http://yoursite.com/2016/10/18/Mysql-数据库操作基础总结/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=MySQL 数据库操作基础总结&url=http://yoursite.com/2016/10/18/Mysql-数据库操作基础总结/index.html&via=thychan" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/10/18/Mysql-数据库操作基础总结/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2016/10/18/Mysql-数据库操作基础总结/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>数据库：存储数据的仓库。</p>
+<ul>
+<li>数据结构化</li>
+<li>实现数据共享<ul>
+<li>可以减少冗余数据</li>
+</ul>
+</li>
+<li>数据独立性高</li>
+<li>数据统一管理与控制</li>
+</ul>
+<h2 id="数据库介绍"><a href="#数据库介绍" class="headerlink" title="数据库介绍"></a>数据库介绍</h2><ul>
+<li>MySQL 数据库</li>
+<li>Oracle<ul>
+<li>Orcale数据库管理系统由甲骨文公司开发，在数据库领域一直处于领先地位</li>
+<li>商业收费，大型系统，淘宝、京东就使用了 Oracle 数据库</li>
+</ul>
+</li>
+<li>SqlServer 数据库<ul>
+<li>由微软公司开发，只能在Windows上运行。.net开发程序员</li>
+</ul>
+</li>
+<li>DB2<ul>
+<li>由IBM公司开发，在金融行业中使用的比较多。IBM的服务器，买服务器送数据库</li>
+<li>商业收费</li>
+</ul>
+</li>
+<li>MS SQL Server<ul>
+<li>以上这些数据库都是使用 SQL 语言进行操作</li>
+<li>SQL 语言就是用于 关系型数据库 的一个操作语言</li>
+<li>利用这个 SQL 语言可以增删改查库和表，以及增删改查表数据</li>
+<li>表 就是 关系</li>
+<li>表与表之间就是关系</li>
+</ul>
+</li>
+<li>MongoDB<ul>
+<li>非关系型数据库</li>
+<li>没有表，这个数据库中存储的数据都在集合中，类似于 JavaScript 对象，其实就是 json 格式的数据</li>
+<li>集合没有结构，集合就是一个数组</li>
+<li>也可以往集合中插入数据</li>
+</ul>
+</li>
+</ul>
+<p>MongoDB是由10gen公司开发的一个介于关系型数据库和非关系型数据库之间的产品，是非关系型数据库中功能最丰富，最像关系型数据库的。他支持的数据结构非常松散，是类似json的格式，所以可以存储比较复杂的数据结构类型。MongoDB数据库管理系统最大的特点就是它支持的查询语言非常强大，语法类似于面向对象的查询语言。它还是一个开源的数据库，对于大数据量、高并发的互联网应用，支持非常不错。操作非关系型数据库不需要使用SQL语言。</p>
+<ul>
+<li>关系型数据库存储结构<ul>
+<li>数据库服务器<ul>
+<li>数据库管理系统</li>
+</ul>
+</li>
+<li>数据库</li>
+<li>数据表<ul>
+<li>根据业务设计表结构</li>
+</ul>
+</li>
+<li>记录<ul>
+<li>根据表结构存储记录数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>oracle、sqlserver、DB2、MySQL 都是关系型数据库。</p>
+<h2 id="安装和配置-MySQL-数据库"><a href="#安装和配置-MySQL-数据库" class="headerlink" title="安装和配置 MySQL 数据库"></a>安装和配置 MySQL 数据库</h2><p>官方网站：<a href="http://www.mysql.com/" target="_blank" rel="external">http://www.mysql.com/</a></p>
+<p>启动 和 停止MySQL服务：</p>
+<blockquote>
+<p>通过Windows的运行，输入services.msc找到MySQL服务</p>
+<p>通过DOS命令启动MySQL服务（使用管理员权限打开终端）</p>
+</blockquote>
+<p>登录MySQL数据库:</p>
+<p><code>mysql -h localhost -P 3306 -u root -p</code></p>
+<ul>
+<li><code>-h：</code>主机名</li>
+<li><code>-P：</code>端口</li>
+<li><code>-u：</code>用户名</li>
+<li><code>-p：</code>密码</li>
+</ul>
+<p>mysql默认连接localhost和3306，所以可以省略-h和-P:</p>
+<p><code>mysql -u root -p</code></p>
+<p>在命令行中输入“help;”或者“h”，就会显示出MySQL的帮助信息。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>简写</th>
+<th>具体含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>?</td>
+<td>?</td>
+<td>显示帮助信息</td>
+</tr>
+<tr>
+<td>exit</td>
+<td>q</td>
+<td>退出MySQL</td>
+</tr>
+<tr>
+<td>help</td>
+<td>h</td>
+<td>显示帮助信息</td>
+</tr>
+<tr>
+<td>quit</td>
+<td>q</td>
+<td>退出MySQL</td>
+</tr>
+<tr>
+<td>status</td>
+<td>s</td>
+<td>获取MySQL服务器状态信息</td>
+</tr>
+<tr>
+<td>use</td>
+<td>u</td>
+<td>用来选择一个数据库，以一个数据库名作为参数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="数据库的存储结构"><a href="#数据库的存储结构" class="headerlink" title="数据库的存储结构"></a>数据库的存储结构</h2><ul>
+<li>一个数据库服务器上可以有多个数据库</li>
+<li>一个数据库中可以有多个表<ul>
+<li>一个表一定要有表结构</li>
+<li>所有的数据存储在表中，所以有了数据库之后，要先设计你的表结构</li>
+</ul>
+</li>
+<li>一张表中存储多条记录<ul>
+<li>记录按照表结构的形式进行存储</li>
+</ul>
+</li>
+</ul>
+<h2 id="创建数据库和表"><a href="#创建数据库和表" class="headerlink" title="创建数据库和表"></a>创建数据库和表</h2><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE DATABASE [IF NOT EXISTS] db_name</div></pre></td></tr></table></figure>
+<h3 id="查看数据库"><a href="#查看数据库" class="headerlink" title="查看数据库"></a>查看数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SHOW DATABASES;</div></pre></td></tr></table></figure>
+<p>显示数据库创建语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SHOW CREATE DATABASE db_name;</div></pre></td></tr></table></figure>
+<h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DROP DATABASE [IF EXISTS] db_name;</div></pre></td></tr></table></figure>
+<h3 id="选择数据库"><a href="#选择数据库" class="headerlink" title="选择数据库"></a>选择数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">USE db_name;</div></pre></td></tr></table></figure>
+<h3 id="查看当前使用的数据库"><a href="#查看当前使用的数据库" class="headerlink" title="查看当前使用的数据库"></a>查看当前使用的数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT database();</div></pre></td></tr></table></figure>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小</th>
+<th>范围（有符号）</th>
+<th>范围（无符号）</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TINYINT</td>
+<td>1 字节</td>
+<td>(-128，127)</td>
+<td>(0，255)</td>
+<td>小整数值</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>2 字节</td>
+<td>(-32 768，32 767)</td>
+<td>(0，65 535)</td>
+<td>大整数值</td>
+</tr>
+<tr>
+<td>MEDIUMINT</td>
+<td>3 字节</td>
+<td>(-8 388 608，8 388 607)</td>
+<td>(0，16 777 215)</td>
+<td>大整数值</td>
+</tr>
+<tr>
+<td>INT或INTEGER</td>
+<td>4 字节</td>
+<td>(-2 147 483 648，2 147 483 647)</td>
+<td>(0，4 294 967 295)</td>
+<td>大整数值</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<h3 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h3><p>在MySQL数据库中，存储小数都是使用浮点数和定点数来表示的。</p>
+<p>浮点数有两种：</p>
+<ul>
+<li>单精度浮点数（FLOAT）</li>
+<li>双精度浮点数(DOUBLE)</li>
+</ul>
+<p>定点数（DECIMAL）[ˈdesɪml]</p>
+<h3 id="时间和日期类型"><a href="#时间和日期类型" class="headerlink" title="时间和日期类型"></a>时间和日期类型</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小(字节)</th>
+<th>范围</th>
+<th>格式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DATE</td>
+<td>3</td>
+<td>1000-01-01/9999-12-31</td>
+<td>YYY-MM-DD</td>
+<td>日期值</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>3</td>
+<td>‘-838:59:59’/‘838:59:59’</td>
+<td>H:MM:SS</td>
+<td>时间值或持续时间</td>
+</tr>
+<tr>
+<td>YEAR</td>
+<td>1</td>
+<td>1901/2155</td>
+<td>YYY</td>
+<td>年份值</td>
+</tr>
+<tr>
+<td>DATETIME</td>
+<td>8</td>
+<td>1000-01-01 00:00:00/9999-12-31 23:59:59</td>
+<td>YYY-MM-DD HH:MM:SS</td>
+<td>混合日期和时间值</td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>8</td>
+<td>1970-01-01 00:00:00/2037 年某时</td>
+<td>YYYMMDD HHMMSS</td>
+<td>混合日期和时间值，时间戳</td>
+</tr>
+</tbody>
+</table>
+<p>如果插入的数值不合法，系统会自动将对应的零值插入到数据库中。</p>
+<ul>
+<li>YEAR</li>
+</ul>
+<p>使用4位字符串或数字表示，范围为‘1901‘ ~ ‘2155’或1901~2155</p>
+<p>例如，输入‘2016‘或者2016，插入到数据库的值均为2016</p>
+<ul>
+<li>DATE</li>
+</ul>
+<p>DATE类型用来表示日期值，不包含时间部分。</p>
+<p>可以使用“YYYY-MM-DD“或‘YYYYMMDD‘字符串表示</p>
+<p>例如，输入‘2016-10-01‘或’20161001‘插入到数据库的日期都是2016-10-01</p>
+<ul>
+<li>TIME</li>
+</ul>
+<p>TIME类型用于表示时间值，它的显示形式一般为HH:MM:SS,其中HH 表示小时，MM表示分，SS表示秒</p>
+<p>可以使用下面三种方式指定时间的值：</p>
+<ol>
+<li>以“D HH：MM：SS“字符串格式表示。其中，D表示日，可以取0-34之间的值，插入数据时，小时的值等于（D*24+HH）</li>
+</ol>
+<ul>
+<li>例如，输入‘2 11:30:50‘，插入数据库的日期为 59:30:50</li>
+</ul>
+<ol>
+<li>以‘HHMMSS‘字符串格式或者HHMMSS数字格式表示</li>
+</ol>
+<ul>
+<li>例如：输入‘345454‘或345454，插入数据库的日期为34:54:54</li>
+</ul>
+<ol>
+<li>使用CURRENT_TIME或NOW()输入当前系统时间</li>
+</ol>
+<ul>
+<li>DATETIME</li>
+</ul>
+<p>指定DATETIME类型的值：</p>
+<ol>
+<li>以‘YYYY-MM-DD HH:MM:SS‘或者’YYYYMMDDHHMMSS‘字符串或数字都可以。</li>
+<li>使用NOW来输入当前系统的日期和时间</li>
+</ol>
+<ul>
+<li>TIMESTAMP</li>
+</ul>
+<p>TIMESTAMP类型显示形式和DATETIME相同，但取值范围比DATETIME小。</p>
+<ol>
+<li>输入CURRENT_TIMESTAMP输入系统当前日期和时间</li>
+<li>输入NULL时，系统会自动输入当前日期和时间</li>
+<li>无任何输入时，系统会输入系统当前日期和时间</li>
+</ol>
+<p>标记。利用它可以保存表中某条记录的最后修改时间。自动维护。</p>
+<h3 id="CHAR和VARCHAR"><a href="#CHAR和VARCHAR" class="headerlink" title="CHAR和VARCHAR"></a>CHAR和VARCHAR</h3><table>
+<thead>
+<tr>
+<th>插入值</th>
+<th>CHAR(4)</th>
+<th>存储需求</th>
+<th>VARCHAR(4)</th>
+<th>存储需求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>‘’</td>
+<td>‘’</td>
+<td>4个字节</td>
+<td>‘’</td>
+<td>1个字节</td>
+</tr>
+<tr>
+<td>‘ab’</td>
+<td>‘ab’</td>
+<td>4个字节</td>
+<td>‘ab’</td>
+<td>3个字节</td>
+</tr>
+<tr>
+<td>‘abc’</td>
+<td></td>
+<td>4个字节</td>
+<td>‘abc’</td>
+<td>4个字节</td>
+</tr>
+<tr>
+<td>‘abcd’</td>
+<td></td>
+<td>4个字节</td>
+<td>‘abcd’</td>
+<td>5个字节</td>
+</tr>
+<tr>
+<td>‘abcde’</td>
+<td>‘abcd’</td>
+<td>4个字节</td>
+<td>‘abcd’</td>
+<td>5个字节</td>
+</tr>
+</tbody>
+</table>
+<p>当数据为CHAR(4)类型时，不管插入值的长度是多少，所占用的存储空间都是4个字节。而VARCHAR（4）所对应的数据所占用的字节数为实际长度加1.</p>
+<p>总结：</p>
+<ul>
+<li>字符长度不固定的类型使用VARCHAR 查询的时候要计算字节的长度</li>
+<li>字符串长度固定的使用CHAR 查询速度快。</li>
+<li>VARCAHR比CHAR省空间</li>
+<li>CHAR比VARCHAR省时间</li>
+</ul>
+<p>TEXT类型</p>
+<p>表示大文本数据，例如：文章内容、评论等</p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="查看表结构"><a href="#查看表结构" class="headerlink" title="查看表结构"></a>查看表结构</h3><p>查看当前数据库中的所有表： <code>show tables;</code></p>
+<p>查看表结构: <code>desc table_name;</code></p>
+<p>查看建表语句: <code>show create table table_name;</code></p>
+<h3 id="修改数据表"><a href="#修改数据表" class="headerlink" title="修改数据表"></a>修改数据表</h3><p>增加列: <code>ALTER TABLE table_name ADD colum datatype;</code></p>
+<p>修改列: <code>ALTER TABLE table_name MODIFY colum datatype;</code></p>
+<p>删除列: <code>ALTER TABLE table_name DROP colum;</code></p>
+<p>修改表名: <code>rename TABLE table_name to new_table_name;</code></p>
+<p>修改列名: <code>ALTER TABLE table_name change colum_name new_colum_name datatype;</code></p>
+<h3 id="删除数据表"><a href="#删除数据表" class="headerlink" title="删除数据表"></a>删除数据表</h3><p><code>DROP TABLE table_name;</code></p>
+<h3 id="表的约束"><a href="#表的约束" class="headerlink" title="表的约束"></a>表的约束</h3><table>
+<thead>
+<tr>
+<th>约束条件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRIMARY KEY</td>
+<td>主键约束，用于唯一标识对应的记录</td>
+</tr>
+<tr>
+<td>FOREIGN KEY</td>
+<td>外键约束</td>
+</tr>
+<tr>
+<td>NOT NULL</td>
+<td>非空约束</td>
+</tr>
+<tr>
+<td>UNIQUE</td>
+<td>唯一性约束</td>
+</tr>
+<tr>
+<td>DEFAULT</td>
+<td>默认值约束，用于设置字段的默认值</td>
+</tr>
+</tbody>
+</table>
+<p>表的约束条件都是针对表中字段进行限制，从而保证数据表中数据的正确性和唯一性。</p>
+<h4 id="主键约束"><a href="#主键约束" class="headerlink" title="主键约束"></a>主键约束</h4><p>每个数据表中最多只能有一个主键约束，定义为PRIMARY KEY 的字段不能有重复值且不能为NULL值。也就是非空而且唯一</p>
+<p>语法：<code>字段名 数据类型 PRIMARY KEY</code></p>
+<h4 id="非空约束"><a href="#非空约束" class="headerlink" title="非空约束"></a>非空约束</h4><p>非空约束指的是字段的值不能为NULL，在MySQL中，非空约束是通过NOT NULL 定义的。</p>
+<p>语法：<code>字段名 数据类型 NOT NULL;</code></p>
+<h4 id="唯一约束"><a href="#唯一约束" class="headerlink" title="唯一约束"></a>唯一约束</h4><p>唯一约束用于保证数据表中字段的唯一性，即表中字段的值不能重复出现。</p>
+<p>语法：<code>字段名 数据类型 UNIQUE;</code></p>
+<h4 id="默认约束"><a href="#默认约束" class="headerlink" title="默认约束"></a>默认约束</h4><p>默认约束用于给数据库中的字段指定默认值，即当在表中插入一条记录时，如果没有给这个字段赋值，数据库系统会为这个字段插入默认值。</p>
+<p>语法：<code>字段名 数据类型 DEFAULT 默认值;</code></p>
+<h3 id="设置表的字段值自动增加"><a href="#设置表的字段值自动增加" class="headerlink" title="设置表的字段值自动增加"></a>设置表的字段值自动增加</h3><p>如果想为表中插入的新纪录自动生成唯一ID。可以使用AUTO_INCREMENT实现</p>
+<p>语法：<code>字段名 数据类型 AUTO_INCREMENT;</code></p>
+<h2 id="添加、更新与删除数据"><a href="#添加、更新与删除数据" class="headerlink" title="添加、更新与删除数据"></a>添加、更新与删除数据</h2><h3 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h3><h4 id="为表中所有字段添加数据"><a href="#为表中所有字段添加数据" class="headerlink" title="为表中所有字段添加数据"></a>为表中所有字段添加数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">INSERT INTO 表名</div><div class="line">VALUES(列1值,列2值,...)</div></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<ul>
+<li>values中的值必须与表中的字段一一对应。</li>
+<li>插入的数据应与字段中的数据类型相同</li>
+<li>数据的大小应该在列的规定范围内，例如不能将一个长度为80的字符串插入到长度为40个列中</li>
+<li>字符和日期型数据应该包含在单引号中</li>
+<li>如果要插入一个空值，不指定或者使用NULL</li>
+</ul>
+<h4 id="按照指定列添加数据："><a href="#按照指定列添加数据：" class="headerlink" title="按照指定列添加数据："></a>按照指定列添加数据：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">INSERT INTO 表名(列1名, 列2名,...)</div><div class="line">VALUES(列1值, 列2值,...)</div></pre></td></tr></table></figure>
+<p><strong>注意: values中的值必须与列声明中的列一一对应</strong></p>
+<h4 id="同时添加多条记录"><a href="#同时添加多条记录" class="headerlink" title="同时添加多条记录"></a>同时添加多条记录</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">INSERT INTO employee</div><div class="line">VALUES (value1,value2,value3...),</div><div class="line">        (value1,value2,value3...),</div><div class="line">        (value1,value2,value3),</div><div class="line">        ...;</div></pre></td></tr></table></figure>
+<h3 id="更新全部数据："><a href="#更新全部数据：" class="headerlink" title="更新全部数据："></a>更新全部数据：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">UPDATE 表名</div><div class="line">SET 列名=值, 列名=值[,列名=值]</div></pre></td></tr></table></figure>
+<h4 id="按条件更新："><a href="#按条件更新：" class="headerlink" title="按条件更新："></a>按条件更新：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UPDATE 表名</div><div class="line">SET 列名=值, 列名=值[,列名=值]</div><div class="line">WHERE 条件;</div></pre></td></tr></table></figure>
+<p>总结：</p>
+<ul>
+<li>UPDATE语句可以用新值更新原有表中行的列。</li>
+<li>SET字句指定要修改哪些列和要给与哪些值</li>
+<li>WHERE需要给定一个条件，表示要更新符号该条件的行，没有WHERE字句，则更新所有行</li>
+</ul>
+<h4 id="条件可以使用的运算符："><a href="#条件可以使用的运算符：" class="headerlink" title="条件可以使用的运算符："></a>条件可以使用的运算符：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">-- 比较运算符 &gt; &lt; &lt;= &gt;= = &lt;&gt;  大于、小于、大于(小于等于)、不等于</div><div class="line">BETWEEN…AND -- 显示在某一区间的值</div><div class="line">IN(set) -- 显示在in列表中的值，例：in(100,200)</div><div class="line">LIKE -- ‘张pattern’ 模糊查询%</div><div class="line">IS NULL -- 判断是否为空</div><div class="line"></div><div class="line">-- 逻辑运算符 AND 多个条件同时成立</div><div class="line">OR  多个条件任一成立</div><div class="line">NOT 不成立，例：WHERE NOT(salary&gt;100)</div></pre></td></tr></table></figure>
+<h3 id="删除数据："><a href="#删除数据：" class="headerlink" title="删除数据："></a>删除数据：</h3><h4 id="删除全部数据"><a href="#删除全部数据" class="headerlink" title="删除全部数据"></a>删除全部数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DELETE FROM 表名;</div></pre></td></tr></table></figure>
+<h4 id="根据条件删除："><a href="#根据条件删除：" class="headerlink" title="根据条件删除："></a>根据条件删除：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">DELETE FROM 表名</div><div class="line">WHERE 条件;</div></pre></td></tr></table></figure>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>runcate初始化数据表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">truncate table_name;</div></pre></td></tr></table></figure>
+<p><strong>truncate和delete的区别：</strong></p>
+<ul>
+<li>delete会一条一条的删</li>
+<li>truncate先摧毁整张表，再创建一张和原来的表结构一模一样的表</li>
+<li>拿拆迁举例子</li>
+<li>truncate在效率上比delete高</li>
+<li>truncate只能删除整表的数据，也就是格式化。</li>
+<li>truncate会把自增id截断恢复为1</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li>如果不使用WHERE语句，将删除表中所有数据</li>
+<li>DELETE不能删除某一列的值，（可使用UPDATE）</li>
+<li>使用DELETE语句仅仅删除记录，不删除表本身，如果要删除表，使用DROP TABLE语句</li>
+<li>删除表中所有数据也可以使用truncate table_name语句</li>
+</ul>
+<h3 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h3><h4 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT [DISTINCT] *|&#123;colum1, colum2, colum3...&#125; FROM table_name;</div></pre></td></tr></table></figure>
+<ul>
+<li>SELECT指定查询哪些列的数据</li>
+<li>column指定列名</li>
+<li><ul>
+<li>号表示查询所有列</li>
+</ul>
+</li>
+<li>FROM 指定查询哪种表</li>
+<li>DISTINCT 可选，指查询结果时，是否去除重复数据</li>
+</ul>
+<h4 id="查询表中所有数据："><a href="#查询表中所有数据：" class="headerlink" title="查询表中所有数据："></a>查询表中所有数据：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM 表名;</div></pre></td></tr></table></figure>
+<h4 id="按照指定列查询表中所有数据："><a href="#按照指定列查询表中所有数据：" class="headerlink" title="按照指定列查询表中所有数据："></a>按照指定列查询表中所有数据：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT 列名,列名[,列名] FROM 表名;</div></pre></td></tr></table></figure>
+<h4 id="根据条件查询数据："><a href="#根据条件查询数据：" class="headerlink" title="根据条件查询数据："></a>根据条件查询数据：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM 表名</div><div class="line">WHERE 条件;</div></pre></td></tr></table></figure>
+<p>在WHERE字句中经常使用的运算符</p>
+<table>
+<thead>
+<tr>
+<th>比较运算符</th>
+<th>&gt; &lt; &lt;= &gt;= = &lt;&gt;</th>
+<th>大于、小于、大于(小于等于)、不等于</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>比较运算符</td>
+<td>BETWEEN…AND</td>
+<td>显示在某一区间的值</td>
+</tr>
+<tr>
+<td>比较运算符</td>
+<td>IN(set)</td>
+<td>显示在in列表中的值，例：in(100,200)</td>
+</tr>
+<tr>
+<td>比较运算符</td>
+<td>LIKE</td>
+<td>‘张pattern’ 模糊查询%</td>
+</tr>
+<tr>
+<td>比较运算符</td>
+<td>IS NULL</td>
+<td>判断是否为空</td>
+</tr>
+<tr>
+<td>逻辑运算符</td>
+<td>AND</td>
+<td>多个条件同时成立</td>
+</tr>
+<tr>
+<td>逻辑运算符</td>
+<td>OR</td>
+<td>多个条件任一成立</td>
+</tr>
+<tr>
+<td>逻辑运算符</td>
+<td>NOT</td>
+<td>不成立，例：WHERE NOT(salary&gt;100)</td>
+</tr>
+</tbody>
+</table>
+<p>LIKE语句中，<code>%</code> 代表零个或多个任意字符，<code>_</code>代表一个字符，例如：<code>name LIKE &#39;_a%&#39;</code>;</p>
+<h4 id="多表查询："><a href="#多表查询：" class="headerlink" title="多表查询："></a>多表查询：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">-- 多表查询</div><div class="line">-- 找到表 articles 中 user_id 等于 users 表中 id 的</div><div class="line">-- 多表查询可以起别名</div><div class="line">SELECT a.id as article_id, a.title, a.time</div><div class="line">FROM articles as a</div><div class="line">INSERT JOIN users as u</div><div class="line">ON a.user_id=u.id</div></pre></td></tr></table></figure>
+<h4 id="查询总记录数："><a href="#查询总记录数：" class="headerlink" title="查询总记录数："></a>查询总记录数：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-- 查询表中的总记录数据</div><div class="line">SELECT COUNT(id) as count FROM articles;</div></pre></td></tr></table></figure>
+<h4 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h4><blockquote>
+<p>在实际开发中，经常需要对某些数据进行统计，例如统计某个字段的最大值，最小值，平均值等，为此，MySQL提供了一些函数来实现这些功能。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>函数名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COUNT()</td>
+<td>返回某行的列数</td>
+</tr>
+<tr>
+<td>SUM()</td>
+<td>返回某列值的和</td>
+</tr>
+<tr>
+<td>AVG()</td>
+<td>返回某列的平均值</td>
+</tr>
+<tr>
+<td>MAX()</td>
+<td>返回某列值的最大值</td>
+</tr>
+<tr>
+<td>MIN()</td>
+<td>返回某列的最小值</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>COUNT（列名）返回某一列，行的总数</li>
+<li>COUNT（列名）返回某一列，行的总数</li>
+<li>SUM()函数返回满足WHERE条件的行的和</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT SUM(列名) &#123;, SUM(列名)...&#125; FROM table_name</div><div class="line">  [WHERE where_definition]</div></pre></td></tr></table></figure>
+<p>注意：SUM仅对数值起作用，否则报错; 对多列求和，“,”不能少。</p>
+<ul>
+<li>MAX()/MIN()函数返回满足WHERE条件的一列的最大/最小值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT MAX(列名) FROM table_name</div><div class="line">  [WHERE where_definition];</div></pre></td></tr></table></figure>
+<h4 id="对查询结果排序"><a href="#对查询结果排序" class="headerlink" title="对查询结果排序"></a>对查询结果排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT colum1, colum2, colum3..</div><div class="line">    FROM table_name</div><div class="line">    ORDER BY colum ASC|DESC;</div></pre></td></tr></table></figure>
+<p>ORDER BY 指定排序的列，排序的列表即可以是表中的列名，也可以是SELECT语句后指定的列名.</p>
+<ul>
+<li>ASC 升序，DESC 降序</li>
+<li>ORDER BY 字句应该位于SELECT 语句的结尾</li>
+</ul>
+<h4 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT colum1, colum2, ...</div><div class="line">  FROM 表名</div><div class="line">  LIMIT [OFFSET, ] 记录数</div></pre></td></tr></table></figure>
+<p>LIMIT表示从哪一条记录开始往后【不包含该记录】，以及一共查询多少记录</p>
+<p>OFFSET表示偏移量:</p>
+<ul>
+<li>如果为0则表示从第一条记录开始</li>
+<li>如果为5则表示从第6条记录开始</li>
+</ul>
+<p>使用场景：分页查询</p>
+<h4 id="分页查询一个例子"><a href="#分页查询一个例子" class="headerlink" title="分页查询一个例子"></a>分页查询一个例子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-- 仅仅取了前 10 条</div><div class="line">SELECET * FROM articles LIMIT 10</div><div class="line">-- 跳过一条取一条</div><div class="line">SELECET * FROM articles LIMIT 1, 1</div></pre></td></tr></table></figure>
+<h3 id="为表和字段区别名"><a href="#为表和字段区别名" class="headerlink" title="为表和字段区别名"></a>为表和字段区别名</h3><h4 id="为表取别名"><a href="#为表取别名" class="headerlink" title="为表取别名"></a>为表取别名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT 表别名.id,表别名.name... FROM 表名 AS 表别名</div><div class="line">  WHERE 表别名.id = 2..</div></pre></td></tr></table></figure>
+<h4 id="为字段取别名"><a href="#为字段取别名" class="headerlink" title="为字段取别名"></a>为字段取别名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT 字段名 [AS] 别名 [,字段名 [AS] 别名,...] FROM 表名;</div></pre></td></tr></table></figure>
+<h3 id="多表操作"><a href="#多表操作" class="headerlink" title="多表操作"></a>多表操作</h3><p>实际开发中业务逻辑比较复杂，可能有几十到几百张表不等，所以我们就需要对多张表来进行查询操作，对两张以上的表进行操作，就是多表操作。</p>
+<h4 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h4><p>为了保证数据的完整性，将两张表之间的数据建立关系，因此就需要在成绩表中添加外键约束。</p>
+<ul>
+<li>外键是指引用另一个表中的一列或多列，被引用的列应该具有主键约束或唯一约束。</li>
+<li>外键用于建立和加强两个表数据之间的链接。</li>
+</ul>
+<h4 id="为表添加外键约束"><a href="#为表添加外键约束" class="headerlink" title="为表添加外键约束"></a>为表添加外键约束</h4><p>创建表的时候添加外键:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE department(</div><div class="line">    id INT PRIMARY KEY auto_increment,</div><div class="line">    name VARCHAR(20) NOT NULL</div><div class="line">);</div><div class="line">CREATE TABLE employee(</div><div class="line">    id INT PRIMARY KEY auto_increment,</div><div class="line">    name VARCHAR(20) NOT NULL,</div><div class="line">    dept_id INT,</div><div class="line">    FOREIGN KEY (id) REFERENCES department(id)</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>表已经存在，通过修改表的语句增加外键:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE 表名 ADD CONSTRAINT 外键名 FOREIGN KEY(外键字段名) REFERENCES 外表表名(主键字段名);</div></pre></td></tr></table></figure>
+<h4 id="删除外键约束"><a href="#删除外键约束" class="headerlink" title="删除外键约束"></a>删除外键约束</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE 表名 DROP FOREIGN KEY 外键名;</div></pre></td></tr></table></figure>
+<h3 id="操作关联表"><a href="#操作关联表" class="headerlink" title="操作关联表"></a>操作关联表</h3><blockquote>
+<p>关联关系:</p>
+</blockquote>
+<ul>
+<li>多对一</li>
+<li>多对多</li>
+<li>一对一</li>
+</ul>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2016/10/19/21分钟MySQL基础入门/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/10/14/hello-world/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="thychan's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">18</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">5</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Chan's Blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+
+    <script>lsloader.load("js/lazyload.min.js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==")</script>
+    <script>lsloader.load("js/js.min.js","/js/js.min.js?oAl/+lvaqTFV31JXTmbrNA==")</script>
+
+
+
+    <script>lsloader.load("js/nprogress.js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==")</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Window Load-->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Bing Background -->
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

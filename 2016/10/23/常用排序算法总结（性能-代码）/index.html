@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.4.0 -->
+    <script>window.materialVersion = "1.4.0"</script>
+
+    <!-- Title -->
+    
+    <title>
+        
+            常用排序算法总结（性能+代码） | 
+        
+        Chan&#39;s Blog
+    </title>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="thychan">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content="null,数据结构,算法">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Chan&#39;s Blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="常用排序算法总结（性能+代码） | Chan&#39;s Blog">
+    <meta property="og:image" content="/img/favicon.png" />
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="数据结构"> <meta property="og:article:tag" content="算法"> 
+
+    
+        <meta property="article:published_time" content="10月 23, 2016" />
+        <meta property="article:modified_time" content="11月 26, 2016" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="常用排序算法总结（性能+代码） | Chan&#39;s Blog">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="/img/favicon.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://yoursite.com" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yoursite.com/2016/10/23/常用排序算法总结（性能-代码）/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Chan&#39;s Blog",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "thychan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "headline": "常用排序算法总结（性能+代码）",
+    "url": "http://yoursite.com/2016/10/23/常用排序算法总结（性能-代码）/index.html",
+    "datePublished": "10月 23, 2016",
+    "dateModified": "11月 26, 2016",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://yoursite.com"
+    }
+}
+</script>
+
+
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+materialVersion+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(data&&data.indexOf(versionString)===-1){lsloader.removeLS(key)}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload){cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}code=code.split(versionString)[1];if(/\.js?.+$/.test(versionNumber)){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload)}};lsloader.requestResource=function(name,path,cssonload){var that=this;if(/\.js?.+$/.test(path)){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else if(/\.css?.+$/.test(path)){this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import CSS & jQuery -->
+    
+        <style id="css/material.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/material.min.css","/css/material.min.css?fJTiM/K1J3dWIruo3pxtAw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        <style id="css/style.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/style.min.css","/css/style.min.css?oCSEO3ST+aEypEwttTDI9g==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        
+        
+            <style>
+    
+    .footer-sns-facebook {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHptNjU3LjYgODcuOGw0LjggMy44djU1LjJjMCA1NC42IDAgNTUuMi00LjYgNTkuNi00LjQgNC40LTYgNC42LTUwLjIgNS42bC00NS42IDEtNy4yIDUuNmMtMTAuNCA4LTE2LjggMTcuMi0xOS4yIDI3LjQtMSA1LTEuOCAyNC44LTEuOCA0NCAuMiAzOCAxLjYgNDQuNiAxMC44IDQ4IDIuOCAxLjIgMjguNCAyIDU2LjggMiA0Ny44IDAgNTIgLjIgNTYuMiAzLjhsNC44IDMuOHY1NS4yYzAgNTQuNiAwIDU1LjItNC42IDU5LjYtNC40IDQuNi01LjQgNC42LTU3IDUuMi0yOC44LjItNTQuNC44LTU2LjggMS40LTIuNC42LTUuNiAzLTYuOCA1LjQtMS44IDMuMi0yLjQgNDEuNC0yLjYgMTQzLjJsLS4yIDEzOC44LTUuNiA0LjgtNS42IDQuOEg2MDljLTUyLjQgMC01Mi44IDAtNTguMi00LjZsLTUuNC00LjYtLjItMTQwLjYtLjItMTQwLjYtNC44LTMuOGMtNC4yLTMuNC04LTMuOC0zNS42LTMuOC0zMi44IDAtNDEtMS44LTQzLjYtMTAtLjYtMi4yLTEuMi0yNS40LTEuMi01MS40IDAtNjAuOC0uMi01NyAzLjQtNjEuNiAyLjgtMy42IDYtNCAzNy44LTUgMzMtMSAzNS4yLTEuMiAzOS40LTUuNiA0LjYtNC40IDQuNi01LjIgNS44LTcxIDEuMi03My40LjItNjcuMiAxNi42LTk5LjQgOC0xNS44IDEyLjgtMjIgMjgtMzcgMTUuMi0xNS4yIDIxLjQtMTkuNiAzOC4yLTI4IDExLTUuNCAyNC0xMSAyOS0xMi4yIDYuMi0xLjggMjguNi0yLjYgNzEuMi0yLjYgNTguNi0uMiA2Mi42IDAgNjcgMy42eiIvPjwvc3ZnPg==);
+    }
+    
+    
+    .footer-sns-twitter {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHptNTMyLjggMjA1YzEwIDQgMjMgMTAuOCAyOC44IDE1LjIgMTIuNiA5LjIgMTYuNiAxMC42IDI5LjQgOS40IDYuNi0uNiAxMy0zLjIgMjAuNC04LjIgMTEuMi03LjYgMTkuNC05LjIgMjMuNi01IDMuNiAzLjYgMi44IDktMi44IDE4LjYtNy4yIDEyLjQtNiAxOC44IDQuMiAyNC4yIDQuNCAyLjIgOC4yIDUuNiA4LjYgNy40IDEgNC44LTEyLjYgMjQuMi0yMiAzMS44LTExLjggOS4yLTE3LjIgMjIuNi0xOS42IDQ3LjgtNC44IDUwLjQtNy44IDY2LjYtMTYuNCA4NS40LTMgNy03IDE3LjgtOC44IDI0LTEuOCA2LjQtNSAxNC42LTcuNCAxOC40LTIuMiAzLjgtNy40IDEzLTExLjQgMjAuNC0xNy4yIDMwLjgtNDMuNCA2MS40LTcxLjQgODMuOC0yNS42IDIwLjQtNDYgMzMuMi02NC4yIDQwLjItOC40IDMuMi0xOCA3LjYtMjEuNCA5LjYtNy40IDQuNi0yMi40IDguNi01Ny4yIDE1LTYyLjIgMTEuNi03OS4yIDExLjQtMTM1LjYtMS0zMi40LTctMzguNi05LTUyLTE2LjgtMjEuNC0xMi42LTI0LjItMTQuOC0yNC4yLTE5LjQgMC02LjIgMTAuMi05LjIgMzUtMTAuNCAyMi40LTEgMjguNi0yLjYgNTctMTQuMiAyMy44LTkuOCAyOS40LTEyLjggMzAuNC0xNi44IDIuMi04LjItMy0xMy4yLTI2LjgtMjUuNC0yNS44LTEzLjItMzIuMi0xOC40LTQzLjgtMzUuOC05LTEzLjYtMTAtMjEuMi0zLjYtMzMuNiA1LjQtMTAuOCAzLjYtMTUtMTEuOC0yNS40LTktNi0xNC0xMS42LTIwLjgtMjIuNi0yMy40LTM3LjgtMjUtNTAuOC03LjItNTkuOCA0LjgtMi40IDkuNC01LjQgMTAuMi02LjYgMi44LTQuMi0uNC0xNS42LTguNC0yOS0xMS42LTE5LjYtMTMuMi0yNS44LTEzLjItNTUuMiAwLTI4LjggMi42LTM3LjggMTItNDAuMiA5LTIuMiAxNC44IDEgMzUuNiAyMC4yIDI0LjggMjIuOCA0My42IDM2LjYgNjIuOCA0NS44IDggMy44IDE3LjggOS4yIDIyIDEyIDQuMiAyLjggMTQuOCA3IDIzLjQgOS4yIDguNiAyLjIgMjQuMiA2LjggMzQuOCAxMC4yIDEzLjQgNC40IDIzLjYgNi40IDMzIDYuNiAxMi44LjIgMTQuMi0uMiAxOC42LTUuNCA0LTQuOCA0LjgtNy44IDQuOC0xOS4yIDAtMTQuNCA1LjYtMzkuNiAxMS4yLTUwLjYgNC4yLTguNCAyOS4yLTM0LjIgMzkuOC00MS40IDcuOC01LjQgMzUuNi0xNiA1Mi0yMCAxNC4yLTMuNiAzMi42LTEuMiA1Mi40IDYuOHoiLz48L3N2Zz4=);
+    }
+    
+    
+    .footer-sns-gplus {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHpNNDMwIDI5NS40YzQwLjYgMTUuNCA1Ni42IDIzLjggNzIuNiAzOC40IDYuOCA2LjIgNy4yIDE1LjIgMSAyMy40LTYuMiA4LTMzLjYgMzMuOC0zOSAzNi42LTUuNiAyLjgtMTcuNiAyLjgtMjMuMi0uMi0yLjQtMS4yLTguMi01LjItMTMtOC44LTExLjItOC42LTI0LjYtMTEuMi01NS4yLTExLjItMjcuNCAwLTQwLjYgMi42LTUyLjIgMTAuNC00LjQgMi44LTEyLjIgNy42LTE3LjIgMTAuNi0yMyAxMy4yLTUxLjQgNTUtNTUuOCA4Mi40LTIuNiAxNS42LTIuNCAzNC44LjIgNTEgMi44IDE3LjQgMTkuOCA0OC44IDM1LjIgNjUuMiAxNiAxNi42IDQ1IDMzLjYgNjIuOCAzNi42IDI2LjggNC40IDY1LjggMS42IDc5LjQtNS44IDIwLjYtMTEuNCAzMS0xOSA0MS0zMC40IDE4LjgtMjEuNiAyMy40LTM0LjIgMTUuNi00My44LTMuOC00LjgtNC40LTQuOC01MS01LjgtNjAuOC0xLjItNTYuMiAyLjItNTYuMi00My4yIDAtMzIuNC4yLTMzLjIgNC44LTM3IDQuNC0zLjYgOS0zLjggOTItMy44IDc5IDAgODcuOC40IDk0LjIgMy42IDExLjIgNS42IDEzIDExLjQgMTIuOCA0My40IDAgMjUuNC0uOCAzMC44LTcuNiA1OC00IDE2LjYtOS44IDM0LTEyLjYgMzktMi44IDUtOC4yIDE0LjItMTEuNiAyMC42LTguNCAxNS40LTI3LjIgMzYuOC00MC44IDQ2LjYtNS44IDQuNC0xMy44IDEwLjItMTcuNiAxMy4yLTMuOCAzLTExIDctMTYuMiA4LjgtNS4yIDEuOC0xNi4yIDYuNC0yNC40IDEwLTIyLjQgOS42LTM0LjggMTEuNi03MyAxMS42LTM3LjYuMi00Ny0xLjQtNzEtMTItOC4yLTMuNi0xNy42LTcuMi0yMC44LTgtMTUuOC0zLjgtNjctNDUuMi03Ny44LTYyLjgtMi4yLTMuOC03LjYtMTEuNi0xMS44LTE3LjItNC4yLTUuNC05LTE0LTEwLjYtMTktMS44LTQuOC02LjItMTYtMTAtMjQuOC0zLjYtOC44LTcuOC0yMi4yLTkuMi0yOS42LTMuMi0xOC44LTEuNC03OS40IDIuOC05MS40IDEzLjgtNDAuNiAzNS42LTc4IDU4LjgtMTAwLjIgMTQtMTMuNiA0Ny4yLTM2LjQgNTgtMzkuOCA0LjItMS40IDEzLjQtNS4yIDIwLjYtOC40IDIyLTEwIDMyLjgtMTEuNiA3Ni0xMSAzMy44LjYgNDAuNCAxLjIgNTAgNC44em0zNDAuOCA4MC44YzggMy42IDkuNiAxMS4yIDkuMiAzOS4yLS42IDM0LjQtLjYgMzQgNSAzOS42IDQuOCA1IDUuNCA1IDM3LjYgNSA0My40IDAgNDQuNC44IDQzLjIgMzYuMi0uOCAxNy0xLjIgMTguNC02LjQgMjMtNS40IDQuNi02LjYgNC44LTM3LjYgNC44LTMxLjIgMC0zMiAuMi0zNi44IDUtNS42IDUuNC01LjYgNC40LTUgNDEuMi40IDI2LjQuMiAyNy40LTQuNiAzMy00LjggNS42LTYgNS44LTI0LjQgNi40LTIwLjguOC0yOS42LTEuNC0zMy40LTguNC0xLjQtMi42LTItMTUuNi0xLjgtMzUuNi40LTMxLjIuNC0zMS42LTQuNi0zNi42cy01LjYtNS0zNi01Yy0xOC44IDAtMzMtLjgtMzYtMi4yLTcuNi0zLjYtOS42LTExLjItOC44LTMzLjguOC0yOC4yLjQtMjggNDEtMjggNDUuNCAwIDQ1LjQgMCA0NC42LTQyLjYtLjYtMzMtLjYtMzMgNS0zOC40IDQuNC00LjYgNi4yLTUgMjQuOC01IDExIDAgMjIuMiAxIDI1IDIuMnoiLz48L3N2Zz4=);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</style>
+
+        
+        <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+
+
+        <script>lsloader.load("js/jquery.min.js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==")</script>
+    
+    
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Analytics -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-插入排序"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. 插入排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-1-性能分析"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.1 性能分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-核心代码"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1.2 核心代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-选择排序"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.选择排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-性能分析"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1 性能分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2核心代码"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.2核心代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-归并排序"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. 归并排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-性能分析"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">3.1 性能分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-核心代码"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">3.2 核心代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-延伸"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">3.3 延伸</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4冒泡排序"><span class="post-toc-number">4.</span> <span class="post-toc-text">4冒泡排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-1-性能分析"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">4.1 性能分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-2-核心代码"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">4.2 核心代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-3-延伸"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">4.3 延伸</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-堆排序"><span class="post-toc-number">5.</span> <span class="post-toc-text">5. 堆排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-1-性能分析"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">5.1 性能分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-2-核心代码"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">5.2 核心代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-3-延伸"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">5.3 延伸</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-快速排序"><span class="post-toc-number">6.</span> <span class="post-toc-text">6 快速排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-1-性能分析"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">6.1 性能分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-2-核心代码"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">6.2 核心代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-计数排序"><span class="post-toc-number">7.</span> <span class="post-toc-text">7. 计数排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-1-性能分析"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">7.1 性能分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-2-核心代码"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">7.2 核心代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-3-扩展"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">7.3 扩展</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-基数排序"><span class="post-toc-number">8.</span> <span class="post-toc-text">8 基数排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-1-性能分析"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">8.1 性能分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-2-核心代码"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">8.2 核心代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-3扩展"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">8.3扩展</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-桶排序"><span class="post-toc-number">9.</span> <span class="post-toc-text">9. 桶排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-1-性能分析"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">9.1 性能分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-2-核心代码"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">9.2 核心代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-3扩展"><span class="post-toc-number">9.3.</span> <span class="post-toc-text">9.3扩展</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#"><span class="post-toc-number">10.</span> <span class="post-toc-text"></span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#in-summary"><span class="post-toc-number">11.</span> <span class="post-toc-text">in summary</span></a></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+    
+
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                常用排序算法总结（性能+代码）
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>thychan</strong>
+        <span>10月 23, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/数据结构/">数据结构</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/算法/">算法</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=常用排序算法总结（性能+代码）&url=http://yoursite.com/2016/10/23/常用排序算法总结（性能-代码）/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=常用排序算法总结（性能+代码）&url=http://yoursite.com/2016/10/23/常用排序算法总结（性能-代码）/index.html&via=thychan" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/10/23/常用排序算法总结（性能-代码）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2016/10/23/常用排序算法总结（性能-代码）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="1-插入排序"><a href="#1-插入排序" class="headerlink" title="1. 插入排序"></a>1. 插入排序</h2><h3 id="1-1-性能分析"><a href="#1-1-性能分析" class="headerlink" title="1.1 性能分析"></a>1.1 性能分析</h3><p>时间复杂度<code>O(n^2)</code>, 空间复杂度<code>O(1)</code><br>排序时间与输入有关：输入的元素个数；元素已排序的程度。<br>最佳情况，输入数组是已经排好序的数组，运行时间是<code>n</code>的线性函数； 最坏情况，输入数组是逆序，运行时间是<code>n</code>的二次函数。</p>
+<h3 id="1-2-核心代码"><a href="#1-2-核心代码" class="headerlink" title="1.2 核心代码"></a>1.2 核心代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">()</span></span>&#123;</div><div class="line">      <span class="keyword">int</span> temp;</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;arraytoSort.length; i++)&#123;</div><div class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> j = i-<span class="number">1</span>; j&gt;=<span class="number">0</span>; j--)&#123;</div><div class="line">              <span class="keyword">if</span>( arraytoSort[j+<span class="number">1</span>] &lt; arraytoSort[j] )&#123;</div><div class="line">                  temp = arraytoSort[j+<span class="number">1</span>];</div><div class="line">                  arraytoSort[j+<span class="number">1</span>] = arraytoSort[j];</div><div class="line">                  arraytoSort[j] = temp;</div><div class="line">              &#125;   </div><div class="line">          &#125;   </div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h2 id="2-选择排序"><a href="#2-选择排序" class="headerlink" title="2.选择排序"></a>2.选择排序</h2><h3 id="2-1-性能分析"><a href="#2-1-性能分析" class="headerlink" title="2.1 性能分析"></a>2.1 性能分析</h3><p>时间复杂度<code>O(n^2)</code>, 空间复杂度<code>O(1)</code><br>排序时间与输入无关，最佳情况，最坏情况都是如此, 不稳定 如 <code>{5,5,2}</code>。</p>
+<h3 id="2-2核心代码"><a href="#2-2核心代码" class="headerlink" title="2.2核心代码"></a>2.2核心代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">()</span></span>&#123; </div><div class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;arraytoSort.length-<span class="number">1</span>; i++)&#123;</div><div class="line">           <span class="keyword">int</span> min = i;</div><div class="line">           <span class="keyword">int</span> temp;</div><div class="line">           <span class="comment">//find min</span></div><div class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>; j&lt;arraytoSort.length ;j++)&#123;</div><div class="line">               <span class="keyword">if</span>(arraytoSort[j] &lt;arraytoSort[min])&#123;</div><div class="line">                   min = j;</div><div class="line">                   &#125;</div><div class="line">           &#125;</div><div class="line">           <span class="comment">//swap the min with the ith element</span></div><div class="line">           temp = arraytoSort[min];</div><div class="line">           arraytoSort[min] = arraytoSort[i];</div><div class="line">           arraytoSort[i] = temp;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h2 id="3-归并排序"><a href="#3-归并排序" class="headerlink" title="3. 归并排序"></a>3. 归并排序</h2><h3 id="3-1-性能分析"><a href="#3-1-性能分析" class="headerlink" title="3.1 性能分析"></a>3.1 性能分析</h3><p>时间复杂度 <code>O(nlogn)</code>, 空间复杂度<code>O(n) +O(logn)</code><br>排序时间与输入无关，最佳情况，最坏情况都是如此, 稳定。</p>
+<p>原理：</p>
+<p>可以将数组分成二组。依次类推，当分出来的小组只有一个数据时，可以认为这个小组组内已经达到了有序，然后再合并相邻的二个小组就可以了。这样通过先递归的分解数列，再合并数列就完成了归并排序</p>
+<p>归并排序的时间复杂度，合并耗费<code>O(n)</code>时间，而由完全二叉树的深度可知，整个归并排序需要进行<code>log_2n</code>次，因此，总的时间复杂度为 <code>O(nlogn)</code>，而且这是归并排序算法中最好、最坏、平均的时间性能。</p>
+<p>由于归并排序在归并过程中需要与原始记录序列同样数量的存储空间存放归并结果 以及 递归时深度为 <code>log_2n</code> 的栈空间，因此空间复杂度为<code>O(n+logn)</code>。</p>
+<p>另外，对代码进行仔细研究，发现 Merge 函数中有`if (L[i] 语句，这就说明它需要两两比较，不存在跳跃，因此归并排序是一种稳定的排序算法。</p>
+<p>也就是说，归并排序是一种比较占用内存，但却效率高且稳定的算法。</p>
+<h3 id="3-2-核心代码"><a href="#3-2-核心代码" class="headerlink" title="3.2 核心代码"></a>3.2 核心代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">merge</span><span class="params">( <span class="keyword">int</span> p, <span class="keyword">int</span> q, <span class="keyword">int</span> r )</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span>[] right = assignlist(p,q); </div><div class="line">        <span class="comment">//赋值左半部分数组（赋值就是用for循环，还有一个哨兵：最后一个元素设置为maxvalue）</span></div><div class="line">        <span class="keyword">int</span>[] left = assignlist(q+<span class="number">1</span>,r); <span class="comment">//赋值有半部分数组</span></div><div class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k = p; k&lt;=r; k++)&#123;</div><div class="line">            <span class="keyword">if</span>(right[i] &lt;= left[j])&#123;    </div><div class="line">                arraytoSort[k] = right[i];</div><div class="line">                i++;    </div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(right[i] &gt; left[j])&#123;</div><div class="line">                arraytoSort[k] = left[j];</div><div class="line">                j++;</div><div class="line">                count = count + (q - p + <span class="number">1</span>) -i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> count;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">MergeSort</span><span class="params">(<span class="keyword">int</span> arry[],<span class="keyword">int</span> start,<span class="keyword">int</span> end)</span></span></div><div class="line"> &#123;</div><div class="line">    <span class="keyword">if</span>(start&lt;end)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> mid=(start+end)/<span class="number">2</span>;<span class="comment">//数组重点</span></div><div class="line">        MergeSort(arry,start,mid);<span class="comment">//递归调用，排序前半段arry[start...mid]</span></div><div class="line">        MergeSort(arry,mid+<span class="number">1</span>,end);<span class="comment">//递归调用，排序后半段arry[mid+1,end]</span></div><div class="line">        MergeArry(arry,start,mid,end);<span class="comment">//归并上述两段有序数组。</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-3-延伸"><a href="#3-3-延伸" class="headerlink" title="3.3 延伸"></a>3.3 延伸</h3><p>求逆序对</p>
+<h2 id="4冒泡排序"><a href="#4冒泡排序" class="headerlink" title="4冒泡排序"></a>4冒泡排序</h2><h3 id="4-1-性能分析"><a href="#4-1-性能分析" class="headerlink" title="4.1 性能分析"></a>4.1 性能分析</h3><p>时间复杂度<code>O(n^2)</code>, 空间复杂度<code>O(1)</code>， 稳定，因为存在两两比较，不存在跳跃。<br>排序时间与输入无关，最好，最差，平均都是<code>O(n^2)</code></p>
+<h3 id="4-2-核心代码"><a href="#4-2-核心代码" class="headerlink" title="4.2 核心代码"></a>4.2 核心代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arraytoSort.length-<span class="number">1</span>;i++)&#123;    </div><div class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> j=arraytoSort.length-<span class="number">1</span>;j&gt;=i+<span class="number">1</span>;j--)&#123;</div><div class="line">           <span class="keyword">int</span> temp;</div><div class="line">           <span class="keyword">if</span>(arraytoSort[j]&lt;arraytoSort[j-<span class="number">1</span>])</div><div class="line">           &#123;</div><div class="line">               temp = arraytoSort[j];</div><div class="line">               arraytoSort[j] = arraytoSort[j-<span class="number">1</span>];</div><div class="line">               arraytoSort[j-<span class="number">1</span>] = temp;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h3 id="4-3-延伸"><a href="#4-3-延伸" class="headerlink" title="4.3 延伸"></a>4.3 延伸</h3><p>冒泡排序缺陷：</p>
+<ol>
+<li>在排序过程中，执行完当前的第i趟排序后，可能数据已全部排序完备，但是程序无法判断是否完成排序，会继续执行剩下的<code>(n-1-i)</code>趟排序。解决方法： 设置一个<code>flag</code>位, 如果一趟无元素交换，则 <code>flag = 0</code>; 以后再也不进入第二层循环。</li>
+<li>当排序的数据比较多时排序的时间会明显延长，因为会比较 <code>n*(n-1)/2</code>次。</li>
+</ol>
+<h2 id="5-堆排序"><a href="#5-堆排序" class="headerlink" title="5. 堆排序"></a>5. 堆排序</h2><h3 id="5-1-性能分析"><a href="#5-1-性能分析" class="headerlink" title="5.1 性能分析"></a>5.1 性能分析</h3><p>时间复杂度 <code>O(nlogn)</code>, 空间复杂度<code>O(1)</code>. 从这一点就可以看出，堆排序在时间上类似归并，但是它又是一种原地排序，时间复杂度小于归并的<code>O(n+logn)</code><br>排序时间与输入无关，最好，最差，平均都是<code>O(nlogn)</code>. 不稳定</p>
+<p>堆排序借助了堆这个数据结构，堆类似二叉树，又具有堆积的性质（子节点的关键值总小于（大于）父节点） 堆排序包括两个主要操作:</p>
+<ol>
+<li>保持堆的性质heapify(A,i)<br>时间复杂度<code>O(logn)</code></li>
+<li>建堆 buildmaxheap(A)<br>时间复杂度<code>O(n)</code>线性时间建堆</li>
+</ol>
+<p><strong>对于大数据的处理</strong>： 如果对100亿条数据选择Topk数据，选择快速排序好还是堆排序好？ 答案是只能用堆排序。 堆排序只需要维护一个k大小的空间，即在内存开辟k大小的空间。而快速排序需要开辟能存储100亿条数据的空间，which is impossible.</p>
+<h3 id="5-2-核心代码"><a href="#5-2-核心代码" class="headerlink" title="5.2 核心代码"></a>5.2 核心代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapSort</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildheap</span><span class="params">(<span class="keyword">int</span> array[])</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> length = array.length;</div><div class="line">        <span class="keyword">int</span> heapsize = length;</div><div class="line">        <span class="keyword">int</span> nonleaf = length / <span class="number">2</span> - <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = nonleaf; i&gt;=<span class="number">0</span>;i--)&#123;</div><div class="line">            heapify(array,i,heapsize);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">heapify</span><span class="params">(<span class="keyword">int</span> array[], <span class="keyword">int</span> i,<span class="keyword">int</span> heapsize)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> smallest = i;</div><div class="line">        <span class="keyword">int</span> left = <span class="number">2</span>*i+<span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> right = <span class="number">2</span>*i+<span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span>(left&lt;heapsize)&#123;</div><div class="line">            <span class="keyword">if</span>(array[i]&gt;array[left])&#123;</div><div class="line">                smallest = left;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> smallest = i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(right&lt;heapsize)&#123;</div><div class="line">            <span class="keyword">if</span>(array[smallest]&gt;array[right])&#123;</div><div class="line">                smallest = right;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(smallest != i)&#123;</div><div class="line">            <span class="keyword">int</span> temp;</div><div class="line">            temp = array[i];</div><div class="line">            array[i] = array[smallest];</div><div class="line">            array[smallest] = temp;</div><div class="line">            heapify(array,smallest,heapsize);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">heapsort</span><span class="params">(<span class="keyword">int</span> array[])</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> heapsize = array.length;</div><div class="line">        buildheap(array);</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length-<span class="number">1</span>;i++)&#123;</div><div class="line">            <span class="comment">// swap the first and the last</span></div><div class="line">            <span class="keyword">int</span> temp;</div><div class="line">            temp = array[<span class="number">0</span>];</div><div class="line">            array[<span class="number">0</span>] = array[heapsize-<span class="number">1</span>];</div><div class="line">            array[heapsize-<span class="number">1</span>] = temp;</div><div class="line">            <span class="comment">// heapify the array</span></div><div class="line">            heapsize = heapsize - <span class="number">1</span>;</div><div class="line">            heapify(array,<span class="number">0</span>,heapsize);</div><div class="line"></div><div class="line">        &#125;   </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="5-3-延伸"><a href="#5-3-延伸" class="headerlink" title="5.3 延伸"></a>5.3 延伸</h3><p>堆这种数据结构的很好的应用是 优先级队列，如作业调度。</p>
+<h2 id="6-快速排序"><a href="#6-快速排序" class="headerlink" title="6 快速排序"></a>6 快速排序</h2><h3 id="6-1-性能分析"><a href="#6-1-性能分析" class="headerlink" title="6.1 性能分析"></a>6.1 性能分析</h3><p>时间复杂度 <code>O(nlogn)</code> 空间复杂度<code>O（logn）</code> 不稳定 【两个时间复杂度<code>O(nlogn)</code> 的排序算法都不稳定】</p>
+<p>时间复杂度：<br>最坏<code>O（n^2）</code> 当<strong>划分不均匀</strong>时候 逆序and排好序都是最坏情况<br>最好<code>O（n）</code> 当划分均匀<br><code>partition</code>的时间复杂度: <code>O（n）</code>一共需要<code>logn</code>次<code>partition</code></p>
+<p>空间复杂度：递归造成的栈空间的使用，最好情况，递归树的深度<code>logn</code> 空间复杂的<code>logn</code>，最坏情况，需要进行<code>n‐1</code> 递归调用，其空间复杂度为 <code>O(n)</code>，平均情况，空间复杂度也为<code>O(log2n)</code>。<br>由于关键字的比较和交换是跳跃进行的，因此，快速排序是一种不稳定的排序方法。</p>
+<p>快速排序的每一轮就是将这一轮的基准数归位，直到所有的数都归为为止，排序结束。（类似冒泡）. partition是返回一个基准值的index, index 左边都小于该index的数，右边都大于该index的数。</p>
+<p>快速排序之所比较快，因为相比冒泡排序，每次交换是跳跃式的。每次排序的时候设置一个基准点，将小于等于基准点的数全部放到基准点的左边，将大于等于基准点的数全部放到基准点的右边。这样在每次交换的时候就不会像冒泡排序一样每次只能在相邻的数之间进行交换，交换的距离就大的多了。因此总的比较和交换次数就少了，速度自然就提高了。当然在最坏的情况下，仍可能是相邻的两个数进行了交换。因此快速排序的最差时间复杂度和冒泡排序是一样的都是 <code>O(n^2)</code>，它的平均时间复杂度为 <code>O(nlogn)</code>。其实快速排序是基于 “二分” 的思想。</p>
+<h3 id="6-2-核心代码"><a href="#6-2-核心代码" class="headerlink" title="6.2 核心代码"></a>6.2 核心代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Quicksort</span> </span>&#123;</div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> begin, <span class="keyword">int</span> end)</span></span>&#123;</div><div class="line">             <span class="keyword">int</span> i = begin;</div><div class="line">             <span class="keyword">int</span> j = end;</div><div class="line">             <span class="keyword">int</span> q;</div><div class="line">             <span class="keyword">int</span> pivot = begin;</div><div class="line">             <span class="keyword">int</span> pivotnumber = A[pivot];</div><div class="line">             <span class="keyword">while</span>(i!=j)&#123;</div><div class="line">                   <span class="keyword">int</span> temp;</div><div class="line">                   <span class="keyword">while</span>(A[j]&gt;pivotnumber &amp;&amp; i&lt;j)&#123;</div><div class="line">                        j--;</div><div class="line"></div><div class="line">                  &#125;</div><div class="line">                   <span class="keyword">while</span>(A[i]&lt;=pivotnumber &amp;&amp; i&lt;j)</div><div class="line">                  &#123;</div><div class="line">                        i++;</div><div class="line">                  &#125;</div><div class="line">                  temp = A[i];</div><div class="line">                  A[i] = A[j];</div><div class="line">                  A[j] = temp;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">             <span class="keyword">if</span>(i == j)&#123;</div><div class="line">                   <span class="keyword">int</span> temp;</div><div class="line">                  temp =A[pivot];</div><div class="line">                  A[pivot] = A[i];</div><div class="line">                  A[i] = temp;      </div><div class="line">            &#125;</div><div class="line">             <span class="keyword">return</span> i;</div><div class="line">      &#125;</div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> begin,<span class="keyword">int</span> end)</span></span>&#123;</div><div class="line">             <span class="keyword">if</span>(begin&lt;end)&#123;</div><div class="line">                   <span class="keyword">int</span> q;</div><div class="line">                  q = partition(A,begin, end);</div><div class="line">                  sort(A,begin, q-<span class="number">1</span>);</div><div class="line">                  sort(A,q+<span class="number">1</span>,end);</div><div class="line">            &#125;     </div><div class="line">      &#125;</div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">             <span class="keyword">int</span> array[] = &#123;<span class="number">8</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>&#125;;</div><div class="line">            Quicksort s = <span class="keyword">new</span> Quicksort();</div><div class="line">            s.sort(array, <span class="number">0</span>, <span class="number">7</span>);</div><div class="line">             <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</div><div class="line">                  System. out.println(<span class="string">"output "</span> + array[i]);</div><div class="line">            &#125;</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>非比较排序</strong>： ，计数排序，基数排序，桶排序，时间复杂度能够达到<code>O(n)</code>. 这些排序为了达到不比较的目的，对数据做了一些基本假设（限制）。如计数排序假设数据都<code>[0,n]</code> 范围内，且范围较小；基数排序假设数据都<code>[0,n]</code> 范围内；也是桶排序假设数据均匀独立的分布。</p>
+<p>而且，非比较排序的空间要求比较高，用空间换取时间吧。当我们的待排序数组具备一些基数排序与桶排序要求的特性，且空间上又比较富裕时，桶排序与基数排序不失为最佳选择。</p>
+<h2 id="7-计数排序"><a href="#7-计数排序" class="headerlink" title="7. 计数排序"></a>7. 计数排序</h2><p>我们希望能线性的时间复杂度排序，如果一个一个比较，显然是不实际的，书上也在决策树模型中论证了，比较排序的情况为<code>nlogn</code>的复杂度。既然不能一个一个比较，我们想到一个办法，就是如果<strong>在排序的时候就知道他的位置，那不就是扫描一遍，把他放入他应该的位置</strong>不就可以了。 要知道<strong>他的位置，我们只需要知道有多少不大于他不就可以了</strong>吗？</p>
+<h3 id="7-1-性能分析"><a href="#7-1-性能分析" class="headerlink" title="7.1 性能分析"></a>7.1 性能分析</h3><p>最好，最坏，平均的时间复杂度<code>O(n+k)</code>, 天了噜， 线性时间完成排序，且稳定。</p>
+<p>优点：不需要比较函数，利用地址偏移，对范围固定在[0,k]的整数排序的最佳选择。是排序字节串最快的排序算法。</p>
+<p>缺点：由于用来计数的数组的长度取决于待排序数组中数据的范围（等于待排序数组的最大值与最小值的差加上1），这使得计数排序对于数据范围很大的数组，需要大量时间和内存。</p>
+<h3 id="7-2-核心代码"><a href="#7-2-核心代码" class="headerlink" title="7.2 核心代码"></a>7.2 核心代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] countsort(<span class="keyword">int</span> A[])&#123;</div><div class="line">    <span class="keyword">int</span>[] B = <span class="keyword">new</span> <span class="keyword">int</span>[A.length]; <span class="comment">//to store result after sorting</span></div><div class="line">    <span class="keyword">int</span> k = max(A);</div><div class="line">    <span class="keyword">int</span> [] C = <span class="keyword">new</span> <span class="keyword">int</span>[k+<span class="number">1</span>]; <span class="comment">// to store temp</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.length;i++)&#123;    </div><div class="line">        C[A[i]] = C[A[i]] + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 小于等于A[i]的数的有多少个, 存入数组C</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;C.length;i++)&#123;</div><div class="line">        C[i] = C[i] + C[i-<span class="number">1</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//逆序输出确保稳定-相同元素相对顺序不变</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=A.length-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</div><div class="line"></div><div class="line">        B[C[A[i]]-<span class="number">1</span>] = A[i]; </div><div class="line">        C[A[i]] = C[A[i]]-<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> B;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="7-3-扩展"><a href="#7-3-扩展" class="headerlink" title="7.3 扩展"></a>7.3 扩展</h3><p>请给出一个算法，使之对给定的介于 <code>0</code>到 <code>k</code> 之间的 <code>n</code>个整数进行预处理，并能在<code>O(1)</code> 时间内回答出输入的整数中有多少个落在 <code>[a...b]</code> 区间内。你给出的算法的预处理时间为<code>O(n+k)</code>。</p>
+<p>分析：就是用计数排序中的预处理方法，获得数组 <code>C[0...k</code>]，使得<code>C[i]</code>为不大于 <code>i</code>的元素的个数。这样落入 <code>[a...b]</code> 区间内的元素个数有 <code>C[b]-C[a-1]</code>。</p>
+<p>计数排序的重要性质是他是<strong>稳定</strong>的。一般而言，仅当卫星数据随着被排序的元素一起移动时，稳定性才显得比较重要。而这也是计数排序作为基数排序的子过程的重要原因</p>
+<h2 id="8-基数排序"><a href="#8-基数排序" class="headerlink" title="8 基数排序"></a>8 基数排序</h2><p>为什么要用基数排序 ？</p>
+<p>计数排序和桶排序都只是在研究一个关键字的排序，现在我们来讨论有多个关键字的排序问题。</p>
+<p>假设我们有一些二元组<code>(a,b)</code>，要对它们进行以<code>a</code> 为首要关键字，<code>b</code>的次要关键字的排序。我们可以先把它们先按照首要关键字排序，分成首要关键字相同的若干堆。然后，在按照次要关键值分别对每一堆进行单独排序。最后再把这些堆串连到一起，使首要关键字较小的一堆排在上面。按这种方式的基数排序称为 <strong>MSD(Most Significant Dight) 排序</strong>。</p>
+<p>第二种方式是从最低有效关键字开始排序，称为 <strong>LSD(Least Significant Dight)排序</strong> 。首先对所有的数据按照次要关键字排序，然后对所有的数据按照首要关键字排序。要注意的是，使用的排序算法必须是稳定的，否则就会取消前一次排序的结果。由于不需要分堆对每堆单独排序，LSD 方法往往比 MSD 简单而开销小。下文介绍的方法全部是基于 LSD 的。</p>
+<p>通常，基数排序要用到计数排序或者桶排序。使用计数排序时，需要的是Order数组。使用桶排序时，可以用链表的方法直接求出排序后的顺序。</p>
+<p><img src="https://segmentfault.com/image?src=http://img.blog.csdn.net/20150312165029654&amp;objectId=1190000002595152&amp;token=995123acf45c3cbc9f8dd6929e68bc5e" alt="img"></p>
+<h3 id="8-1-性能分析"><a href="#8-1-性能分析" class="headerlink" title="8.1 性能分析"></a>8.1 性能分析</h3><p>时间复杂度<code>O（n）</code> (实际上是<code>O(d(n+k))</code> d是位数)</p>
+<h3 id="8-2-核心代码"><a href="#8-2-核心代码" class="headerlink" title="8.2 核心代码"></a>8.2 核心代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">RADIX-SORT(A,d)</div><div class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to d</div><div class="line">        <span class="keyword">do</span> use a stable sort to sort array A on digit i</div></pre></td></tr></table></figure>
+<h3 id="8-3扩展"><a href="#8-3扩展" class="headerlink" title="8.3扩展"></a>8.3扩展</h3><p>问题：对<code>[0,n^2-1]</code>的<code>n</code> 个整数进行线性时间排序。<br>思路 ： 把整数转换为n进制再排序，每个数有两位，每位的取值范围是<code>[0..n-1]</code>，再进行基数排序</p>
+<p><a href="http://blog.csdn.net/mishifangxiangdefeng/article/details/7685839" target="_blank" rel="external">http://blog.csdn.net/mishifangxiangdefeng/article/details/7685839</a></p>
+<p>问题： 给定一个字符串数组，其中不同的串包含的字符数可能不同，但所有串中总的字符个数为 n。说明如何在 O(n) 时间内对该数组进行排序</p>
+<h2 id="9-桶排序"><a href="#9-桶排序" class="headerlink" title="9. 桶排序"></a>9. 桶排序</h2><p>桶排序的思想近乎彻底的分治思想。</p>
+<p>桶排序假设待排序的一组数<strong>均匀独立</strong>的分布在一个范围中，并将这一范围划分成几个子范围（桶）。</p>
+<p>然后基于某种映射函数<code>f</code> ，将待排序列的关键字 <code>k</code> 映射到第<code>i</code>个桶中 (即桶数组<code>B</code> 的下标<code>i</code>) ，那么该关键字<code>k</code> 就作为 <code>B[i]</code>中的元素 (每个桶<code>B[i]</code>都是一组大小为<code>N/M</code> 的序列 )。</p>
+<p>接着将各个桶中的数据有序的合并起来 : 对每个桶<code>B[i]</code> 中的所有元素进行比较排序 (可以使用快排)。然后依次枚举输出 <code>B[0]....B[M]</code> 中的全部内容即是一个有序序列。</p>
+<p>补充： 映射函数一般是 <code>f = array[i] / k</code>; <code>k^2 = n</code>; <code>n</code>是所有元素个数</p>
+<p><img src="https://segmentfault.com/image?src=http://img.blog.csdn.net/20150312112052264&amp;objectId=1190000002595152&amp;token=46912f7eb9fc0b2de830a20e710b0bbe" alt="img"></p>
+<h3 id="9-1-性能分析"><a href="#9-1-性能分析" class="headerlink" title="9.1 性能分析"></a>9.1 性能分析</h3><p>平均时间复杂度为线性的 <code>O(n+C)</code> 最优情形下，桶排序的时间复杂度为<code>O(n)</code>。<br>桶排序的空间复杂度通常是比较高的，额外开销为<code>O(n+m)</code>（因为要维护 M 个数组的引用）。<br>就是桶越多，时间效率就越高，而桶越多，空间却就越大，由此可见时间和空间是一个矛盾的两个方面。</p>
+<p>算法稳定性 : 桶排序的稳定性依赖于桶内排序。如果我们使用了快排，显然，算法是不稳定的。<br><a href="http://hxraid.iteye.com/blog/647759" target="_blank" rel="external">一个讲bucket排序非常好的文章</a><br>桶排序利用函数的映射关系，减少了几乎所有的比较工作。实际上，桶排序的 f(k) 值的计算，其作用就相当于快排中划分，已经把大量数据分割成了基本有序的数据块 (桶)。然后只需要对桶中的少量数据做先进的比较排序即可。</p>
+<p>对 N 个关键字进行桶排序的时间复杂度分为两个部分：<br>(1) 循环计算每个关键字的桶映射函数，这个时间复杂度是 <code>O(n)</code>。<br>(2) 利用先进的比较排序算法对每个桶内的所有数据进行排序，其时间复杂度为 <code>∑ O(ni*logni)</code> 。其中 <code>ni</code> 为第 <code>i</code>个桶的数据量。</p>
+<p>很显然，第 (2) 部分是桶排序性能好坏的决定因素。这就是一个时间代价和空间代价的权衡问题了。</p>
+<h3 id="9-2-核心代码"><a href="#9-2-核心代码" class="headerlink" title="9.2 核心代码"></a>9.2 核心代码</h3><h3 id="9-3扩展"><a href="#9-3扩展" class="headerlink" title="9.3扩展"></a>9.3扩展</h3><h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://sf-static.b0.upaiyun.com/v-583541b4/global/img/squares.svg" alt="img"></h2><h2 id="in-summary"><a href="#in-summary" class="headerlink" title="in summary"></a>in summary</h2><p><img src="https://segmentfault.com/img/bVlf9S" alt="img"></p>
+<p>关于稳定性：</p>
+<ul>
+<li>选择排序、快速排序、希尔排序、堆排序不是稳定的排序算法，</li>
+<li>冒泡排序、插入排序、归并排序和基数排序是稳定的排序算法。</li>
+<li>常用时间复杂度的大小关系：`O(1)</li>
+</ul>
+<p>注：该文章转载自：<a href="http://segmentfault.com/blog/exploring/" target="_blank" rel="external">http://segmentfault.com/blog/exploring/</a></p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2016/10/30/译-Emacs-Lisp-速成/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/10/19/21分钟MySQL基础入门/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="thychan's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">18</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">5</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Chan's Blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+
+    <script>lsloader.load("js/lazyload.min.js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==")</script>
+    <script>lsloader.load("js/js.min.js","/js/js.min.js?oAl/+lvaqTFV31JXTmbrNA==")</script>
+
+
+
+    <script>lsloader.load("js/nprogress.js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==")</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Window Load-->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Bing Background -->
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
