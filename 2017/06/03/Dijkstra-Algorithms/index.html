@@ -12,7 +12,7 @@
     
     <title>
         
-            Dijkstra Algorithms | 
+            Dijkstra 算法 | 
         
         Chan&#39;s Blog
     </title>
@@ -65,7 +65,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Dijkstra Algorithms | Chan&#39;s Blog">
+    <meta property="og:title" content="Dijkstra 算法 | Chan&#39;s Blog">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="Keep trying no matter how hard it seems, it will get easier!">
     <meta property="og:article:tag" content="编程"> <meta property="og:article:tag" content="算法"> 
@@ -76,7 +76,7 @@
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Dijkstra Algorithms | Chan&#39;s Blog">
+    <meta name="twitter:title" content="Dijkstra 算法 | Chan&#39;s Blog">
     <meta name="twitter:description" content="Keep trying no matter how hard it seems, it will get easier!">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -110,7 +110,7 @@
         },
         "description": "Hi, nice to meet you"
     },
-    "headline": "Dijkstra Algorithms",
+    "headline": "Dijkstra 算法",
     "url": "http://yoursite.com/2017/06/03/Dijkstra-Algorithms/index.html",
     "datePublished": "6月 03, 2017",
     "dateModified": "6月 08, 2017",
@@ -381,7 +381,7 @@
         
     
             <p class="article-headline-p">
-                Dijkstra Algorithms
+                Dijkstra 算法
             </p>
         </div>
 
@@ -440,7 +440,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Dijkstra Algorithms&url=http://yoursite.com/2017/06/03/Dijkstra-Algorithms/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Dijkstra 算法&url=http://yoursite.com/2017/06/03/Dijkstra-Algorithms/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -449,7 +449,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Dijkstra Algorithms&url=http://yoursite.com/2017/06/03/Dijkstra-Algorithms/index.html&via=thychan" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Dijkstra 算法&url=http://yoursite.com/2017/06/03/Dijkstra-Algorithms/index.html&via=thychan" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -529,12 +529,9 @@
 <h4 id="Dijkstra算法的伪代码"><a href="#Dijkstra算法的伪代码" class="headerlink" title="Dijkstra算法的伪代码"></a>Dijkstra算法的伪代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dijkstra</span><span class="params">(Table T)</span></span></div><div class="line">&#123;</div><div class="line">    Vertex V, W;</div><div class="line">    <span class="keyword">for</span>(;;)</div><div class="line">    &#123;</div><div class="line">        V = smallest unknown distance vertex;</div><div class="line">        <span class="keyword">if</span>(V == NotAVertex)</div><div class="line">            <span class="keyword">break</span>;</div><div class="line"></div><div class="line">        T[V].Known = True;</div><div class="line">        <span class="function"><span class="keyword">for</span> each W adjacent to V</span></div><div class="line">            <span class="title">if</span><span class="params">(!T[W].Known)</span></div><div class="line">                <span class="title">if</span><span class="params">(T[V].Dist + Cvw &lt; T[W].Dist)</span></div><div class="line">                &#123;        <span class="comment">// Update W</span></div><div class="line">                    Decrease(T[W].Dist to T[V].Dist + Cvw);</div><div class="line">                    T[W].Path =  V;</div><div class="line">                &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="迪杰斯特拉算法的代码说明-java"><a href="#迪杰斯特拉算法的代码说明-java" class="headerlink" title="迪杰斯特拉算法的代码说明(java)"></a><strong>迪杰斯特拉算法的代码说明(java)</strong></h3><p>以”邻接矩阵”为例对迪杰斯特拉算法进行说明，对于”邻接表”实现的图在后面会给出相应的源码。</p>
 <p><strong>1. 基本定义</strong></p>
-<p><a href="javascript:void(0" target="_blank" rel="external"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MatrixUDG</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mEdgNum;        <span class="comment">// 边的数量</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">char</span>[] mVexs;       <span class="comment">// 顶点集合</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[][] mMatrix;    <span class="comment">// 邻接矩阵</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> INF = Integer.MAX_VALUE;   <span class="comment">// 最大值</span></div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="javascript:void(0" target="_blank" rel="external"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
 <p>MatrixUDG是邻接矩阵对应的结构体。mVexs用于保存顶点，mEdgNum用于保存边数，mMatrix则是用于保存矩阵信息的二维数组。例如，mMatrix[i][j]=1，则表示”顶点i(即mVexs[i])”和”顶点j(即mVexs[j])”是邻接点；mMatrix[i][j]=0，则表示它们不是邻接点。</p>
 <p><strong>2. 迪杰斯特拉算法</strong></p>
-<p><a href="javascript:void(0" target="_blank" rel="external"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * Dijkstra最短路径。</div><div class="line"> * 即，统计图中"顶点vs"到其它各个顶点的最短路径。</div><div class="line"> *</div><div class="line"> * 参数说明：</div><div class="line"> *       vs -- 起始顶点(start vertex)。即计算"顶点vs"到其它顶点的最短路径。</div><div class="line"> *     prev -- 前驱顶点数组。即，prev[i]的值是"顶点vs"到"顶点i"的最短路径所经历的全部顶点中，位于"顶点i"之前的那个顶点。</div><div class="line"> *     dist -- 长度数组。即，dist[i]是"顶点vs"到"顶点i"的最短路径的长度。</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dijkstra</span><span class="params">(<span class="keyword">int</span> vs, <span class="keyword">int</span>[] prev, <span class="keyword">int</span>[] dist)</span> </span>&#123;</div><div class="line">    <span class="comment">// flag[i]=true表示"顶点vs"到"顶点i"的最短路径已成功获取</span></div><div class="line">    <span class="keyword">boolean</span>[] flag = <span class="keyword">new</span> <span class="keyword">boolean</span>[mVexs.length];</div><div class="line"></div><div class="line">    <span class="comment">// 初始化</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mVexs.length; i++) &#123;</div><div class="line">        flag[i] = <span class="keyword">false</span>;          <span class="comment">// 顶点i的最短路径还没获取到。</span></div><div class="line">        prev[i] = <span class="number">0</span>;              <span class="comment">// 顶点i的前驱顶点为0。</span></div><div class="line">        dist[i] = mMatrix[vs][i];  <span class="comment">// 顶点i的最短路径为"顶点vs"到"顶点i"的权。</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 对"顶点vs"自身进行初始化</span></div><div class="line">    flag[vs] = <span class="keyword">true</span>;</div><div class="line">    dist[vs] = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 遍历mVexs.length-1次；每次找出一个顶点的最短路径。</span></div><div class="line">    <span class="keyword">int</span> k=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; mVexs.length; i++) &#123;</div><div class="line">        <span class="comment">// 寻找当前最小的路径；</span></div><div class="line">        <span class="comment">// 即，在未获取最短路径的顶点中，找到离vs最近的顶点(k)。</span></div><div class="line">        <span class="keyword">int</span> min = INF;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; mVexs.length; j++) &#123;</div><div class="line">            <span class="keyword">if</span> (flag[j]==<span class="keyword">false</span> &amp;&amp; dist[j]&lt;min) &#123;</div><div class="line">                min = dist[j];</div><div class="line">                k = j;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 标记"顶点k"为已经获取到最短路径</span></div><div class="line">        flag[k] = <span class="keyword">true</span>;</div><div class="line"></div><div class="line">        <span class="comment">// 修正当前最短路径和前驱顶点</span></div><div class="line">        <span class="comment">// 即，当已经"顶点k的最短路径"之后，更新"未获取最短路径的顶点的最短路径和前驱顶点"。</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; mVexs.length; j++) &#123;</div><div class="line">            <span class="keyword">int</span> tmp = (mMatrix[k][j]==INF ? INF : (min + mMatrix[k][j]));</div><div class="line">            <span class="keyword">if</span> (flag[j]==<span class="keyword">false</span> &amp;&amp; (tmp&lt;dist[j]) ) &#123;</div><div class="line">                dist[j] = tmp;</div><div class="line">                prev[j] = k;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 打印dijkstra最短路径的结果</span></div><div class="line">    System.out.printf(<span class="string">"dijkstra(%c): \n"</span>, mVexs[vs]);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; mVexs.length; i++)</div><div class="line">        System.out.printf(<span class="string">"  shortest(%c, %c)=%d\n"</span>, mVexs[vs], mVexs[i], dist[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="4-时间复杂度"><a href="#4-时间复杂度" class="headerlink" title="4.时间复杂度"></a>4.时间复杂度</h2><p>　　我们可以用大O符号将Dijkstra算法的运行时间表示为边数m和顶点数n的函数。</p>
 <p>　　Dijkstra算法最简单的实现方法是用一个链表或者数组来存储所有顶点的集合Q,所以搜索Q中最小元素的运算(Extract-Min(Q))只需要线性搜索Q中的所有元素。这样的话算法的运行时间是O(n2)。</p>
