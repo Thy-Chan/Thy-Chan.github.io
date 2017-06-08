@@ -491,7 +491,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="1-Dijkstra算法概述"><a href="#1-Dijkstra算法概述" class="headerlink" title="1.Dijkstra算法概述"></a>1.Dijkstra算法概述</h2><p>　　<strong><code>Dijkstra算法</code></strong>是由荷兰计算机科学家<a href="">狄克斯特拉</a>（<a href="">Dijkstra</a>）于1959 年提出的，因此又叫<code>狄克斯特拉算法</code>。是从一个顶点到其余各顶点的最短路径算法，解决的是有向图中最短路径问题。</p>
+        <h2 id="1-Dijkstra算法概述"><a href="#1-Dijkstra算法概述" class="headerlink" title="1.Dijkstra算法概述"></a>1.Dijkstra算法概述</h2><p>　　<strong><code>Dijkstra算法</code></strong>是由荷兰计算机科学家狄克斯特拉（Dijkstra）于1959 年提出的，因此又叫<code>狄克斯特拉算法</code>。是从一个顶点到其余各顶点的最短路径算法，解决的是有向图中最短路径问题。</p>
 <p><img src="http://shentar.qiniudn.com/wp-content/uploads/2014/07/Dijkstra_Animation.gif" alt=""></p>
 <p>　　其基本原理是：每次新扩展一个距离最短的点，更新与其相邻的点的距离。当所有边权都为正时，由于不会存在一个距离更短的没扩展过的点，所以这个点的距离永远不会再被改变，因而保证了算法的正确性。不过根据这个原理，<strong><u>用Dijkstra求最短路的图不能有负权边</u></strong>，因为扩展到负权边的时候会产生更短的距离，有可能就破坏了已经更新的点距离不会改变的性质。</p>
 <p>　　举例来说，如果图中的顶点表示城市，而边上的权重表示著城市间开车行经的距离。 Dijkstra算法可以用来找到两个城市之间的最短路径。</p>
@@ -538,9 +538,9 @@
 <p>　　Dijkstra算法最简单的实现方法是用一个链表或者数组来存储所有顶点的集合Q,所以搜索Q中最小元素的运算(Extract-Min(Q))只需要线性搜索Q中的所有元素。这样的话算法的运行时间是O(n2)。</p>
 <p>　　对于边数少于n2稀疏图来说，我们可以用邻接表来更有效的实现Dijkstra算法。同时需要将一个二叉堆或者斐波纳契堆用作优先队列来寻找最小的顶点(Extract-Min)。当用到二叉堆的时候，算法所需的时间为O((m+n)log n)，斐波纳契堆能稍微提高一些性能，让算法运行时间达到O(m + n log n)。 相关问题和算法</p>
 <p>　　在Dijkstra算法的基础上作一些改动，可以扩展其功能。例如，有时希望在求得最短路径的基础上再列出一些次短的路径。为此，可先在原图上计算出最短路径，然后从图中删去该路径中的某一条边，在余下的子图中重新计算最短路径。对于原最短路径中的每一条边，均可求得一条删去该边后子图的最短路径，这些路径经排序后即为原图的一系列次短路径。</p>
-<p>　　<code>OSPF</code>（[open shortest path first][开放最短路径优先]）算法是Dijkstra算法在网络路由中的一个具体实现。</p>
+<p>　　<code>OSPF</code>（[open shortest path first-<strong>开放最短路径优先</strong>）算法是Dijkstra算法在网络路由中的一个具体实现。</p>
 <p>　　与Dijkstra算法不同，Bellman-Ford算法可用于具有负花费边的图，只要图中不存在总花费为负值且从源点 s 可达的环路（如果有这样的环路，则最短路径不存在，因为沿环路循环多次即可无限制的降低总花费）。</p>
-<p>　　与最短路径问题有关的一个问题是<a href="">旅行商问题</a>)，它要求找出通过所有顶点恰好一次且最终回到源点的最短路径。该问题是NP难的；换言之，与最短路径问题不同，旅行商问题不太可能具有多项式时间算法。</p>
+<p>　　与最短路径问题有关的一个问题是<strong>旅行商问题</strong>，它要求找出通过所有顶点恰好一次且最终回到源点的最短路径。该问题是NP难的；换言之，与最短路径问题不同，旅行商问题不太可能具有多项式时间算法。</p>
 <p>　　如果有已知信息可用来估计某一点到目标点的距离，则可改用<code>A*算法</code>，以减小最短路径的搜索范围。</p>
 
     
