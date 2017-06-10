@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="display: none;" lang="zh">
+<html style="display: none;" lang="en">
     <head>
     <meta charset="utf-8">
     <!--
@@ -75,8 +75,8 @@
     <meta property="og:article:tag" content="操作系统"> 
 
     
-        <meta property="article:published_time" content="11月 18, 2016" />
-        <meta property="article:modified_time" content="11月 26, 2016" />
+        <meta property="article:published_time" content="Nov 18, 2016" />
+        <meta property="article:modified_time" content="Nov 26, 2016" />
     
 
     <!-- The Twitter Card protocol -->
@@ -116,8 +116,8 @@
     },
     "headline": "【系统架构师修炼之道】（19）：操作系统基础知识——分页存储管理",
     "url": "http://yoursite.com/2016/11/18/【系统架构师修炼之道】（19）：操作系统基础知识——分页存储管理/index.html",
-    "datePublished": "11月 18, 2016",
-    "dateModified": "11月 26, 2016",
+    "datePublished": "Nov 18, 2016",
+    "dateModified": "Nov 26, 2016",
     "description": "Keep trying no matter how hard it seems, it will get easier!",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -133,7 +133,7 @@
         <link rel="stylesheet" href="/css/ie-blocker.css">
 
         
-            <script src="/js/ie-blocker.zhCN.js"></script>
+            <script src="/js/ie-blocker.en.js"></script>
         
     <![endif]-->
 
@@ -411,7 +411,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>thychan</strong>
-        <span>11月 18, 2016</span>
+        <span>Nov 18, 2016</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -431,7 +431,7 @@
     <span class="visuallyhidden">devices other</span>
 </button>
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
-    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    <li class="mdl-menu__item">Read this article on other devices</li>
     
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAAE+CAAAAAAxUyPsAAAE3UlEQVR42u3ay27jQAwEQP//T+9eA3hjd5MjOcHWnAI/Ik1NgFBNPv5Yi/VAgA8fPnwWPnz48Fn48P0Svke8vn7++bvP7/7jwt98/vn1NxsoP//83dne8eHDhw8fvlN8+0u2R5Jfpb235B5me8eHDx8+fPjO8uWXeV2CJNs79W5yhEmZVewdHz58+PDhu5Ev+TkH3RccCeLsuvjw4cOHD99P4GsLlyRwz8naQ0qaB/jw4cOHD9+n+IrAOgZNNtPG93mxkv/+m3od+PDhw4cP33pA7bf//OH5Pnz48OHD95/xtasNxGdN7nYY7lSZEgngw4cPHz58C75khKstX2aReouV02/+FIa9Dnz48OHDh+9l4ZLcel6mzEqcNtCfjanNAgV8+PDhw4fvFN+jXBuOfPisHX2bRQ/DNjw+fPjw4cO34GujgRl38kob8c9a4G0bAB8+fPjw4buHr93qjKlFzFvds4OM9ogPHz58+PCt+dpftGlpt7feHkZ7wO1YGz58+PDhw7fhay+5D9lnpUz+yqbRHoHiw4cPHz58R/lmMfomgNhHBjO4vLTChw8fPnz47uFr2+ezOD4PGjYRQzt4V8z34cOHDx8+fCVfHrjPypRN6zo/2vyQ8j+UKDLAhw8fPnz4Fnx5G7u+cBwWbJrubWTQDsDhw4cPHz58G75Z5J2XJm2ZMmuu50F8Hljgw4cPHz581/Elo1qbEbE2biia1vFhtKVPNKCGDx8+fPjwlXz7X71pn7f3cEUhkkcS+PDhw4cP355v00JutzcLGtqovX23vjo+fPjw4cN3iK9tOSelSUuZlx2zFn5yt29iEXz48OHDh2/BN2uKz4KG1wFBG0DkV9wXT/jw4cOHD98VfJt/8KeC+7yY2LTG8zIIHz58+PDhu5Mvj85njfB285uw4NhIHD58+PDhw3eIbzb+lTeqN8Nk7aHWEXxe4uDDhw8fPnwLvrMN6fxRv91SUgC1+xoeJD58+PDhw7fgmxUBedO6bZBvIoArCqwoMsCHDx8+fPhKvjbIfhNnj5ribRnR3uGGGB8+fPjw4buTb99+/u5as+Imj+PzwigvaPDhw4cPH76zfHlY35YLm9Jn/61ZKVNMGeDDhw8fPnzxhFUbYc9uIiluDrSxZxF8fA/48OHDhw/fnq998G4f5mdkbWExLEQ2bXJ8+PDhw4ev5EsIkk1uHsLbA2iDjNclVL0LfPjw4cOHb83Xtorz7bXRf7LV9vjz1nh0zPjw4cOHD9+Cr42q8+Z6+5CflE2bwCIpUKKBNnz48OHDh+8yvgMXKx/aW6xZ0JDvDh8+fPjw4buOLw8INq3oTQRwRalUj+Xhw4cPHz58C77ZlpJ/9qdG2dqQoi1WknABHz58+PDhO8XXrraZnTyKt0VMzrdp+X97//jw4cOHD9+C7xGvvNB5zbQfTWsbAG1w/+ZQ8eHDhw8fvjXfrFiZ/fvfFBN5fJ8XInUbHh8+fPjw4TvEVzw2L1rdm+g8j+NnUUIUeeDDhw8fPnw38rVFyaZw2Y+aJdFDXRLhw4cPHz58H+KbcefBRHuVWUCfXxEfPnz48OE7yzcrGtrDyN/djJ21d1iM6OHDhw8fPnxrvn1o3kYMM74cKIkYZo15fPjw4cOHb8NntQsfPnz48Fn48OHDZ+HD94PXX0lKtUMqk7UNAAAAAElFTkSuQmCC">
     
@@ -461,7 +461,7 @@
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
                 <span id="/2016/11/18/【系统架构师修炼之道】（19）：操作系统基础知识——分页存储管理/" class="leancloud-views_num" data-flag-title="【系统架构师修炼之道】（19）：操作系统基础知识——分页存储管理">
-     &nbsp;浏览量
+     &nbsp;Views
 </span>
 
             </li>
@@ -474,7 +474,7 @@
     
         <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=【系统架构师修炼之道】（19）：操作系统基础知识——分页存储管理&url=http://yoursite.com/2016/11/18/【系统架构师修炼之道】（19）：操作系统基础知识——分页存储管理/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
-                分享到微博
+                Share to Weibo
             </li>
         </a>
     
@@ -483,7 +483,7 @@
     
         <a class="post_share-link" href="https://twitter.com/intent/tweet?text=【系统架构师修炼之道】（19）：操作系统基础知识——分页存储管理&url=http://yoursite.com/2016/11/18/【系统架构师修炼之道】（19）：操作系统基础知识——分页存储管理/index.html&via=thychan" target="_blank">
             <li class="mdl-menu__item">
-                分享到 Twitter
+                Share to Twitter
             </li>
         </a>
     
@@ -492,7 +492,7 @@
     
         <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/11/18/【系统架构师修炼之道】（19）：操作系统基础知识——分页存储管理/index.html" target="_blank">
             <li class="mdl-menu__item">
-                分享到 Facebook
+                Share to Facebook
             </li>
         </a>
     
@@ -501,7 +501,7 @@
     
         <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2016/11/18/【系统架构师修炼之道】（19）：操作系统基础知识——分页存储管理/index.html" target="_blank">
             <li class="mdl-menu__item">
-                分享到 Google+
+                Share to Google+
             </li>
         </a>
     
@@ -513,7 +513,7 @@
     
         <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Chan&#39;s Blog&title=【系统架构师修炼之道】（19）：操作系统基础知识——分页存储管理&summary=Keep trying no matter how hard it seems, it will get easier!&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2016/11/18/【系统架构师修炼之道】（19）：操作系统基础知识——分页存储管理/index.html" target="_blank">
             <li class="mdl-menu__item">
-                分享到 QQ
+                Share to QQ
             </li>
         </a>
     
@@ -522,7 +522,7 @@
     
         <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2016/11/18/【系统架构师修炼之道】（19）：操作系统基础知识——分页存储管理/index.html&text=【系统架构师修炼之道】（19）：操作系统基础知识——分页存储管理" target="_blank">
             <li class="mdl-menu__item">
-                分享到 Telegram
+                Share to Telegram
             </li>
         </a>
     
@@ -612,7 +612,7 @@
                 <i class="material-icons">arrow_back</i>
             </button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
+            Newer
         </a>
     
 
@@ -622,7 +622,7 @@
     <!-- Next Nav -->
     
         <a href="/2016/11/17/【系统架构师修炼之道】（18）：操作系统基础知识——分区存储管理/" id="post_nav-older" class="next-content">
-            旧篇
+            Older
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_forward</i>
@@ -695,7 +695,7 @@
                 
                     <i class="material-icons sidebar-material-icons">home</i>
                 
-                主页
+                Home
             </a>
         </li>
         
@@ -710,12 +710,12 @@
                 
                     <i class="material-icons sidebar-material-icons">inbox</i>
                 
-                    归档
+                    Archives
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">18</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">5</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/06/">June 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">March 2017<span class="sidebar_archives-count">18</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">January 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">December 2016<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">November 2016<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">October 2016<span class="sidebar_archives-count">5</span></a>
             </ul>
         </li>
         
@@ -728,7 +728,7 @@
                 
                     <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
                 
-                分类
+                Categories
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
@@ -756,7 +756,7 @@
     
         <li>
             <a href="/archives">
-                文章总数
+                Number of articles
                 <span class="sidebar-badge">41</span>
             </a>
         </li>
