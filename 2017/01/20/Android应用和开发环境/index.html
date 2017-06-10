@@ -426,6 +426,17 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC20lEQVR42u3aO3LDMAwFQN//0kmbIrHfA6WJTS4rz0SWsWwQfB5fR54HNjY2NjY2NjY29luyH/H5+fxf3/3rmRcBlW9oY8bGxsY+gZ2E9ZydkBJAzs5jxsbGxj6HnQTRXk0SUPK2lSSKjY2NjZ08k5QKeUGSpD1sbGxs7KVXlEXI828l14eNjY2NfVVTadZmypPZLJ7be2nY2NjYb89eGfT+1+d/nm9jY2Njvw27PXnqaguPpCxZihwbGxt7U3YeehJQ/mSLyZd46uVLbGxs7A9nX9X0X2nr33cF2NjY2Cewk6DzlHbHpSRpNRoYYGNjY2/Nng0G2kKlRc5WhbCxsbFPY+fFRtv6Tz7nF3FBgsTGxsbelF38K1+mjTYRJmm1/Ss2Njb2Cewk3DbQ9sk8BSbfxcbGxj6N3bba8zJgfWyct5mSdIuNjY19MnvWYMqDy9d3ZqULNjY29t7stpXftodmiz5tyhxWYNjY2NjbsdtRa1EG5OPY0e8uJTBsbGzsLdjJKDdfx3l+VpJfvujzy5PY2NjYm7JXlnXyYfBVyzdtaYSNjY19Anu2NLPecsqLkHwk/MKFjY2NvSn72sSTX0reYMov7sXbsLGxsbdmt8PXlSvLx7dJwyhPY9jY2Nh7s+v1l9EgIQ905XeHeRsbGxv7Y9ntSk3e1v8KTrt8c8umEjY2Nvam7BkyKWBm7JWFTmxsbOy92XkLfpZI2ktcbzxdNujFxsbG/hB20tCZBZo0qvLh8Wy0jI2NjX0mO7+Udl2yTVFJsVQsBmFjY2Nvyp4libyRlI91nxczs4E0NjY29jnsvImfFxsJY2UFp05s2NjY2Aewh82astGTD4PzltOwFMHGxsY+kp0Pd1eaSu2v3J7AsLGxsbdjtyuYSbKZjQqKdIiNjY19ALsdsibFyUpbqr04bGxs7JPZswXH2bh3JUXNRhHY2NjYe7PPOdjY2NjY2NjY2Nhvc74BKb8/cb2m7J8AAAAASUVORK5CYII=">
+    
+</ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -500,8 +511,20 @@
 
     <!-- Share QQ -->
     
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Chan&#39;s Blog&title=Android学习笔记-&lt;1&gt;Android应用和开发环境&summary=Keep trying no matter how hard it seems, it will get easier!&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/01/20/Android应用和开发环境/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
 
     <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2017/01/20/Android应用和开发环境/index.html&text=Android学习笔记-&lt;1&gt;Android应用和开发环境" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
     
 </ul>
 
@@ -705,7 +728,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="cn_cx@foxmail.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -726,6 +749,8 @@
                 主页
             </a>
         </li>
+        
+            <li class="divider"></li>
         
     
 
@@ -749,11 +774,44 @@
 
     <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/编程/">编程<span class="sidebar_archives-count">39</span></a></li><li><a class="sidebar_archives-link" href="/categories/视频/">视频<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
     <!-- Pages  -->
     
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">41</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -775,13 +833,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->

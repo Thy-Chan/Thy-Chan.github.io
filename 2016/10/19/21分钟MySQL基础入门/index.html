@@ -426,6 +426,17 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAACz0lEQVR42u3aW2rsQAwFwNn/ppPfQIjnSPIE0yp/XRJuW9WGCD1eXyufFzY2NjY2NjY2NvYj2a/4+et//fxJfuZ1DL/PvCFmbGxs7KPZb/70X/KuQ09OS85JruPahY2Njb2BXX1lHlaS3gqAYszY2NjY2POUUy0hkjdiY2NjY4+OGBQhycX1ihlsbGxs7F4xkLSfkgT26F4aNjY29uPZ1cLgCf/+1/k2NjY29oPZ5RXG4tX0RshJQhotX2JjY2MfxO6t7OQrkr1mUD4qyBtb2NjY2Keyc1613d+7gr/OT07DxsbG3snOV2SS0CeJcD7KfRMtNjY29tHsz4UVpZYA0FskwsbGxt7D7iELr7wewd6U/LCxsbF3sqsHlQuAZJmm9dtyIYSNjY29gH1XwpgXIUl7q3oF2NjY2Keyk4FuHlZ+BXnZU02T5QoMGxsb+wj2XW36asOoV7o0iyVsbGzso9mTtcseMlkS6n0MbGxs7M3s5KDJ0kwv6Ly19CY1YmNjYx/KztNYnrTmBUa1qRR9EmxsbOxD2Ul6qK7UJClwPuJNRgLY2NjYe9j5Mk1SnHzugiatKGxsbOwN7CRh9BpGybuq6z7VBImNjY19NjtvHpWb8sVzkvFDdZyAjY2NfTa7moSSFFUtTqrrPvnnwcbGxt7AzscAeSLJhwG95lTz4rCxsbGPZucDgOrLcmSv2VQoUbCxsbEXsHtto944YdKWqn4kbGxs7G3s6oJO0tCpto3uGvdiY2Njb2BXn6TwyFckq+Pb/F3Y2NjYe9jVxDApP3rJqdpgKuRtbGxs7IPYk6SVJ6T8+iblTbmphI2NjX0Qe9Lc74WVt7E+3kvDxsbGXsm+eTkyjqS5ZoSNjY2NXRwAN9NMq1HVHA9gY2NjH8eeD3eTBDNJS9Wrx8bGxt7DngxcJyVE0pDqtbSwsbGx97D3PNjY2NjY2NjY2NiPeb4Bzi9YEnDNInEAAAAASUVORK5CYII=">
+    
+</ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -500,8 +511,20 @@
 
     <!-- Share QQ -->
     
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Chan&#39;s Blog&title=21分钟MySQL基础入门&summary=Keep trying no matter how hard it seems, it will get easier!&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2016/10/19/21分钟MySQL基础入门/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
 
     <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2016/10/19/21分钟MySQL基础入门/index.html&text=21分钟MySQL基础入门" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
     
 </ul>
 
@@ -774,7 +797,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="cn_cx@foxmail.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -795,6 +818,8 @@
                 主页
             </a>
         </li>
+        
+            <li class="divider"></li>
         
     
 
@@ -818,11 +843,44 @@
 
     <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/编程/">编程<span class="sidebar_archives-count">39</span></a></li><li><a class="sidebar_archives-link" href="/categories/视频/">视频<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
     <!-- Pages  -->
     
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">41</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -844,13 +902,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->

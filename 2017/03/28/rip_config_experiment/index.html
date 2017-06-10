@@ -426,6 +426,17 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC10lEQVR42u3aQVLDMBAEwPz/03DlQMLMyoAjtU8pYmS1qGLKu/v4OPJ6YGNjY2NjY2NjY9+S/Yivr/c/+93knq/fPtvJs3Vme8bGxsY+gf3Dv/54K+3n1weR7Ce/BxsbG/sEdh5IyePzYEt+ayVEsbGxsbGfba592Ujw2NjY2Nh/H2B5wWh2iPnBYWNjY2O3RZy83L8SS7eopWFjY2Pfnr3S6P2vz//c38bGxsa+DXt2JWX9pG2QB1jbDP7mudjY2Nibsl8D2tJ/O+6TF5jWC1LY2NjYe7NXCvFJwCTbTYpWbUsYGxsb+xx2C26Rs1ealScOuyLY2NjYb8vOYyBv9+YloVlD97KuCDY2Nvabs/PXjOTbdrsr9+fFJmxsbOwT2LPiez7yPrsniqX4ELGxsbFPY+eF+Pzn6+3ePGKHAYaNjY39tuy8BJ8AZlHUNoDbGMPGxsbelZ0vERVu8mJ9GXLJn2dpZAcbGxt7I/Z6kzUvGLVrzo4DGxsb+0z2bEPJEazHUvsZGxsb+2R23ppNCkZ5W6INwnpkBxsbG3s7dvuwq0Zt8sNtB3SiVxFsbGzs7dhthMxCZdYebgeJsLGxsc9hr2wrLxXlZaPksKISUjKphI2Njb0F+/cK+u1R5mu2bQNsbGzsM9ntQEzCTo51dpTRMWFjY2Mfw54t2sZM/pQ22IZdEWxsbOwt2LMBmnak5qr2Qz30g42Njb01uw2qlppH3Swso6jDxsbGPoCdB9LKa0x7oHm8/bAmNjY29qbs9mpfCV5jEvCsjIWNjY19DrsNhrbdOyserQ8PLTV6sbGxsd+Q3YZW9JjyKGclqqUAw8bGxt6OPRvEnI3jzFZbiVhsbGxs7DzArjqIq1rI2NjY2NhtsT4pDyWvLnlLOFofGxsb+wB2Gwltc7eNpSQmiwYDNjY29tbsWclmfSAyH8dpAxUbGxv7HPY5FzY2NjY2NjY2NvZtrk9HdAttpLqG9QAAAABJRU5ErkJggg==">
+    
+</ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -500,8 +511,20 @@
 
     <!-- Share QQ -->
     
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Chan&#39;s Blog&title=rip协议配置&summary=Keep trying no matter how hard it seems, it will get easier!&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/03/28/rip_config_experiment/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
 
     <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2017/03/28/rip_config_experiment/index.html&text=rip协议配置" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
     
 </ul>
 
@@ -704,7 +727,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="cn_cx@foxmail.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -725,6 +748,8 @@
                 主页
             </a>
         </li>
+        
+            <li class="divider"></li>
         
     
 
@@ -748,11 +773,44 @@
 
     <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/编程/">编程<span class="sidebar_archives-count">39</span></a></li><li><a class="sidebar_archives-link" href="/categories/视频/">视频<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
     <!-- Pages  -->
     
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">41</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -774,13 +832,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->

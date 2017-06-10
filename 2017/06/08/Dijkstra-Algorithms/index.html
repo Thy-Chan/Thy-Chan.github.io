@@ -426,6 +426,17 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACZElEQVR42u3aQXKDMAwF0Nz/0u0BOqX/W9glmceKIQT8vLCErNfXRx8vPDw8PDw8PDy8h/Fe8XH9r5/Xf97/23n+lmhseHh4eEd4fyy1v9yTI5O35O+9vgcPDw/vJO96uNdLf/TigN2GEDw8PLx34V2fJ79es/Hw8PA+m9cii4Hi4eHhPZ6XJMd5oSFPza+fcLTWgoeHhxfz8k2m8+dH9/fw8PDwAt7aplRSzJ0UbUcjxMPDw9vMyxfiCSAJNsn1aFrx8PDwjvCScsCkPSu5J297rcu4eHh4eLfykkS53cRaCyqTUjIeHh7eSd5a0fbeqYmKs/nE4eHh4W3m3RsY1sq1bTmjaB3Aw8PD28DLw8BiC1QZGPI3Fp0ReHh4eBt4bWDIk+ycOglXeHh4eCd5k6LDWhl33hRbtA7g4eHhHeclW/XtllWbmufNDXh4eHjneZMWq/y/bfmjnW48PDy8M7z8oUkS3BZhkxAy6inDw8PD28bLE9/5tlkOq8eGh4eHt5mXPzRJauchpB0JHh4e3n/x2iJCm/7moeKrPBZ7yvDw8PA28+aJb9vItTZxeHh4eM/htYNoJyspVeQlCTw8PLyTvHYLf5J2X9/Ttsbi4eHhneRNPv7X2qfyQu1iAMPDw8PbzGuX4zxgtBtd+dPqlBoPDw9vA68NBnkinoeHNjAsfjHg4eHh3cobbTvFi/6kbWtUa8HDw8N7GK8NBskU5JOFh4eH9468fOlfm4jiAwAPDw/vIG9tuZ80GVwXIPLNMzw8PLzzvBtKAMH1tXvaIIGHh4e3m/d5Bx4eHh4eHh4e3gOOb2Xo7Tl8T7UoAAAAAElFTkSuQmCC">
+    
+</ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -500,8 +511,20 @@
 
     <!-- Share QQ -->
     
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Chan&#39;s Blog&title=Dijkstra 算法&summary=Keep trying no matter how hard it seems, it will get easier!&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/06/08/Dijkstra-Algorithms/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
 
     <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2017/06/08/Dijkstra-Algorithms/index.html&text=Dijkstra 算法" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
     
 </ul>
 
@@ -654,7 +677,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="cn_cx@foxmail.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -675,6 +698,8 @@
                 主页
             </a>
         </li>
+        
+            <li class="divider"></li>
         
     
 
@@ -698,11 +723,44 @@
 
     <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/编程/">编程<span class="sidebar_archives-count">39</span></a></li><li><a class="sidebar_archives-link" href="/categories/视频/">视频<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
     <!-- Pages  -->
     
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">41</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -724,13 +782,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->

@@ -426,6 +426,17 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC30lEQVR42u3ay27iQBQEUP7/p5PtSBGeqtsmge7jFQrG9nEWpft4fB15PLCxsbGxsbGxsbHfkv2Ij/xX/57z8/PTx7o8/+e39TNjY2Njb83OHyjBPzunRSYvNH9mbGxs7BPYeRRdv4jrF5T8PY+3/NVgY2NjY+clQf462jjExsbGxr43wJISIi8tEjA2NjY29npTaSVmkheUlDF/0EvDxsbGfnt2PjR9n8+/Ot/GxsbGfmN2e+RFQl66rIdc9OTY2NjYm7LzYGhLhVcs6yw9JzY2Nvam7CR+ksWd69/OrtCu71xfBxsbG3tX9sp44D+3WQ6wvM0U3RcbGxt7U3byg7zwyIuTdjWnbTxhY2Njn8ZOlm+uYclD5I3+5Dp5BGJjY2Ofxm4bSe0INo+3vEQZzrexsbGxt2DnsZRH0cpi5fpdsLGxsU9jJ62cvDHUlit5Iyn5lwzn29jY2NgbsWetonaIm2PyI7omNjY29tbstu0+G+7Oipa2pCkCDBsbG3sLdj7iXR/itquT+aJPdA42Njb21uwZII+l2fh2hn8agdjY2Nibsts1mpUYW2k5zYINGxsb+zR2WySsLN8kf2mjrl7ZwcbGxt6C/VcLOnk5kYdrsbKDjY2NvRG7Dao2YGYlTT7ixcbGxsZuL92GWd3Ev3WcgI2NjX0Cu230t5HWPm4SY8nd6+VLbGxs7A9nt68gCZ71VZvk/HydCBsbG/sEdt5saoeveXmTlyX1PwYbGxv7SPashJit16w3tm4LMGxsbOyPYrfHbECbr++0zaNhgGFjY2NvxL6rDTRrGN31ORkVYGNjY+/NTkLrFa38tuwphgHrvTRsbGzsD2TPFiuTMqC9110HNjY2NvbscZNmUP5C29f0SwGGjY2NvQU7Hwy0JUQbjUvzbWxsbOyN2EnMzL7NW0IrkTYMMGxsbOwt2HmD5oWlQjkMuKGphI2Njb0F+5wDGxsbGxsbGxsb+22Obw6MHyGi0/wYAAAAAElFTkSuQmCC">
+    
+</ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -500,8 +511,20 @@
 
     <!-- Share QQ -->
     
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Chan&#39;s Blog&title=Win下必备神器之Cmder&summary=Keep trying no matter how hard it seems, it will get easier!&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/03/11/Win下必备神器之Cmder/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
 
     <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2017/03/11/Win下必备神器之Cmder/index.html&text=Win下必备神器之Cmder" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
     
 </ul>
 
@@ -678,7 +701,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="cn_cx@foxmail.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -699,6 +722,8 @@
                 主页
             </a>
         </li>
+        
+            <li class="divider"></li>
         
     
 
@@ -722,11 +747,44 @@
 
     <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/编程/">编程<span class="sidebar_archives-count">39</span></a></li><li><a class="sidebar_archives-link" href="/categories/视频/">视频<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
     <!-- Pages  -->
     
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">41</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -748,13 +806,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->

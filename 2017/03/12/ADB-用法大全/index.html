@@ -426,6 +426,17 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACYklEQVR42u3aQVJkIRAFwL7/pfUATuN7wKcZI//KCBFIFhRW1evrT38vPDw8PDw8PDy8y3iv+PvHRD9++278zzHvVl/fGx4eHt4Z3i9X7XBMvvwY0K77dk48PDy8g7xkW8n13WKStYpV8PDw8C7m5VtJHt/Junh4eHj/L2/8FM5DSBJI8PDw8G7mJRtNEq9zF/14tkO5Fjw8PLyYN5eKPfPz0foeHh4eXsCrW5rK9O5c2PhYTxkeHh5ewGvTr+Ot5I/mXelgPDw8vHt4c21SK+FkvJN8dTw8PLynefklvqsZq00H53g8PDy8M7y2eL8ycv34NsQ9PDw8vGXeOEjMpWjzJ/WudAYeHh7eSV57+ebUJACspH2Lzgg8PDy8B3htY1OSbM2PJgEns+Hh4eGd5OWP3ehRG49JDqhtz8LDw8M7z2uLVW0AmGs1KIINHh4e3sO89ipPHuLr849DwmTTFR4eHt5WXlt8apO2bRBaChV4eHh4x3kbFpiaYaU8hoeHh3eSFz1SgwasNiTsDU54eHh4n+LV//aXLQVzyeK8VIaHh4d3kpckZ9sGqfWmhJaKh4eH9yneXBNAe5XvaoStAwMeHh7eVt7cMnmha+5otvWU4eHh4W3itd96+T8JGG0qGQ8PD+8kr006tH87V+gakyZbB/Dw8PC28tpgkFP3HmUUYPDw8PAO8vILun345snilZIbHh4e3s28uVJWvt05MB4eHt79vBaTNyUkOynSuHh4eHiP8ZJkRNuw9URrAh4eHt4NvJUUwNyTeoxcasPCw8PDe5j39z48PDw8PDw8PLwLvm/LHz7a1yHkcQAAAABJRU5ErkJggg==">
+    
+</ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -500,8 +511,20 @@
 
     <!-- Share QQ -->
     
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Chan&#39;s Blog&title=ADB 用法大全&summary=Keep trying no matter how hard it seems, it will get easier!&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/03/12/ADB-用法大全/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
 
     <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2017/03/12/ADB-用法大全/index.html&text=ADB 用法大全" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
     
 </ul>
 
@@ -2336,7 +2359,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="cn_cx@foxmail.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -2357,6 +2380,8 @@
                 主页
             </a>
         </li>
+        
+            <li class="divider"></li>
         
     
 
@@ -2380,11 +2405,44 @@
 
     <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/编程/">编程<span class="sidebar_archives-count">39</span></a></li><li><a class="sidebar_archives-link" href="/categories/视频/">视频<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
     <!-- Pages  -->
     
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">41</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -2406,13 +2464,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->

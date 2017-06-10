@@ -426,6 +426,17 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAACzklEQVR42u3aQZIiMQwEQP7/6d0HbDRUyT2zjZ0+EQy4neKgsaTXnyPXCxsbGxsbGxsbG/uR7Fe8Lrf75zPJt5Idks/nZ8bGxsbem50c6+qd9rjJ6/eBGJ4ZGxsb+wB2/sj8nVnya0OW7IONjY2NnRzr8hoQp5zoUoGNjY2NfVMCy0PQrvyagY2NjY09e0x+bXj/Tnux+W+1NGxsbOzHs/Ok8pzXv9rfxsbGxn4wu12zwtMsLbVXlA8nx8bGxt6UnSeGu4o7+T55OKKmMjY2NvZh7Nnh1gd98vT5PgTY2NjYp7HfD8fMBnHygZvkW23KrGtp2NjY2F/OTh65Hqb2ItE2J26YVMLGxsb+QvbKYE2buvJBnzYQS41ebGxs7O3YbWP13qbvLJkt9bexsbGxv5zdDj7mBaM2QeaJsw00NjY29gnsFt8+Mk+W68i6K4KNjY29HTsvAyXJaZYsi5HKvNSFjY2NvSm7PfpKKT/fJw9iXmzCxsbG3pWdw2blnllA82JTcQZsbGzsrdlti7ct8dx1XUnW5c7Y2NjYm7Lzf/SjrRdawjNk8VNhY2NjH8DOy0B5ONqQzYYvo7BiY2Njb8q+d8yxLTO14Zj9VNjY2NjnsJOE8f4x61eItoWMjY2Njb2eqGaHztu9+f4ffhJsbGzsrdlJQ7c9XHLENhztCbGxsbGxk5JT2zZYSYdRorp6CjY2NvYB7NkITl7ob0tCbdvgw0+IjY2NfQD7rmZtkn7aC8YNjQdsbGzsTdntWhmLnDVu29ZylMCwsbGxN2LPkkFbWspT2uy72NjY2Nh50sqHHfNCVZ6o2tBjY2Njn8ZeGcTMWwt5C3l9YWNjY2OvXAOi68EouHk7GRsbGxu7LQattHLbslR7WcLGxsY+gT07Ynshaf+60h7GxsbGPoedF2h+ruSUBzQvSGFjY2OfwD5nYWNjY2NjY2NjYz9m/QXtJuKVe/wcNwAAAABJRU5ErkJggg==">
+    
+</ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -500,8 +511,20 @@
 
     <!-- Share QQ -->
     
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Chan&#39;s Blog&title=TeamViewer安装使用详解&summary=Keep trying no matter how hard it seems, it will get easier!&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2016/12/23/TeamViewer安装使用详解/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
 
     <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2016/12/23/TeamViewer安装使用详解/index.html&text=TeamViewer安装使用详解" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
     
 </ul>
 
@@ -638,7 +661,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="cn_cx@foxmail.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -659,6 +682,8 @@
                 主页
             </a>
         </li>
+        
+            <li class="divider"></li>
         
     
 
@@ -682,11 +707,44 @@
 
     <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/编程/">编程<span class="sidebar_archives-count">39</span></a></li><li><a class="sidebar_archives-link" href="/categories/视频/">视频<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
     <!-- Pages  -->
     
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">41</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -708,13 +766,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->

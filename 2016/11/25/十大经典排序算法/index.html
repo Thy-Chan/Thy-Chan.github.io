@@ -426,6 +426,17 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC4klEQVR42u3aQXLjMAwEwPz/07sPSFmeAeWKTLZOKSem2MxhigB+/h35/GBjY2NjY2NjY2M/kv0TP6/+/vfnv9evt3i5TrtnbGxs7BPY+Sby11wfx8phtXvGxsbGPod9HU7X37r3gNq3R9/CxsbGxr7cRAJOIic/IGxsbGzsTwRYewmZrYCNjY2NfUOBJn7ZdcjlofjHtTRsbGzsx7PbRu8Tfv6D/jY2Njb2I9mzYZrrYZ0k0mbNhqWdY2NjY2/KTgDXxZ32gpFfLWYr18OX2NjY2Buxk6L87HKyUtZv3/5yBWxsbOxN2fnSbQM4KQC1UToLQmxsbOy92Z8Y07mrJbwSeNjY2NjnsNeR7SUhLyG1ZayiqISNjY29ETtp3Cbt3uTzJKhmYRb9k7CxsbE3Za+UhGZl+pUmRLLmSws2Njb2AeyoXRqEzfo6SVDdUFTCxsbG3pqdt2nbaMmPbBa02NjY2NjJ5vJBnE9cP9pmMDY2NvY57LxINGsMtxee9QcbGxv7HHZSspmVk2bFo1nsvXkjNjY29tbsdistOx/KXAnON4UnbGxs7E3Zs4JO2xho2wxJjNWXH2xsbOxN2fk1Iy/TJ8GWt2/b6CpyGxsbG3sL9nrpJ79yLG06WLkY2cHGxsbejp180m59JZaSlbGxsbGx87jKLx6zIn7eMMgLTDd0RbCxsbG/ir1SrF8ZtcyPo20/FO0BbGxs7C9n5zHQlpNmYzorzYnhDQwbGxv7y9mz4GlLS8lGZ79dym1sbGzsA9h3lftvKO6Xgz5FLQ0bGxv7y9ltJLRloHbUph0AWrqBYWNjY2/EzkMrP5So+RqEVj4e+kaBjY2NfQA7D63ZYE1SqGqbCkXzGBsbGxt7uQHcIpMwK/5V2NjY2NhlMyCJlnzlG76FjY2NfQB71mTNmwr55aEd0Px4LQ0bGxv78ewVQH51mYXf7BLykZEdbGxs7Eeyz3mwsbGxsbGxsbGxH/P8B7iMr/IixAjDAAAAAElFTkSuQmCC">
+    
+</ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -500,8 +511,20 @@
 
     <!-- Share QQ -->
     
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Chan&#39;s Blog&title=十大经典排序算法&summary=Keep trying no matter how hard it seems, it will get easier!&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2016/11/25/十大经典排序算法/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
 
     <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2016/11/25/十大经典排序算法/index.html&text=十大经典排序算法" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
     
 </ul>
 
@@ -904,7 +927,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="cn_cx@foxmail.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -925,6 +948,8 @@
                 主页
             </a>
         </li>
+        
+            <li class="divider"></li>
         
     
 
@@ -948,11 +973,44 @@
 
     <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/编程/">编程<span class="sidebar_archives-count">39</span></a></li><li><a class="sidebar_archives-link" href="/categories/视频/">视频<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
     <!-- Pages  -->
     
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">41</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -974,13 +1032,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->

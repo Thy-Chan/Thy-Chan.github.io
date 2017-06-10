@@ -426,6 +426,17 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACY0lEQVR42u3a0U7DMAwF0P3/T8MrEtBd20kbTadPE2JtTpESc+3X10dfLzw8PDw8PDw8vMN4r/j6+fu/v/vHY/75Vn6f6trw8PDw7uS92WovAVXk9Subrw0PDw/vTl7++OutfBWmuTY8PDy8w3h52X29re87VPDw8PDO5OXfzUvkgw4GPDw8vKVhxPxzr0C/KWvBw8PDi3mTBtjuzw/39/Dw8PB+8cojTcUQNh8LyA+DwtAVHh4e3gbeJELNS/A88C0fA73/GPDw8PDGvCQgyNv/+fDB5EUXDgY8PDy8pbxkWb0RgbyhNRkmwMPDw7ufl5fLPUZvcx/FInh4eHgH8ApBQLGknvwcDw8P71le9QFVcNLcmjwXDw8P705eL1ZYVUDnd24eDHh4eHjbeJPb5eC1MW7hYMDDw8NbyusFuGtH9vPXPYpx8fDw8JbyCttu8aoeFUmz7c3hgYeHh/cQLwkUVjXA1obCeHh4ePfwJqOivZHWBNZsmOHh4eFt5uXbenXTnw8o5C8CDw8P705eHij0Fpe3yqpHxaikxsPDwxvw8kXPI4xeTDxqgOHh4eFt5lUj2ipsfkUjBXh4eHibeXkIWy2yq3dOXkRz6AoPDw9vKa965UVzrzTP22/lBhgeHh7eIl6vnE0262rbbFW0gYeHh3cPrxpM5Fv5fBQgKdnx8PDwnuL1YtPeonthRPTHwMPDwzuMV0Xmi8ubam/ug4eHh3ckr7rd56Na1cYbHh4e3rO8ahgxaZVNCvrmwYCHh4e3lFdtgPWK6d5IVrncx8PDw9vM+7wLDw8PDw8PDw/vgOsbmILoTDtOdpQAAAAASUVORK5CYII=">
+    
+</ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -500,8 +511,20 @@
 
     <!-- Share QQ -->
     
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Chan&#39;s Blog&title=Git 命令大全&summary=Keep trying no matter how hard it seems, it will get easier!&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/03/12/Git-命令大全/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
 
     <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2017/03/12/Git-命令大全/index.html&text=Git 命令大全" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
     
 </ul>
 
@@ -655,7 +678,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="cn_cx@foxmail.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -676,6 +699,8 @@
                 主页
             </a>
         </li>
+        
+            <li class="divider"></li>
         
     
 
@@ -699,11 +724,44 @@
 
     <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/编程/">编程<span class="sidebar_archives-count">39</span></a></li><li><a class="sidebar_archives-link" href="/categories/视频/">视频<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
     <!-- Pages  -->
     
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">41</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -725,13 +783,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->

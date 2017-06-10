@@ -426,6 +426,17 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADlklEQVR42u3aSW4cMRAEwPn/p+WrAEmczCLZGAPBkzHqhYw+lGt5fVnf1gsBDhw4cODAgQMHDhwfzPGKV3vX9yt/3vvLtn7c9dfTdnb1y104cODAgeMCx5tQtLxmTfDXYZInJHD7Z8GBAwcOHPc4kmCZB9R1oL191CLw48CBAweOj+dYH2n9tDwhXCeHOHDgwIHj/+LI07n8mtm9+/8hwIEDBw4c9zjy1Ci5Pt9o0mTKP8ajtVIcOHDgwLE90PD5/350vgMHDhw4cPzgaFfbakrKee01bXB9cyIcOHDgwHGUIw9Up9pIybHbncz2jwMHDhw4bnDkQXS/kJeHzPWwQv4x1r/jwIEDB47bHLNEa42ynwq+OUyZ2uHAgQMHjic58gGCNtDOgFqCPKjjwIEDB47nOZLwuTMMvR9Wk48RlThx4MCBA8cFjtm4QLLd9cFmBcS8CIgDBw4cOJ7nyJOx5AD7LaW21Ng2w3DgwIEDxzMcbcGuPcz+0Fv7/K944cCBAweOGxz5IfcLc7NgnKeI9QAfDhw4cOC4wDEbF2g5blxZHPuvD48DBw4cOI5yzNK2vAWVBMK24ZT89cB8Bw4cOHDgONTBbwt2Ocd+y2o/rOLAgQMHjmc4kmPMhhJmww2nWkpRkMaBAwcOHEc52uZTHmLbIH1jVCLaPw4cOHDguMCRF9raX2bB9XaChwMHDhw47nG0YW//9TsFx7bpFb0FBw4cOHAc5WhTpv0krW1B5UXJWQsKBw4cOHDc5tgZbpildrMBhVe8hsVBHDhw4MAx4sgfsS7PzYYPWvq2HRWloDhw4MCB4zJHPtCwP8qQJ3izwuKBQIsDBw4cOEYc7S/7baS2EDkcg0s+IQ4cOHDguMCRF9eS17etpv320k7zCQcOHDhw3OCYBdq8CZQcYFZwbFtcbwYacODAgQPHBY5ZIGwHHdqS4inuOtDiwIEDB44NjvzFbXI1S+F2xuOKITwcOHDgwHGUo12zjbYNpJ3mVl12xIEDBw4cRznaQHWqWdUyrVFmjSgcOHDgwHGPIwlsbflvJ/FrS4cJ1p+nw4EDBw4c1zhOpVhJKrXedI7bpo44cODAgeMzOWZDbLNW0/rKFn2rC4cDBw4cOB7hOBbwthtXSWp3PdDiwIEDB46yONgW8pIDt8lhcteBFA4HDhw4cGxwtAMKs/SpbSbN+OrBCBw4cODAcZTDwoEDBw4cOHDgwIEDx4etfygCH7hGZ6jaAAAAAElFTkSuQmCC">
+    
+</ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -500,8 +511,20 @@
 
     <!-- Share QQ -->
     
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Chan&#39;s Blog&title=HeadFirst 设计模式 - Chapter8 模板方法设计模式&summary=Keep trying no matter how hard it seems, it will get easier!&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2016/11/13/HeadFirst-设计模式-Chapter8-模板方法设计模式/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
 
     <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2016/11/13/HeadFirst-设计模式-Chapter8-模板方法设计模式/index.html&text=HeadFirst 设计模式 - Chapter8 模板方法设计模式" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
     
 </ul>
 
@@ -629,7 +652,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="cn_cx@foxmail.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -650,6 +673,8 @@
                 主页
             </a>
         </li>
+        
+            <li class="divider"></li>
         
     
 
@@ -673,11 +698,44 @@
 
     <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/编程/">编程<span class="sidebar_archives-count">39</span></a></li><li><a class="sidebar_archives-link" href="/categories/视频/">视频<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
     <!-- Pages  -->
     
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">41</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -699,13 +757,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->

@@ -426,6 +426,17 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC6UlEQVR42u3aS1LDMBAFwNz/0rClCqK8JxlwpPaKSmxLrQWT+Tw+jrwe2NjY2NjY2NjY2LdkP+Lrhxd9+fz7Pd+fHX/ybMXxm/M9Y2NjY+/NfvGvf3hPe0DJWu1BJCtiY2Njn8BeDyFteBsHvORtxZ6xsbGxsYMtjp8dw8bB7II9Y2NjY2OX6UcSxvIiETY2Njb2VUWllQJT0jBIwt4/1NKwsbGxb8/OQ8h9/v7T/jY2Njb2jdlzV3I0c0EoaSRM7hkbGxt7U/ZcGpCXddrUZaV5jI2NjX0muw0ebdKSf7vS3K3bA9jY2NgbsVdGc9pRm/ad7XG8uBMbGxt7U3YezOYawO0BteObxfAQNjY29tbs9md9m6jM3TN+qg2f2NjY2Luyi6JMWejJWwIrbeb8zdjY2NhnsvOi/1xJqG0JtM0MbGxs7BPYeRlofQQnT2zaRvIF7QFsbGzst2XnBaCkfN8+lR9Ke0yTcRsbGxv7bdlt6T9PV9bbyW3juZ5UwsbGxn5zdl76b8tAcwlM20JeysCwsbGxN2K3G10/uKigXzaPX6yFjY2NvTW7HYUcLzbXAG7fUO8WGxsbe1N2+/C1pZ+rwmH0CTY2NvbW7LZ8c1WomwuKH1MXNjY29gnsFdj4yOYC4cpxFwEMGxsb+83ZbYKRl4qe3T9u684N4l/QFcHGxsbegj2XWswlGysjQe0xYWNjY+/NbgNJUuJpt9u2AfL3Y2NjY5/Azh/LU5S2wdAeSpKiYGNjY5/Dzos+7UbzAco8vcHGxsbGnmsPJC3YFr8S3vKWMDY2NvYJ7DaFyA8lKTb9RqB6ujdsbGzsrdlt8SgHtyM7K+u+OHRsbGzsA9jFz/qgcN8ea57kJHdiY2NjYyejPElAare4MgY0mYpgY2NjH8aeWzgv9M8NCUVHjI2NjX0AO1lsJdQlpaKVd44t2NjY2Huz80ZvXvTJE4x23DMf4sHGxsY+gX3OhY2NjY2NjY2NjX2b6xNcuocpL40sWwAAAABJRU5ErkJggg==">
+    
+</ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -500,8 +511,20 @@
 
     <!-- Share QQ -->
     
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Chan&#39;s Blog&title=HeadFirst 设计模式 - Chapter3 装饰者&summary=Keep trying no matter how hard it seems, it will get easier!&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2016/11/07/HeadFirst-设计模式-Chapter3-装饰者/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
 
     <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2016/11/07/HeadFirst-设计模式-Chapter3-装饰者/index.html&text=HeadFirst 设计模式 - Chapter3 装饰者" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
     
 </ul>
 
@@ -639,7 +662,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="cn_cx@foxmail.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -660,6 +683,8 @@
                 主页
             </a>
         </li>
+        
+            <li class="divider"></li>
         
     
 
@@ -683,11 +708,44 @@
 
     <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/编程/">编程<span class="sidebar_archives-count">39</span></a></li><li><a class="sidebar_archives-link" href="/categories/视频/">视频<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
     <!-- Pages  -->
     
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">41</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -709,13 +767,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->

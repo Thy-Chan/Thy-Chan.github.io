@@ -426,6 +426,17 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACZklEQVR42u3aQXLDIBAEQP3/08k1VYnx7CIQcTUnly1btA6wnuX6+uhx4eHh4eHh4eHhHca74vHz+j9+dHhN8un4/WRueHh4eDt5b5baX5Mbf+vV9eP380c5nj8eHh7eTl5vMxjje1OcmRseHh7eabxekZ0/puS+eHh4eP+Ll0wr2TzychwPDw/vZF7hD39xJKFtEvguz1rw8PDwYl6vAbbn9WP9PTw8PLwXvPKRpuLSnzTM8m0gmiEeHh7eYl4S0UYRwPRBq95vNrMWPDw8vGleXrD24oOZYrr8UPDw8PAW83pLcB7O9hpp1QOveHh4eDt5eWhb3RKqn/a2gSiMwMPDw7uVV12a59v/vU2ocBQMDw8P7wBevknMFNbz5TseHh7eHl4e1ObsvBDvPejm0QE8PDy8Zbw8Ts0L614Rn2wbeHh4eE/x8gMEvcU6n2i1DYaHh4e3n5dMohq/ziz381EyHh4e3h5eb5ku33imrZW33/Dw8PC28KqR7kz0sPq7eHh4eKt5+dKflNr3BrJ54Y6Hh4e3n1cNXvPiODkylZfX0Tt4eHh4i3l3RRJRsRsv8flrPDw8vKd4valXb7yuQMfDw8PbycuX7/kCutcYS76Fh4eHt5NXHTfcvhg3lGNfPDw8vMW8Kx7JIj6edC8ILsfNeHh4eFt41eZ9bwPIkdVfw8PDw3uKV210zYQRyfbQfBB4eHh4h/Hy2yTsctCQlO94eHh4B/OSRlpv6r1jXnh4eHj7eUkY0WxKBa2y/Jo3jxUPDw9vC6/XALvrAVXbXW8+xcPDw1vM+7yBh4eHh4eHh4d3wPgGTi9KFYujxgYAAAAASUVORK5CYII=">
+    
+</ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -500,8 +511,20 @@
 
     <!-- Share QQ -->
     
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Chan&#39;s Blog&title=Hello World&summary=Keep trying no matter how hard it seems, it will get easier!&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2016/10/14/hello-world/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
 
     <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2016/10/14/hello-world/index.html&text=Hello World" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
     
 </ul>
 
@@ -612,7 +635,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="cn_cx@foxmail.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -633,6 +656,8 @@
                 主页
             </a>
         </li>
+        
+            <li class="divider"></li>
         
     
 
@@ -656,11 +681,44 @@
 
     <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/编程/">编程<span class="sidebar_archives-count">39</span></a></li><li><a class="sidebar_archives-link" href="/categories/视频/">视频<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
     <!-- Pages  -->
     
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">41</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -682,13 +740,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->

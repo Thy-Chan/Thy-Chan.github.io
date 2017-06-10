@@ -426,6 +426,17 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC30lEQVR42u3aUU4DMQwE0N7/0nCCLTPOAtvk5QtVbTcvSJiM/fo6cr2wsbGxsbGxsbGxH8l+xevq/ZePKT919azk297vGRsbG/sE9g9/+uNHXgFmB5HsJ38PNjY29gns94yclL9+9T3vn9juGRsbGxv7/eaSI8hLHTY2Njb23xewNvppPzWLq7CxsbHPZLchTnJFmUVROfuPsjRsbGzsx7PbRu8Tfv6H/jY2Njb2I9mzlcdA7VhPcuEZ7hkbGxt7U3YS5a8MYq40jPNGRdS0wMbGxt6anZecNk7Kt5uM9eTRVVTAsLGxsTdlz0ZtcuRK+cypdQHDxsbG/lh2WwbyIGk9EloppdjY2NjnsPPgZjZkkxS/lSPOSyY2Njb2Cew8+mkbtMnoz73HekOohI2Njf0h7OG/9aOW7SwSmpXY4gaGjY2NvQU7H9BpYXWZKd+T/JKwsbGx92a/RiuP8lcuJ20xu2H4EhsbG3sLdlIkVhrAK8M6s11hY2Nj783OA/r82nBXDJQ3epNrDDY2NvZp7LxQ5dFSspKG7rBAYmNjY2/NbgvSyobuCqRuuIpgY2Njb8RO/rnPC15+scm/J7/wDPvb2NjY2Bux24fN2sb5wM0wQlq/gWFjY2N/FDsvafmgTP76bCQoH/rBxsbGPoGdlJD2UPLStXLQRUSFjY2NvSk7Lyd5EJ9H/LN2cttmwMbGxj6NnReqtmHcDuXkIVdkwcbGxt6aPYtp8ognD4nagZ6lqwg2Njb2duxZERpGPKNDbJsK2NjY2Cew29WOQrYXm9kY6LArgo2Njb0Fux2XLEZkfmFAM2/61lkaNjY29oez26I1O6B2HDMpe0Vhw8bGxj6A3Rat9Zhpdlj5cWNjY2Njt+y2zdAeX3Kg2NjY2Nh50H9XyWmfnreEsbGxsU9jJ6HSvcM3bcs2/x5sbGzs09htZNPGTLNjXbkOYWNjY5/DPmdhY2NjY2NjY2NjP2Z9A+lfUyU4k5hIAAAAAElFTkSuQmCC">
+    
+</ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -500,8 +511,20 @@
 
     <!-- Share QQ -->
     
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Chan&#39;s Blog&title=[译] Emacs Lisp 速成&summary=Keep trying no matter how hard it seems, it will get easier!&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2016/10/30/译-Emacs-Lisp-速成/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
 
     <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2016/10/30/译-Emacs-Lisp-速成/index.html&text=[译] Emacs Lisp 速成" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
     
 </ul>
 
@@ -806,7 +829,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="cn_cx@foxmail.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -827,6 +850,8 @@
                 主页
             </a>
         </li>
+        
+            <li class="divider"></li>
         
     
 
@@ -850,11 +875,44 @@
 
     <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/编程/">编程<span class="sidebar_archives-count">39</span></a></li><li><a class="sidebar_archives-link" href="/categories/视频/">视频<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/软件/">软件<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
     <!-- Pages  -->
     
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">41</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -876,13 +934,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->
