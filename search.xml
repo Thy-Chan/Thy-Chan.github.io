@@ -44,8 +44,234 @@
 <li>sencha-touch-all-debug.js: 调试时用的没有压缩的Sencha Touch核心库文件.</li>
 <li>version.txt: 版本说明文件.</li>
 </ul>
-<h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2>]]></content>
+]]></content>
       
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Spring Hello World 实例]]></title>
+      <url>/2017/07/12/Spring-Hello-World-%E5%AE%9E%E4%BE%8B/</url>
+      <content type="html"><![CDATA[<h2 id="Hello-World-实例"><a href="#Hello-World-实例" class="headerlink" title="Hello World 实例"></a>Hello World 实例</h2><p>让我们使用 Spring 框架开始实际的编程。在你开始使用 Spring 框架编写第一个例子之前，你必须确保已经正确地设置了 Spring 环境，正如在 <strong>Spring——环境设置</strong>教程中如所说的。假设你有了解一些有关 Intellij IDEA工作的知识。</p>
+<p>因此，让我们继续编写一个简单的 Spring 应用程序，它将根据在 Spring Beans 配置文件中配置的信息输出 “Hello World！” 或其他信息。</p>
+<h2 id="第-1-步：创建-Java-项目"><a href="#第-1-步：创建-Java-项目" class="headerlink" title="第 1 步：创建 Java 项目"></a>第 1 步：创建 Java 项目</h2><p>第一步是使用 Eclipse IDE 创建一个简单的 Java 项目。按照选项 <strong>Create New Project -&gt; Spring-&gt; Libraries选择Use Library: (点击Create…找到Spring框架的解压位置) -&gt; Next</strong>，从向导列表中输入项目名称<strong>Project name</strong>: HelloSpring, 最后Finished便创建完成.</p>
+<h2 id="第-2-步：添加必需的库"><a href="#第-2-步：添加必需的库" class="headerlink" title="第 2 步：添加必需的库"></a>第 2 步：添加必需的库</h2><p>第一步若在Libraries中已选择Use Library, 并导入相关的包, 则可以忽略此步骤.否则如下</p>
+<p>第二步让我们添加 Spring 框架和通用的日志 API 库到我们的项目中。为了做到这个，选择菜单栏 <strong>File</strong> ，然后在菜单上按照下面可用的选项：<strong>Project  Structure…-&gt; Libraries</strong> </p>
+<p>现在，在 <strong>Libraries</strong> 标签中使用可用的+ 按钮，添加从 Spring 框架和通用日志安装目录下面的核心 JAR 文件：</p>
+<ul>
+<li>commons-logging-1.1.1</li>
+<li>spring-aop-4.1.6.RELEASE</li>
+<li>spring-aspects-4.1.6.RELEASE</li>
+<li>spring-beans-4.1.6.RELEASE</li>
+<li>spring-context-4.1.6.RELEASE</li>
+<li>spring-context-support-4.1.6.RELEASE</li>
+<li>spring-core-4.1.6.RELEASE</li>
+<li>spring-expression-4.1.6.RELEASE</li>
+<li>spring-instrument-4.1.6.RELEASE</li>
+<li>spring-instrument-tomcat-4.1.6.RELEASE</li>
+<li>spring-jdbc-4.1.6.RELEASE</li>
+<li>spring-jms-4.1.6.RELEASE</li>
+<li>spring-messaging-4.1.6.RELEASE</li>
+<li>spring-orm-4.1.6.RELEASE</li>
+<li>spring-oxm-4.1.6.RELEASE</li>
+<li>spring-test-4.1.6.RELEASE</li>
+<li>spring-tx-4.1.6.RELEASE</li>
+<li>spring-web-4.1.6.RELEASE</li>
+<li>spring-webmvc-4.1.6.RELEASE</li>
+<li>spring-webmvc-portlet-4.1.6.RELEASE</li>
+<li>spring-websocket-4.1.6.RELEASE</li>
+</ul>
+<h2 id="第-3-步：创建源文件"><a href="#第-3-步：创建源文件" class="headerlink" title="第 3 步：创建源文件"></a>第 3 步：创建源文件</h2><p>现在让我们在 <strong>HelloSpring</strong> 项目下创建实际的源文件。首先，我们需要创建一个名为 <strong>com.tutorialspoint</strong> 的包。为了做到这个，在 package explore 区域中的 <strong>src</strong> 上点击右键，并按照选项：<strong>New -&gt; Package</strong>。</p>
+<p>接下来，我们在包 com.tutorialspoint 下创建 <strong>HelloWorld.java</strong> 和 <strong>MainApp.java</strong> 文件。</p>
+<p>这里是 <strong>HelloWorld.java</strong> 文件的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package com.tutorialspoint;</div><div class="line">public class HelloWorld &#123;</div><div class="line">   private String message;</div><div class="line">   public void setMessage(String message)&#123;</div><div class="line">      this.message  = message;</div><div class="line">   &#125;</div><div class="line">   public void getMessage()&#123;</div><div class="line">      System.out.println(&quot;Your Message : &quot; + message);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面是第二个文件 <strong>MainApp.java</strong> 的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">package com.tutorialspoint;</div><div class="line">import org.springframework.context.ApplicationContext;</div><div class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</div><div class="line">public class MainApp &#123;</div><div class="line">   public static void main(String[] args) &#123;</div><div class="line">      ApplicationContext context = </div><div class="line">             new ClassPathXmlApplicationContext(&quot;Beans.xml&quot;);</div><div class="line">      HelloWorld obj = (HelloWorld) context.getBean(&quot;helloWorld&quot;);</div><div class="line">      obj.getMessage();</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>关于主要程序有以下两个要点需要注意：</p>
+<ul>
+<li>第一步是我们使用框架 API <strong>ClassPathXmlApplicationContext()</strong> 来创建应用程序的上下文。这个 API 加载 beans 的配置文件并最终基于所提供的 API，它处理创建并初始化所有的对象，即在配置文件中提到的 beans。</li>
+<li>第二步是使用已创建的上下文的 <strong>getBean() </strong>方法来获得所需的 bean。这个方法使用 bean 的 ID 返回一个最终可以转换为实际对象的通用对象。一旦有了对象，你就可以使用这个对象调用任何类的方法。</li>
+</ul>
+<h2 id="第-4-步：创建-bean-的配置文件"><a href="#第-4-步：创建-bean-的配置文件" class="headerlink" title="第 4 步：创建 bean 的配置文件"></a>第 4 步：创建 bean 的配置文件</h2><p>你需要创建一个 Bean 的配置文件，该文件是一个 XML 文件，并且作为粘合 bean 的粘合剂即类。这个文件需要在 <strong>src</strong> 目录下创建.</p>
+<p>通常开发人员保存该文件的名称为 <strong>Beans.xml</strong> 文件，但是你可以单独选择你喜欢的任何名称。你必须确保这个文件在 CLASSPATH 中是可用的，并在主应用程序中使用相同的名称，而在 MainApp.java 文件中创建应用程序的上下文。</p>
+<p>Beans.xml 用于给不同的 bean 分配唯一的 ID，并且控制不同值的对象的创建，而不会影响 Spring 的任何源文件。例如，使用下面的文件，你可以为 “message” 变量传递任何值，因此你就可以输出信息的不同值，而不会影响的 HelloWorld.java和MainApp.java 文件。让我们来看看它是如何工作的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line"></div><div class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</div><div class="line">    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</div><div class="line">    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot;&gt;</div><div class="line"></div><div class="line">   &lt;bean id=&quot;helloWorld&quot; class=&quot;com.tutorialspoint.HelloWorld&quot;&gt;</div><div class="line">       &lt;property name=&quot;message&quot; value=&quot;Hello World!&quot;/&gt;</div><div class="line">   &lt;/bean&gt;</div><div class="line"></div><div class="line">&lt;/beans&gt;</div></pre></td></tr></table></figure>
+<p>当 Spring 应用程序被加载到内存中时，框架利用了上面的配置文件来创建所有已经定义的 beans，并且按照标签的定义为它们分配一个唯一的 ID。你可以使用标签来传递在创建对象时使用不同变量的值。</p>
+<h2 id="第-5-步：运行程序"><a href="#第-5-步：运行程序" class="headerlink" title="第 5 步：运行程序"></a>第 5 步：运行程序</h2><p>一旦你完成了创建源代码和 bean 的配置文件后，准备好下一步编译和运行你的程序。为了做到这个，请保持 MainApp.Java 文件标签是<strong>有效</strong>的，并且在 Eclipse IDE 中使用可用的 Run 选项，或使用 <strong>Ctrl + F11</strong> 编译并运行你的应用程序 <strong>MainApp</strong>。如果你的应用程序一切都正常，将在 Eclipse IDE 控制台打印以下信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Your Message : Hello World!</div></pre></td></tr></table></figure>
+<p>祝贺，你已经成功地创建了你的第一个 Spring 应用程序。通过更改 “message” 属性的值并且保持两个源文件不变，你可以看到上述 Spring 应用程序的灵活性。下一步，我们开始在接下来的几个章节中做一些更有趣的事情。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 编程 </tag>
+            
+            <tag> Spring </tag>
+            
+            <tag> 框架 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Spring 环境配置]]></title>
+      <url>/2017/07/12/Spring-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
+      <content type="html"><![CDATA[<h2 id="环境设置"><a href="#环境设置" class="headerlink" title="环境设置"></a>环境设置</h2><h2 id="第-1-步：安装-Java-开发工具包（JDK）"><a href="#第-1-步：安装-Java-开发工具包（JDK）" class="headerlink" title="第 1 步：安装 Java 开发工具包（JDK）"></a>第 1 步：安装 Java 开发工具包（JDK）</h2><p>你可以从 Oracle 的 Java 网站 <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="external"><strong>Java SE Downloads</strong></a> 下载 SDK 的最新版本。你会在下载的文件中找到教你如何安装 JDK 的说明，按照给出的说明安装和配置 JDK 的设置。最后，设置 PATH 和 JAVA<em>HOME 环境变量，引入包含 java 和 javac 的目录，通常分别为 java install dir/bin 和 java install </em> dir。</p>
+<p>如果你运行的是Windows，并在C:\jdk*.*.*_**上安装了JDK，你就可以把下面这行写入C:\autoexec.bat文件中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">set PATH=C:\jdk*.*.*_**\bin;%PATH%</div><div class="line">set JAVA_HOME=C:\jdk*.*.*_**</div></pre></td></tr></table></figure>
+<p>或者，在 Windows XP/7/8 中，你也可以右键单击“我的电脑”，选择“属性”，然后是“高级”，然后是“环境变量”。接下来，你将更新 PATH 值，并且按下 OK 按钮。</p>
+<p>在 Unix(Solaris、Linux 等等)上，如果在 /usr/local/jdk<em>.</em>.<em>_*</em> 上安装 SDK，并且使用 C shell 命令，你将把下面的内容添加到 .cshrc 文件中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">setenv PATH /usr/local/jdk*.*.*_**/bin:$PATH</div><div class="line">setenv JAVA_HOME /usr/local/jdk*.*.*_**</div></pre></td></tr></table></figure>
+<p>或者，如果你使用集成开发环境（IDE），如 IntelliJ IDEA ,Eclipse或者 Sun ONE Studio，编译和运行一个简单的程序，用来确认 IDE 知道你安装了 Java，否则应该根据 IDE 给定的文档做正确的设置。</p>
+<h2 id="第-2-步：安装-Apache-Commons-Logging-API"><a href="#第-2-步：安装-Apache-Commons-Logging-API" class="headerlink" title="第 2 步：安装 Apache Commons Logging API"></a>第 2 步：安装 Apache Commons Logging API</h2><p>你可以从 <a href="http://commons.apache.org/logging/download_logging.cgi" target="_blank" rel="external"></a><strong><a href="http://commons.apache.org/logging/" target="_blank" rel="external">http://commons.apache.org/logging/</a></strong> 下载 Apache Commons Logging API 的最新版本。一旦你下载完安装包，并且解压二进制的发行版本到一个方便的位置。例如在 windows 上的 C:\commons-logging-1.1.1 中，或在 Linux/Unix 上的 /usr/local/commons-logging-1.1.1 中。该目录将有如下的 jar 文件和其他支持的文件等。</p>
+<p><img src="w3cnote://file/getImage?fileId=imgw3cschoolcnattachmentsimagewkwkspringenvironment1jpg" alt="img"></p>
+<p>确保你在这个目录上正确的设置 CLASSPATH 变量，否则你将会在运行应用程序时遇到问题。</p>
+<h2 id="第-3-步：安装-Eclipse-IDE"><a href="#第-3-步：安装-Eclipse-IDE" class="headerlink" title="第 3 步：安装 Eclipse IDE"></a>第 3 步：安装 Eclipse IDE</h2><p>本教程中的所有例子使用 Eclipse IDE 编写。所以我建议你应该在你的机器上安装 Eclipse 的最新版本。</p>
+<p>为了安装 Eclipse IDE，从 <a href="http://www.eclipse.org/downloads/" target="_blank" rel="external"><em>**</em></a><strong><a href="http://www.eclipse.org/downloads/" target="_blank" rel="external">http://www.eclipse.org/downloads/</a></strong> 上下载最新的 Eclipse 二进制文件。一旦你下载完安装包，并且解压二进制的发行版本到一个方便的位置。例如在 windows 上的 C:\eclipse 中，或在 Linux/Unix 上的 /usr/local/eclipse 中，最后恰当的设置 PATH 变量。</p>
+<p>在 Windows 机器上，可以通过执行以下命令启动 Eclipse，或者可以简单地双击 eclipse.exe。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%C:\eclipse\eclipse.exe</div></pre></td></tr></table></figure>
+<p>在 Unix（Solaris 和 Linux 等）上，可以通过执行下面的命令启动 Eclipse：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$/usr/local/eclipse/eclipse</div></pre></td></tr></table></figure>
+<p>启动成功后，如果一切正常，它应该显示下面的结果：</p>
+<p><img src="w3cnote://file/getImage?fileId=imgw3cschoolcnattachmentsimagewkwkspringenvironment2jpg" alt="img"></p>
+<h2 id="第-4-步：安装-Spring-框架库"><a href="#第-4-步：安装-Spring-框架库" class="headerlink" title="第 4 步：安装 Spring 框架库"></a>第 4 步：安装 Spring 框架库</h2><p>现在如果一切正常，你就可以继续设置你的 Spring 框架。下面是在你的机器上下载并安装框架的简单步骤。</p>
+<ul>
+<li>选择是要在 Windows 还是在 UNIX 上安装 Spring，然后继续进行下一个步骤，在 Windows 上下载 .zip 文件,而在 Unix 上下载 .tz 文件。</li>
+<li>从 <a href="http://repo.spring.io/release/org/springframework/spring" target="_blank" rel="external"><strong>http://repo.spring.io/release/org/springframework/spring</strong></a> 下载最新版本的 Spring 框架的二进制文件。</li>
+<li>当你解压缩下载的文件时，它内置的目录结构为 E:\spring，如下所示。</li>
+</ul>
+<p><img src="w3cnote://file/getImage?fileId=imgw3cschoolcnattachmentsimagewkwkspringenvironment3jpg" alt="img"></p>
+<p>你会在目录 <strong>E:\spring\libs</strong> 中发现所有的 Spring 库。确保你在这个目录上正确的设置 CLASSPATH 变量，否则你将会在运行应用程序时遇到问题。如果使用的是 Intellij IDEA，就不需要设置 CLASSPATH，因为所有的设置将可以通过IntellIJ DEA内部项目包导入完成。</p>
+<p>一旦你完成了最后一步后，你就可以继续你的第一个 Spring 例子，你将会在下一章中看到。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 编程 </tag>
+            
+            <tag> Spring </tag>
+            
+            <tag> 框架 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Spring 体系结构]]></title>
+      <url>/2017/07/12/Spring-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</url>
+      <content type="html"><![CDATA[<h2 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h2><p>Spring 有可能成为所有企业应用程序的一站式服务点，然而，Spring 是模块化的，允许你挑选和选择适用于你的模块，不必要把剩余部分也引入。下面的部分对在 Spring 框架中所有可用的模块给出了详细的介绍。</p>
+<p>Spring 框架提供约 20 个模块，可以根据应用程序的要求来使用。</p>
+<p><img src="w3cnote://file/getImage?fileId=imgw3cschoolcnattachmentsimagewkwkspringarch1png" alt="img"></p>
+<h2 id="核心容器"><a href="#核心容器" class="headerlink" title="核心容器"></a>核心容器</h2><p>核心容器由核心，Bean，上下文和表达式语言模块组成，它们的细节如下：</p>
+<ul>
+<li><strong>核心</strong>模块提供了框架的基本组成部分，包括 IoC 和依赖注入功能。</li>
+<li><strong>Bean</strong> 模块提供 BeanFactory，它是一个工厂模式的复杂实现。</li>
+<li><strong>上下文</strong>模块建立在由核心和 Bean 模块提供的坚实基础上，它是访问定义和配置的任何对象的媒介。ApplicationContext 接口是上下文模块的重点。</li>
+<li><strong>表达式语言</strong>模块在运行时提供了查询和操作一个对象图的强大的表达式语言。</li>
+</ul>
+<h2 id="数据访问-集成"><a href="#数据访问-集成" class="headerlink" title="数据访问/集成"></a>数据访问/集成</h2><p>数据访问/集成层包括 JDBC，ORM，OXM，JMS 和事务处理模块，它们的细节如下：</p>
+<ul>
+<li><strong>JDBC</strong> 模块提供了删除冗余的 JDBC 相关编码的 JDBC 抽象层。</li>
+<li><strong>ORM</strong> 模块为流行的对象关系映射 API，包括 JPA，JDO，Hibernate 和 iBatis，提供了集成层。</li>
+<li><strong>OXM</strong> 模块提供了抽象层，它支持对 JAXB，Castor，XMLBeans，JiBX 和 XStream 的对象/XML 映射实现。</li>
+<li>Java 消息服务 <strong>JMS</strong> 模块包含生产和消费的信息的功能。</li>
+<li><strong>事务</strong>模块为实现特殊接口的类及所有的 POJO 支持编程式和声明式事务管理。</li>
+</ul>
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><p>Web 层由 Web，Web-MVC，Web-Socket 和 Web-Portlet 组成，它们的细节如下：</p>
+<ul>
+<li><strong>Web</strong> 模块提供了基本的面向 web 的集成功能，例如多个文件上传的功能和使用 servlet 监听器和面向 web 应用程序的上下文来初始化 IoC 容器。</li>
+<li><strong>Web-MVC</strong> 模块包含 Spring 的模型-视图-控制器（MVC），实现了 web 应用程序。</li>
+<li><strong>Web-Socket</strong> 模块为 WebSocket-based 提供了支持，而且在 web 应用程序中提供了客户端和服务器端之间通信的两种方式。</li>
+<li><strong>Web-Portlet</strong> 模块提供了在 portlet 环境中实现 MVC，并且反映了 Web-Servlet 模块的功能。</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>还有其他一些重要的模块，像 AOP，Aspects，Instrumentation，Web 和测试模块，它们的细节如下：</p>
+<ul>
+<li><strong>AOP</strong> 模块提供了面向方面的编程实现，允许你定义方法拦截器和切入点对代码进行干净地解耦，它实现了应该分离的功能。</li>
+<li><strong>Aspects</strong> 模块提供了与 <strong>AspectJ</strong> 的集成，这是一个功能强大且成熟的面向切面编程（AOP）框架。</li>
+<li><strong>Instrumentation</strong> 模块在一定的应用服务器中提供了类 instrumentation 的支持和类加载器的实现。</li>
+<li><strong>Messaging</strong> 模块为 STOMP 提供了支持作为在应用程序中 WebSocket 子协议的使用。它也支持一个注解编程模型，它是为了选路和处理来自 WebSocket 客户端的 STOMP 信息。</li>
+<li><strong>测试</strong>模块支持对具有 JUnit 或 TestNG 框架的 Spring 组件的测试。</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 编程 </tag>
+            
+            <tag> Spring </tag>
+            
+            <tag> 框架 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Spring 概述]]></title>
+      <url>/2017/07/12/Spring-%E6%A6%82%E8%BF%B0/</url>
+      <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Spring 是最受欢迎的企业级 Java 应用程序开发框架。数以百万的来自世界各地的开发人员使用 Spring 框架来创建好性能、易于测试、可重用的代码。</p>
+<p>Spring 框架是一个开源的 Java 平台，它最初是由 Rod Johnson 编写的，并且 2003 年 6 月首次在 Apache 2.0 许可下发布。</p>
+<p>当谈论到大小和透明度时， Spring 是轻量级的。 Spring 框架的基础版本是在 2 MB 左右的。</p>
+<p>Spring 框架的核心特性可以用于开发任何 Java 应用程序，但是在 Java EE 平台上构建 web 应用程序是需要扩展的。 Spring 框架的目标是使 J2EE 开发变得更容易使用，通过启用基于 POJO 编程模型来促进良好的编程实践。</p>
+<h2 id="使用-Spring-框架的好处"><a href="#使用-Spring-框架的好处" class="headerlink" title="使用 Spring 框架的好处"></a>使用 Spring 框架的好处</h2><p>下面列出的是使用 Spring 框架主要的好处：</p>
+<ul>
+<li>Spring 可以使开发人员使用 POJOs 开发企业级的应用程序。只使用 POJOs 的好处是你不需要一个 EJB 容器产品，比如一个应用程序服务器，但是你可以选择使用一个健壮的 servlet 容器，比如 Tomcat 或者一些商业产品。</li>
+<li>Spring 在一个单元模式中是有组织的。即使包和类的数量非常大，你必须并且只需要但是你需要的，而忽略剩余的那部分。</li>
+<li>Spring 不会让你白费力气做重复工作，它真正的利用了一些现有的技术，像几个 ORM 框架、日志框架、JEE、Quartz 和 JDK 计时器，其他视图技术。</li>
+<li>测试一个用 Spring 编写的应用程序很容易，因为 environment-dependent 代码被放进了这个框架中。此外，通过使用 JavaBean-style POJOs，它在使用依赖注入注入测试数据时变得更容易。</li>
+<li>Spring 的 web 框架是一个设计良好的 web MVC 框架，它为 web 框架，比如 Structs 或者其他工程上的或者很少受欢迎的 web 框架，提供了一个很好的供替代的选择。</li>
+<li>为将特定技术的异常（例如，由 JDBC、Hibernate，或者 JDO 抛出的异常）翻译成一致的， Spring 提供了一个方便的 API，而这些都是未经检验的异常。</li>
+<li>轻量级的 IOC 容器往往是轻量级的，例如，特别是当与 EJB 容器相比的时候。这有利于在内存和 CPU 资源有限的计算机上开发和部署应用程序。</li>
+<li>Spring 提供了一个一致的事务管理界面，该界面可以缩小成一个本地事务（例如，使用一个单一的数据库）和扩展成一个全局事务（例如，使用 JTA）。</li>
+</ul>
+<h2 id="依赖注入（DI）"><a href="#依赖注入（DI）" class="headerlink" title="依赖注入（DI）"></a>依赖注入（DI）</h2><p>Spring 最认同的技术是控制反转的<strong>依赖注入（DI）</strong>模式。控制反转（IoC）是一个通用的概念，它可以用许多不同的方式去表达，依赖注入仅仅是控制反转的一个具体的例子。</p>
+<p>当编写一个复杂的 Java 应用程序时，应用程序类应该尽可能的独立于其他的 Java 类来增加这些类可重用可能性，当进行单元测试时，可以使它们独立于其他类进行测试。依赖注入（或者有时被称为配线）有助于将这些类粘合在一起，并且在同一时间让它们保持独立。</p>
+<p>到底什么是依赖注入？让我们将这两个词分开来看一看。这里将依赖关系部分转化为两个类之间的关联。例如，类 A 依赖于类 B。现在，让我们看一看第二部分，注入。所有这一切都意味着类 B 将通过 IoC 被注入到类 A 中。</p>
+<p>依赖注入可以以向构造函数传递参数的方式发生，或者通过使用 setter 方法 post-construction。由于依赖注入是 Spring 框架的核心部分，所以我将在一个单独的章节中利用很好的例子去解释这一概念。</p>
+<h2 id="面向方面的程序设计（AOP）："><a href="#面向方面的程序设计（AOP）：" class="headerlink" title="面向方面的程序设计（AOP）："></a>面向方面的程序设计（AOP）：</h2><p>Spring 框架的一个关键组件是<strong>面向方面的程序设计（AOP）</strong>框架。一个程序中跨越多个点的功能被称为<strong>横切关注点</strong>，这些横切关注点在概念上独立于应用程序的业务逻辑。有各种各样常见的很好的关于方面的例子，比如日志记录、声明性事务、安全性，和缓存等等。</p>
+<p>在 OOP 中模块化的关键单元是类，而在 AOP 中模块化的关键单元是方面。AOP 帮助你将横切关注点从它们所影响的对象中分离出来，然而依赖注入帮助你将你的应用程序对象从彼此中分离出来。</p>
+<p>Spring 框架的 AOP 模块提供了面向方面的程序设计实现，允许你定义拦截器方法和切入点，可以实现将应该被分开的代码干净的分开功能。我将在一个独立的章节中讨论更多关于 Spring AOP 的概念。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 编程 </tag>
+            
+            <tag> Spring </tag>
+            
+            <tag> 框架 </tag>
+            
+        </tags>
         
     </entry>
     
@@ -3650,9 +3876,9 @@
         
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> 编程 </tag>
+            
+            <tag> Java </tag>
             
             <tag> 项目 </tag>
             
@@ -3701,9 +3927,9 @@
         
         <tags>
             
-            <tag> 工具 </tag>
-            
             <tag> 软件 </tag>
+            
+            <tag> 工具 </tag>
             
             <tag> IT </tag>
             
