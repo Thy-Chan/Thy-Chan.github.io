@@ -3,6 +3,48 @@
   
     
     <entry>
+      <title><![CDATA[关于Spring中的<context:annotation-config/>配置(开启注解)]]></title>
+      <url>/2017/07/25/about-spring-annotation-config/</url>
+      <content type="html"><![CDATA[<p>当我们需要使用BeanPostProcessor时，直接在Spring配置文件中定义这些Bean显得比较笨拙，例如：</p>
+<ul>
+<li>使用<code>@Autowired</code>注解，必须事先在Spring容器中声明AutowiredAnnotationBeanPostProcessor的Bean：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;bean class=&quot;org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor &quot;/&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>使用 <code>@Required</code>注解，就必须声明RequiredAnnotationBeanPostProcessor的Bean：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;bean class=&quot;org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor&quot;/&gt;</div></pre></td></tr></table></figure>
+<p>类似地，使用<code>@Resource</code>、<code>@PostConstruct</code>、<code>@PreDestroy</code>等注解就必须声明CommonAnnotationBeanPostProcessor；使用<code>@PersistenceContext</code>注解，就必须声明PersistenceAnnotationBeanPostProcessor的Bean。</p>
+<p>　　</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>这样的声明未免太不优雅，而Spring为我们提供了一种极为方便注册这些BeanPostProcessor的方式，即:</p>
+<p>使用<code>&lt;context:annotation- config/&gt;</code>隐式地向 Spring容器注册AutowiredAnnotationBeanPostProcessor、RequiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor以及PersistenceAnnotationBeanPostProcessor这4个BeanPostProcessor。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;context:annotation-config/&gt;</div></pre></td></tr></table></figure>
+<p>　　另，在我们使用注解时一般都会配置扫描包路径选项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;context:component-scan base-package=&quot;pack.pack&quot;/&gt;</div></pre></td></tr></table></figure>
+<p>　　该配置项其实也包含了自动注入上述processor的功能，因此当使用<context:component-scan>后，即可将<context:annotation-config>省去。</context:annotation-config></context:component-scan></p>
+<h2 id="备注："><a href="#备注：" class="headerlink" title="备注："></a><strong>备注：</strong></h2><p>在配置文件中使用 context 命名空间之前，必须在 <beans> 元素中声明 context 命名空间，用来开启注解。 </beans></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;  </div><div class="line">    &lt;beans xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">        xmlns=&quot;http://www.springframework.org/schema/beans&quot;</div><div class="line">        xmlns:context=&quot;http://www.springframework.org/schema/context&quot;  </div><div class="line">    ...</div><div class="line">        xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans  </div><div class="line">               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  </div><div class="line">               http://www.springframework.org/schema/context  </div><div class="line">               http://www.springframework.org/schema/context/spring-context-3.0.xsd  </div><div class="line">    ...</div><div class="line">        &lt;context:annotation-config/&gt;</div><div class="line">    &lt;/beans&gt;</div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 编程 </tag>
+            
+            <tag> Spring </tag>
+            
+            <tag> 框架，笔记 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Spring IoC]]></title>
       <url>/2017/07/12/Spring-IoC/</url>
       <content type="html"><![CDATA[<h2 id="IoC-容器"><a href="#IoC-容器" class="headerlink" title="IoC 容器"></a>IoC 容器</h2><p>Spring 容器是 Spring 框架的核心。容器将创建对象，把它们连接在一起，配置它们，并管理他们的整个生命周期从创建到销毁。Spring 容器使用依赖注入（DI）来管理组成一个应用程序的组件。这些对象被称为 Spring Beans，我们将在下一章中进行讨论。</p>
@@ -297,7 +339,7 @@
     <entry>
       <title><![CDATA[ProcessOn和我的不解之缘]]></title>
       <url>/2017/07/12/ProcessOn%E5%92%8C%E6%88%91%E7%9A%84%E4%B8%8D%E8%A7%A3%E4%B9%8B%E7%BC%98/</url>
-      <content type="html"><![CDATA[<h1 id="ProcessOn和我的不解之缘"><a href="#ProcessOn和我的不解之缘" class="headerlink" title="ProcessOn和我的不解之缘"></a>ProcessOn和我的不解之缘</h1><p> ProcessOn是一个在线作图工具的聚合平台，它可以在线画流程图、思维导图、UI原型图、UML、网络拓扑图、组织结构图等等，您无需担心下载和更新的问题，不管Mac还是Windows，一个浏览器就可以随时随地的发挥创意，规划工作</p>
+      <content type="html"><![CDATA[<h1 id="ProcessOn"><a href="#ProcessOn" class="headerlink" title="ProcessOn"></a>ProcessOn</h1><p> ProcessOn是一个在线作图工具的聚合平台，它可以在线画流程图、思维导图、UI原型图、UML、网络拓扑图、组织结构图等等，您无需担心下载和更新的问题，不管Mac还是Windows，一个浏览器就可以随时随地的发挥创意，规划工作</p>
 ]]></content>
       
         <categories>
@@ -309,9 +351,9 @@
         
         <tags>
             
-            <tag> 生活 </tag>
-            
             <tag> 体验 </tag>
+            
+            <tag> 生活 </tag>
             
             <tag> 产品 </tag>
             
