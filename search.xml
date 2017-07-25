@@ -28,7 +28,7 @@
 </table>
 <h2 id="相关Java知识"><a href="#相关Java知识" class="headerlink" title="相关Java知识"></a>相关Java知识</h2><p>ApplicationContext 容器包括 BeanFactory 容器的所有功能，所以通常建议超过 BeanFactory。BeanFactory 仍然可以用于轻量级的应用程序，如移动设备或基于 applet 的应用程序，其中它的数据量和速度是显著。</p>
 <p>Java语言允许通过程序化的方式间接对Class进行操作，Class文件由类装载器装载后，在JVM中将形成一份描述Class结构的元信息对象，通过该元信息对象可以获知Class的结构信息：如构造函数、属性和方法等。Java允许用户借由这个Class相关的元信息对象间接调用Class对象的功能，这就为使用程序化方式操作Class对象开辟了途径。 </p>
-<h2 id="简单实例"><a href="#简单实例" class="headerlink" title="简单实例"></a><strong>简单实例</strong></h2><p>我们将从一个简单例子开始探访Java反射机制的征程，下面的Car类拥有两个构造函数、两个方法以及三个属性，如代码清单3-9所示： </p>
+<h2 id="简单实例"><a href="#简单实例" class="headerlink" title="简单实例"></a><strong>简单实例</strong></h2><p>我们将从一个简单例子开始探访Java反射机制的征程，下面的Car类拥有两个构造函数、两个方法以及三个属性，如代码清单3-9所示：  </p>
 <p>代码清单3-9  Car </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.baobaotao.reflect;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> String brand;</div><div class="line">	<span class="keyword">private</span> String color;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> maxSpeed;</div><div class="line">    </div><div class="line">     <span class="comment">//①默认构造函数</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">     </div><div class="line">     <span class="comment">//②带参构造函数</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">(String brand,String color,<span class="keyword">int</span> maxSpeed)</span></span>&#123; </div><div class="line">		<span class="keyword">this</span>.brand = brand;</div><div class="line">		<span class="keyword">this</span>.color = color;</div><div class="line">		<span class="keyword">this</span>.maxSpeed = maxSpeed;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">     <span class="comment">//③未带参的方法</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">introduce</span><span class="params">()</span> </span>&#123; </div><div class="line">       System.out.println(<span class="string">"brand:"</span>+brand+<span class="string">";color:"</span>+color+<span class="string">";maxSpeed:"</span> +maxSpeed);</div><div class="line">	&#125;</div><div class="line">     <span class="comment">//省略参数的getter/Setter方法</span></div><div class="line">     …</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>一般情况下，我们会使用如下的代码创建Car的实例：<br>Java代码</p>
@@ -60,20 +60,15 @@
 <p>JVM装载类时使用“全盘负责委托机制”，“全盘负责”是指当一个ClassLoader装载一个类的时，除非显式地使用另一个ClassLoader，该类所依赖及引用的类也由这个ClassLoader载入；“委托机制”是指先委托父装载器寻找目标类，只有在找不到的情况下才从自己的类路径中查找并装载目标类。这一点是从安全角度考虑的，试想如果有人编写了一个恶意的基础类（如java.lang.String）并装载到JVM中将会引起多么可怕的后果。但是由于有了“全盘负责委托机制”，java.lang.String永远是由根装载器来装载的，这样就避免了上述事件的发生。 </p>
 <h3 id="ClassLoader重要方法"><a href="#ClassLoader重要方法" class="headerlink" title="ClassLoader重要方法"></a><strong>ClassLoader重要方法</strong></h3><p>在Java中，ClassLoader是一个抽象类，位于java.lang包中。下面对该类的一些重要接口方法进行介绍： </p>
 <ul>
-<li><p>Class loadClass(String name)     </p>
-<p>name参数指定类装载器需要装载类的名字，必须使用全限定类名，如com.baobaotao. beans.Car。该方法有一个重载方法loadClass(String name ,boolean resolve)，resolve参数告诉类装载器是否需要解析该类。在初始化类之前，应考虑进行类解析的工作，但并不是所有的类都需要解析，如果JVM只需要知道该类是否存在或找出该类的超类，那么就不需要进行解析。 </p>
+<li><p>Class loadClass(String name)<br>name参数指定类装载器需要装载类的名字，必须使用全限定类名，如com.baobaotao. beans.Car。该方法有一个重载方法loadClass(String name ,boolean resolve)，resolve参数告诉类装载器是否需要解析该类。在初始化类之前，应考虑进行类解析的工作，但并不是所有的类都需要解析，如果JVM只需要知道该类是否存在或找出该类的超类，那么就不需要进行解析。 </p>
 </li>
-<li><p>Class defineClass(String name, byte[] b, int off, int len)    </p>
-<p>将类文件的字节数组转换成JVM内部的java.lang.Class对象。字节数组可以从本地文件系统、远程网络获取。name为字节数组对应的全限定类名。 </p>
+<li><p>Class defineClass(String name, byte[] b, int off, int len)<br>将类文件的字节数组转换成JVM内部的java.lang.Class对象。字节数组可以从本地文件系统、远程网络获取。name为字节数组对应的全限定类名。 </p>
 </li>
-<li><p>Class findSystemClass(String name)    </p>
-<p>从本地文件系统载入Class文件，如果本地文件系统不存在该Class文件，将抛出ClassNotFoundException异常。该方法是JVM默认使用的装载机制。 </p>
+<li><p>Class findSystemClass(String name)<br>从本地文件系统载入Class文件，如果本地文件系统不存在该Class文件，将抛出ClassNotFoundException异常。该方法是JVM默认使用的装载机制。 </p>
 </li>
-<li><p>Class findLoadedClass(String name)   </p>
-<p>调用该方法来查看ClassLoader是否已装入某个类。如果已装入，那么返回java.lang.Class对象，否则返回null。如果强行装载已存在的类，将会抛出链接错误。 </p>
+<li><p>Class findLoadedClass(String name)<br>调用该方法来查看ClassLoader是否已装入某个类。如果已装入，那么返回java.lang.Class对象，否则返回null。如果强行装载已存在的类，将会抛出链接错误。 </p>
 </li>
-<li><p>ClassLoader getParent()    </p>
-<p>获取类装载器的父装载器，除根装载器外，所有的类装载器都有且仅有一个父装载器，ExtClassLoader的父装载器是根装载器，因为根装载器非Java编写，所以无法获得，将返回null。 </p>
+<li><p>ClassLoader getParent()<br>获取类装载器的父装载器，除根装载器外，所有的类装载器都有且仅有一个父装载器，ExtClassLoader的父装载器是根装载器，因为根装载器非Java编写，所以无法获得，将返回null。 </p>
 </li>
 </ul>
 <p>除JVM默认的三个ClassLoader以外，可以编写自己的第三方类装载器，以实现一些特殊的需求。类文件被装载并解析后，在JVM内将拥有一个对应的java.lang.Class类描述对象，该类的实例都拥有指向这个类描述对象的引用，而类描述对象又拥有指向关联ClassLoader的引用，如图3-4所示。 </p>
@@ -81,18 +76,15 @@
 <p>每一个类在JVM中都拥有一个对应的java.lang.Class对象，它提供了类结构信息的描述。数组、枚举、注解以及基本Java类型（如int、double等），甚至void都拥有对应的Class对象。Class没有public的构造方法。Class对象是在装载类时由JVM通过调用类装载器中的defineClass()方法自动构造的。 </p>
 <h2 id="Java反射机制"><a href="#Java反射机制" class="headerlink" title="Java反射机制"></a><strong>Java反射机制</strong></h2><p>Class反射对象描述类语义结构，可以从Class对象中获取构造函数、成员变量、方法类等类元素的反射对象，并以编程的方式通过这些反射对象对目标类对象进行操作。这些反射对象类在java.reflect包中定义，下面是最主要的三个反射类： </p>
 <ul>
-<li><p>Constructor：</p>
-<p>类的构造函数反射类，通过Class#getConstructors()方法可以获得类的所有构造函数反射对象数组。在JDK5.0中，还可以通过getConstructor(Class… parameterTypes)获取拥有特定入参的构造函数反射对象。Constructor的一个主要方法是newInstance(Object[] initargs)，通过该方法可以创建一个对象类的实例，相当于new关键字。在JDK5.0中该方法演化为更为灵活的形式：newInstance (Object… initargs)。  </p>
+<li><p>Constructor：<br>类的构造函数反射类，通过Class#getConstructors()方法可以获得类的所有构造函数反射对象数组。在JDK5.0中，还可以通过getConstructor(Class… parameterTypes)获取拥有特定入参的构造函数反射对象。Constructor的一个主要方法是newInstance(Object[] initargs)，通过该方法可以创建一个对象类的实例，相当于new关键字。在JDK5.0中该方法演化为更为灵活的形式：newInstance (Object… initargs)。</p>
 </li>
-<li><p>Method：</p>
-<p>类方法的反射类，通过Class#getDeclaredMethods()方法可以获取类的所有方法反射类对象数组Method[]。在JDK5.0中可以通过getDeclaredMethod(String name, Class… parameterTypes)获取特定签名的方法，name为方法名；Class…为方法入参类型列表。Method最主要的方法是invoke(Object obj, Object[] args)，obj表示操作的目标对象；args为方法入参，代码清单3 10③处演示了这个反射类的使用方法。在JDK 5.0中，该方法的形式调整为invoke(Object obj, Object… args)。此外，Method还有很多用于获取类方法更多信息的方法：       </p>
+<li><p>Method：<br>类方法的反射类，通过Class#getDeclaredMethods()方法可以获取类的所有方法反射类对象数组Method[]。在JDK5.0中可以通过getDeclaredMethod(String name, Class… parameterTypes)获取特定签名的方法，name为方法名；Class…为方法入参类型列表。Method最主要的方法是invoke(Object obj, Object[] args)，obj表示操作的目标对象；args为方法入参，代码清单3 10③处演示了这个反射类的使用方法。在JDK 5.0中，该方法的形式调整为invoke(Object obj, Object… args)。此外，Method还有很多用于获取类方法更多信息的方法：       </p>
 <p>1）Class getReturnType()：获取方法的返回值类型； </p>
 <p>2）Class[] getParameterTypes()：获取方法的入参类型数组； </p>
 <p>3）Class[] getExceptionTypes()：获取方法的异常类型数组； </p>
 <p>4）Annotation[][] getParameterAnnotations()：获取方法的注解信息，JDK 5.0中的新方法；</p>
 </li>
-<li><p>Field：</p>
-<p>类的成员变量的反射类，通过Class#getDeclaredFields()方法可以获取类的成员变量反射对象数组，通过Class#getDeclaredField(String name)则可获取某个特定名称的成员变量反射对象。Field类最主要的方法是set(Object obj, Object value)，obj表示操作的目标对象，通过value为目标对象的成员变量设置值。如果成员变量为基础类型，用户可以使用Field类中提供的带类型名的值设置方法，如setBoolean(Object obj, boolean value)、setInt(Object obj, int value)等。 </p>
+<li><p>Field：<br>类的成员变量的反射类，通过Class#getDeclaredFields()方法可以获取类的成员变量反射对象数组，通过Class#getDeclaredField(String name)则可获取某个特定名称的成员变量反射对象。Field类最主要的方法是set(Object obj, Object value)，obj表示操作的目标对象，通过value为目标对象的成员变量设置值。如果成员变量为基础类型，用户可以使用Field类中提供的带类型名的值设置方法，如setBoolean(Object obj, boolean value)、setInt(Object obj, int value)等。 </p>
 </li>
 </ul>
 <p>此外，Java还为包提供了Package反射类，在JDK 5.0中还为注解提供了AnnotatedElement反射类。总之，Java的反射体系保证了可以通过程序化的方式访问目标类中所有的元素，对于private或protected的成员变量和方法，只要JVM的安全机制允许，也可以通过反射进行调用，请看下面的例子： </p>
