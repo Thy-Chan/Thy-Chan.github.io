@@ -3,6 +3,53 @@
   
     
     <entry>
+      <title><![CDATA[Sencha Touch概述]]></title>
+      <url>/2017/07/16/Sencha-Touch%E6%A6%82%E8%BF%B0/</url>
+      <content type="html"><![CDATA[<h2 id="1-1-Sencha-Touch-简介"><a href="#1-1-Sencha-Touch-简介" class="headerlink" title="1.1 Sencha Touch 简介"></a>1.1 Sencha Touch 简介</h2><p>​    一般来说, 开发移动应用, 都有专门的SDK软件和开发工具, 如Android SDK等. 不过, 这些专用的SDK软件和开发工具, 都有一个最大的问题, 就是过于专业. 现在的移动平台虽然不多, 但要是将一款移动应用程序应用于多平台, 确实有点麻烦, 虽然有Java, MonoTouch这样的跨平台工具, 但也不方便. 而基于HTML5和CSS 3的JavaScript框架就轻松多了, 基本属于与平台无关性开发框. Sencha Touch 就是这样的一个开发工具.</p>
+<p>​    Sencha Touch是世界上第一个基于HTML 5的Mobile App框架, 且类似于Ext JS, 是具有完整的开发组件的框架, 与JQuery Mobile之间最大的不同也就在于此. (Sencha日语”煎茶”, 是日本流行的一种绿茶.)</p>
+<p>​    Sencha Touch 鱼油一下特性:</p>
+<ul>
+<li>支持最新的HTML 5功能和 CSS 3功能</li>
+<li>支持与全面兼容iPhone, iPad和Android手机等各种移动设备.</li>
+<li>为iOS与Android分别提供了两套主题.</li>
+<li>提供了增强的触摸事件管理功能, 在touchastart, touchend等标准事件基础上, 增加了一组自定义事件管理功能, 如tap, swipe, pinch, rotate等.</li>
+<li>提供增强的数据集成功能. 提供强大的数据包, 通过AJAX, JsonP, YQL等方式绑定到组件模板, 写入本地离线存储设备.</li>
+<li>提供增强的动画特效功能.</li>
+<li>更快的布局引擎.</li>
+<li>更强,更小的内核.</li>
+<li>更短的启动时间.</li>
+<li>经过改善的MVC体系.</li>
+<li>更好的Android支持.</li>
+</ul>
+<h3 id="1-1-1-发展历史"><a href="#1-1-1-发展历史" class="headerlink" title="1.1.1 发展历史"></a>1.1.1 发展历史</h3><p>​    Ext JS在发布3.0版本后, 忽然与JQTouch合并, 更名为Sencha, 开始进军移动开发领域. 很快就利用JavaScript技术, 并基于HTML5和CSS 3开发出移动应用程序框架Sencha Touch.</p>
+<p>​    随着手机市场的激烈竞争, 庞大的移动应用市场也越来越引起人们的注意, 因而, 能够实现跨平台的移动技术也越来越受到重视, 毕竟, 为实现不同平台维护不同版本的应用实在太麻烦了. 因而, 一下就冒出了不少框架, 其中比较有名的便是Sencha Touch和JQuery Mobile.</p>
+<p>​    Sencha Touch在退出1.0版本后, 发现Ext JS 3.x和Sencha Touch 1.x都存在不少问题, 尤其是框架问题, 不便于扩展, 于是, 将两个平台的框架推倒从来, 于2012年推出了Ext JS 4.1.1和Sencha Touch 2.0. 这两个不同的框架, 都拥有相同的架构, 只是组件不同而已.</p>
+<p>​    Sencha的官网网站 <a href="http://www.sencha.com/" target="_blank" rel="external">http://www.sencha.com/</a></p>
+<h3 id="1-1-2-Sencha-Touch包的内容"><a href="#1-1-2-Sencha-Touch包的内容" class="headerlink" title="1.1.2 Sencha Touch包的内容"></a>1.1.2 Sencha Touch包的内容</h3><p>下载Sencha Touch, 解压后会发现主要包含以下目录及文件.</p>
+<ul>
+<li>builds: 有一个包含全部框架代码的文件.</li>
+<li>cmd: Sencha Cmd需要用到的配置文件.</li>
+<li>docs: 该文件夹中包含了完整的Sencha Touch API文档.</li>
+<li>examples: 包含大量有趣的示例文件供学习使用.</li>
+<li>microloader: 该文件夹中包含了创建或发布MVC模式的应用程序时必须使用的一些文件, 可与cmd文件夹中的文件结合使用.</li>
+<li>resources: Sencha Touch的资源文件, 包含了CSS样式定义文件及其需要的图片文件.</li>
+<li>src: Sencha Touch框架的完整源代码.</li>
+<li>build.xml: 生成应用需要使用到的XML文件.</li>
+<li>getting-started.html: 入门文档的首页.</li>
+<li>index.html: 会跳转到在线的API文档(<a href="http://docs.sencha.com/touch/" target="_blank" rel="external">http://docs.sencha.com/touch/</a>).</li>
+<li>license.txt: 协议说明文档.</li>
+<li>release-notes.html: 版本发布说明.</li>
+<li>sencha-touch.js 压缩后的Sencha Touch核心库文件.</li>
+<li>sencha-touch-all.js: 压缩后的Sencha Touch库文件</li>
+<li>sencha-touch-all-debug.js: 调试时用的没有压缩的Sencha Touch核心库文件.</li>
+<li>version.txt: 版本说明文件.</li>
+</ul>
+<h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2>]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Dijkstra 算法]]></title>
       <url>/2017/06/08/Dijkstra-Algorithms/</url>
       <content type="html"><![CDATA[<h2 id="1-Dijkstra算法概述"><a href="#1-Dijkstra算法概述" class="headerlink" title="1.Dijkstra算法概述"></a>1.Dijkstra算法概述</h2><p>　　<strong><code>Dijkstra算法</code></strong>是由荷兰计算机科学家狄克斯特拉（Dijkstra）于1959 年提出的，因此又叫<code>狄克斯特拉算法</code>。是从一个顶点到其余各顶点的最短路径算法，解决的是有向图中最短路径问题。</p>
@@ -3603,9 +3650,9 @@
         
         <tags>
             
-            <tag> 编程 </tag>
-            
             <tag> Java </tag>
+            
+            <tag> 编程 </tag>
             
             <tag> 项目 </tag>
             
@@ -3654,9 +3701,9 @@
         
         <tags>
             
-            <tag> 软件 </tag>
-            
             <tag> 工具 </tag>
+            
+            <tag> 软件 </tag>
             
             <tag> IT </tag>
             
