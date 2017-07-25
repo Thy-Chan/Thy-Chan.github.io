@@ -12,7 +12,7 @@
     
     <title>
         
-            Archives: 2017/3 | 
+            IntelliJIDEA Getting+Started+with+Spring+MVC,+Hibernate+and+JSON | 
         
         Chan&#39;s Blog
     </title>
@@ -40,7 +40,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="thychan">
     <meta name="description" itemprop="description" content="Keep trying no matter how hard it seems, it will get easier!">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,编程,Spring,框架">
 
     <!-- Site Verification -->
     
@@ -69,15 +69,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Archives: 2017/3 | Chan&#39;s Blog">
+    <meta property="og:title" content="IntelliJIDEA Getting+Started+with+Spring+MVC,+Hibernate+and+JSON | Chan&#39;s Blog">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="Keep trying no matter how hard it seems, it will get easier!">
-    
+    <meta property="og:article:tag" content="编程"> <meta property="og:article:tag" content="Spring"> <meta property="og:article:tag" content="框架"> 
 
+    
+        <meta property="article:published_time" content="Jul 25, 2017" />
+        <meta property="article:modified_time" content="Jul 25, 2017" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Archives: 2017/3 | Chan&#39;s Blog">
+    <meta name="twitter:title" content="IntelliJIDEA Getting+Started+with+Spring+MVC,+Hibernate+and+JSON | Chan&#39;s Blog">
     <meta name="twitter:description" content="Keep trying no matter how hard it seems, it will get easier!">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -85,13 +88,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/archives/2017/03/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2017/07/25/Getting-Started-with-Spring-MVC-Hibernate-and-JSON/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Chan&#39;s Blog",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "thychan",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "headline": "IntelliJIDEA Getting+Started+with+Spring+MVC,+Hibernate+and+JSON",
+    "url": "http://yoursite.com/2017/07/25/Getting-Started-with-Spring-MVC-Hibernate-and-JSON/index.html",
+    "datePublished": "Jul 25, 2017",
+    "dateModified": "Jul 25, 2017",
+    "description": "Keep trying no matter how hard it seems, it will get easier!",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://yoursite.com"
+    }
+}
+</script>
 
 
     
@@ -294,637 +327,305 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#IntelliJIDEA-Getting-Started-with-Spring-MVC-Hibernate-and-JSON"><span class="post-toc-number">1.</span> <span class="post-toc-text">IntelliJIDEA Getting+Started+with+Spring+MVC,+Hibernate+and+JSON</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-Create-a-project"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">1. Create a project</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-Create-run-configuration"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">2. Create run configuration</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-Run-the-application"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">3. Run the application</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-Add-dependencies"><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">4. Add dependencies</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-Create-persistence-xml"><span class="post-toc-number">1.0.5.</span> <span class="post-toc-text">5. Create persistence.xml</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-Define-model-classes"><span class="post-toc-number">1.0.6.</span> <span class="post-toc-text">6. Define model classes</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-Register-repository-entity-manager-factory-and-transaction-manager"><span class="post-toc-number">1.0.7.</span> <span class="post-toc-text">7. Register repository, entity manager factory and transaction manager</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-Define-controller"><span class="post-toc-number">1.0.8.</span> <span class="post-toc-text">8. Define controller</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-Define-view"><span class="post-toc-number">1.0.9.</span> <span class="post-toc-text">9. Define view</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-Run-the-application"><span class="post-toc-number">1.0.10.</span> <span class="post-toc-text">10. Run the application</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-Debug-application"><span class="post-toc-number">1.0.11.</span> <span class="post-toc-text">11. Debug application</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-Add-JSON-API"><span class="post-toc-number">1.0.12.</span> <span class="post-toc-text">12. Add JSON API</span></a></li></ol></li></ol></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/28/rip_config_experiment/">rip协议配置</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            课题:  实验1__rip2协议配置
-Group7 
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/28/rip_config_experiment/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/chan_circle.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>Mar 28, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/14/三个实体型之间的多对多联系和两两之间的三个多对多联系的区别/">三个实体型之间的多对多联系和两两之间的三个多对多联系的区别</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            ​    
-​    3 个实体型之间的多对多联系和 3 个实体型两两之间的 3 个多对多联系是不等价，因为它们拥有不同的语义，不同的...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/14/三个实体型之间的多对多联系和两两之间的三个多对多联系的区别/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/chan_circle.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>Mar 14, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/网络命令详解ping、arp、ipconfig、tracert、route详解/">网络命令详解ping、arp、ipconfig、tracert、route详解</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            1、PIN...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/网络命令详解ping、arp、ipconfig、tracert、route详解/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/chan_circle.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>Mar 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/命令行学习笔记：网络相关命令/">命令行学习笔记：网络相关命令</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            学习内容
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/命令行学习笔记：网络相关命令/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/chan_circle.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>Mar 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/Git-命令大全/">Git 命令大全</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            注:转载自
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/Git-命令大全/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/chan_circle.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>Mar 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/ADB-用法大全/">ADB 用法大全</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/ADB-用法大全/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/chan_circle.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>Mar 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/write-a-C-interpreter-9/">手把手教你构建 C 语言编译器（9）——总结</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            恭喜你完成了自己的 C 语言编译器，本章中我们发一发牢骚，说一说编写编译器值得注意的一些问题；编写编译器时遇到的一些难题。
-[注: 该...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/write-a-C-interpreter-9/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/chan_circle.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>Mar 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/write-a-C-interpreter-8/">手把手教你构建 C 语言编译器（8）——表达式</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            这是整个编译器的最后一部分，解析表达式。什么是表达式？表达式是将各种语言要素的一个组合，用来求值。例如：函数调用、变量赋值、运算符运算等等。...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/write-a-C-interpreter-8/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/chan_circle.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>Mar 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/write-a-C-interpreter-7/">手把手教你构建 C 语言编译器（7）——语句</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            整个编译器还剩下最后两个部分：语句和表达式的解析。它们的内容比较多，主要涉及如何将语句和表达式编译成汇编代码。这章讲解语句的解析，相对于表达式来说它...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/write-a-C-interpreter-7/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/chan_circle.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>Mar 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/12/write-a-C-interpreter-6/">手把手教你构建 C 语言编译器（6）——函数定义</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            由于语法分析本身比较复杂，所以我们将它拆分成 3 个部分进行讲解，分别是：变量定义、函数定义、表达式。本章讲解函数定义相关的内容。
-[...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/12/write-a-C-interpreter-6/" target="_self">Read more</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/chan_circle.png" width="44px" height="44px" alt="thychan's avatar">
-            </div>
-            <div>
-                <strong>thychan</strong>
-                <span>Mar 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/编程/">编程</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-    <!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <span class="page-number current">1</span><a class="page-number" href="/archives/2017/03/page/2/">2</a><a class="extend next" rel="next" href="/archives/2017/03/page/2/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_forward</i></button></a>
-        </nav>
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                IntelliJIDEA Getting+Started+with+Spring+MVC,+Hibernate+and+JSON
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/chan_circle.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>thychan</strong>
+        <span>Jul 25, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">Read this article on other devices</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADm0lEQVR42u3aQW4jMQwEQP//07vXAIHtblIyjKB0CuLJjKZ86JDi45/1Yz0Q4MCBAwcOHDhw4MDxxRyPeD293Y9Pf1/57NNnV76+/vWuZu+CAwcOHDhucLyJovKa19tNaFqmzbvgwIEDB457HM8CqQ3L1yjt1p/tJ3/6mz3jwIEDB44v4MivSSIzL+3aYhIHDhw4cPw9jgRlFtv7feLAgQMHjtscswBLDnheF3LJp23QfqhXigMHDhw41gMN3//zR+c7cODAgQPHL452zYqo/Ehps5/hHXDgwIEDx1GOPKiSTeQjCG3Zlpdw9V/hwIEDB47LHDe22xaESRuxLTWLihYHDhw4cCw42nJrE3L5FjeIr+8WVbQ4cODAgWPNkUdvMvpWjKnF0b4ZuXizfxw4cODAcZQjecnNAdJs0C1pSrbB//QrwYEDBw4cRznOtgjb1l4Sq49DCwcOHDhwfIajbcC1jblkc3mDbxar9UADDhw4cOBYc+Rb2fO1QTgL4OGxEw4cOHDgWHPMmnQtX/6bTTNxODaBAwcOHDiOcrx++Twm8yJqXxxuhiei5iAOHDhw4DjEsWnwtZubPattFyb/LuDAgQMHjrMcs8IsGVlIBhpmx07tF/PmC8CBAwcOHBc4hsXP6Df5PZPQTb62YqABBw4cOHCsOZJCK4/MpBhrB9qSkJ41LnHgwIEDxw2OfRzmx0I3xhHyVuPw/w4cOHDgwFFy5BudHSCdainOnhsdfeHAgQMHjqMcbdRtojd/vRvoB46dcODAgQNHwDEbXJiVYatCKx6JqMf1cODAgQPHBY68iGrDsn3J9m6zEW0cOHDgwHGPIwmz9tN8i8mgwwZoNZOOAwcOHDgWHLMwaw94Nu3IzVOGvVIcOHDgwDHiaA+WzhZU+bP2EYsDBw4cOD7JkUfvbCQ6uc9meGJ24IQDBw4cOD7DkZdPbRDODqhONQ2HQYsDBw4cOBYc+RDbrLXXtvCS57arCFocOHDgwDHiaFdRGsURnt+tHdeLvnIcOHDgwHGUYxVRi8GFGcRsMOLN03HgwIEDxwWO2wdIm9fLm4bDliIOHDhw4LjGkR84taBtE3BTFrZPwYEDBw4c38PRDrG1T5mFaN12xIEDBw4cX8CRjxrMGoVn15vwxoEDBw4c1zjywmkTpcNCK24+frRXigMHDhw41gMNSQAngbcJ2vwOwxIOBw4cOHAsOCwcOHDgwIEDBw4cOHB82foPJegCKgNHo4oAAAAASUVORK5CYII=">
+    
+</ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Spring/">Spring</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/框架/">框架</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/编程/">编程</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2017/07/25/Getting-Started-with-Spring-MVC-Hibernate-and-JSON/" class="leancloud-views_num" data-flag-title="IntelliJIDEA Getting+Started+with+Spring+MVC,+Hibernate+and+JSON">
+     &nbsp;Views
+</span>
+
+            </li>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=IntelliJIDEA Getting+Started+with+Spring+MVC,+Hibernate+and+JSON&url=http://yoursite.com/2017/07/25/Getting-Started-with-Spring-MVC-Hibernate-and-JSON/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=IntelliJIDEA Getting+Started+with+Spring+MVC,+Hibernate+and+JSON&url=http://yoursite.com/2017/07/25/Getting-Started-with-Spring-MVC-Hibernate-and-JSON/index.html&via=thychan" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/07/25/Getting-Started-with-Spring-MVC-Hibernate-and-JSON/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2017/07/25/Getting-Started-with-Spring-MVC-Hibernate-and-JSON/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Chan&#39;s Blog&title=IntelliJIDEA Getting+Started+with+Spring+MVC,+Hibernate+and+JSON&summary=Keep trying no matter how hard it seems, it will get easier!&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/07/25/Getting-Started-with-Spring-MVC-Hibernate-and-JSON/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2017/07/25/Getting-Started-with-Spring-MVC-Hibernate-and-JSON/index.html&text=IntelliJIDEA Getting+Started+with+Spring+MVC,+Hibernate+and+JSON" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Telegram
+            </li>
+        </a>
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="IntelliJIDEA-Getting-Started-with-Spring-MVC-Hibernate-and-JSON"><a href="#IntelliJIDEA-Getting-Started-with-Spring-MVC-Hibernate-and-JSON" class="headerlink" title="IntelliJIDEA Getting+Started+with+Spring+MVC,+Hibernate+and+JSON"></a>IntelliJIDEA Getting+Started+with+Spring+MVC,+Hibernate+and+JSON</h1><p>作者:  HackerVirus </p>
+<p>发布时间:2015-07-08 18:37:49                         </p>
+<p><a href="https://confluence.jetbrains.com/display/IntelliJIDEA/Getting+Started+with+Spring+MVC,+Hibernate+and+JSON" target="_blank" rel="external">https://confluence.jetbrains.com/display/IntelliJIDEA/Getting+Started+with+Spring+MVC,+Hibernate+and+JSON</a></p>
+<p>In this tutorial we will create a simple web application using <strong>Spring MVC</strong>, <strong>Hibernate</strong> and <strong>JSON</strong>. We will use Maven to manage dependencies and <strong>IntelliJ IDEA</strong> to create, run and debug an application on local <strong>Tomcat</strong> application server.</p>
+<h3 id="1-Create-a-project"><a href="#1-Create-a-project" class="headerlink" title="1. Create a project"></a>1. Create a project</h3><p>Open Project Wizard and select Spring MVC in Spring section. If you have already configured the application server, you can select it in theApplication Server field. With <strong>IntelliJ IDEA</strong> you can deploy applications to <strong>Tomcat</strong>, <strong>TomEE</strong>, <strong>Glassfish</strong>, <strong>JBoss</strong>, <strong>WebSphere</strong>, <strong>Jetty</strong>,<strong>Geronimo</strong>, <strong>Resin</strong>, <strong>Cloud Foundry</strong> and <strong>CloudBees</strong>.</p>
+<p><img src="https://confluence.jetbrains.com/download/attachments/51186020/mvc_new.png?version=1&amp;modificationDate=1364888534000" alt="img"></p>
+<p>Change Project name, Project location and Base package if necessary. The IDE will create a “Hello world” project with a simple controller and view.</p>
+<p><img src="https://confluence.jetbrains.com/download/attachments/51186020/mvc_project.png?version=1&amp;modificationDate=1364888547000" alt="img"></p>
+<p>The new project comes with <strong>Maven</strong>‘s pom.xml file. You can manage project dependencies through this file or through the dedicated Maventool window.</p>
+<p><img src="https://confluence.jetbrains.com/download/attachments/51186020/mvc_maven.png?version=1&amp;modificationDate=1364888534000" alt="img"></p>
+<p>When you change <strong>Maven</strong>‘s dependencies, <strong>IntelliJ IDEA</strong> applies the corresponding changes to the project automatically. You can check it in the<br>Project Structure → Modules dialog.</p>
+<p><img src="https://confluence.jetbrains.com/download/attachments/51186020/mvc_module.png?version=1&amp;modificationDate=1364888534000" alt="img"></p>
+<p>Besides dependencies, <strong>IntelliJ IDEA</strong> also imports the artifacts definition from pom.xml. You can check the artifacts settings in the<br>Project Structure → Artifacts dialog.</p>
+<p><img src="https://confluence.jetbrains.com/download/attachments/51186020/mvc_artifacts.png?version=1&amp;modificationDate=1364888515000" alt="img"></p>
+<p>The artifacts define the structure of what will be deployed to the application server when you click Run → Run ‘Tomcat 7.0’.</p>
+<h3 id="2-Create-run-configuration"><a href="#2-Create-run-configuration" class="headerlink" title="2. Create run configuration"></a>2. Create run configuration</h3><p>If you haven’t specified Application server in Project Wizard you can do it now via Run → Edit Configurations….</p>
+<p><img src="https://confluence.jetbrains.com/download/attachments/51186020/mvc_run_configuration.png?version=1&amp;modificationDate=1364888547000" alt="img"></p>
+<p>Don’t forget to specify the artifacts to deploy for this run configuration via the<br>Deployment tab.</p>
+<p><img src="https://confluence.jetbrains.com/download/attachments/51186020/mvc_run_configuration_deployment.png?version=1&amp;modificationDate=1364888547000" alt="img"></p>
+<p>If you have configured at least one run configuration for an application server, <strong>IntelliJ IDEA</strong> shows the Application Servers tool window to manage the application state on the application server. You can see the list of application servers, start or stop servers, see deployed applications, manage artifacts to deploy, and manage the application state.</p>
+<p><img src="https://confluence.jetbrains.com/download/attachments/51186020/mvc_application_servers.png?version=1&amp;modificationDate=1364888515000" alt="img"></p>
+<h3 id="3-Run-the-application"><a href="#3-Run-the-application" class="headerlink" title="3. Run the application"></a>3. Run the application</h3><p>After the artifacts and run configurations are defined, you can deploy the application by simply running your configuration or via a shortcut right from the Application Servers tool window.</p>
+<p><img src="https://confluence.jetbrains.com/download/attachments/51186020/mvc_hello_world.png?version=1&amp;modificationDate=1364888515000" alt="img"></p>
+<h3 id="4-Add-dependencies"><a href="#4-Add-dependencies" class="headerlink" title="4. Add dependencies"></a>4. Add dependencies</h3><p>Since we are going to create a database for our application, we need <strong>Spring Data</strong>, <strong>Hibernate</strong> and <strong>HSQLDB</strong> libraries. In order to implement JSON API for our application we need <strong>JSON</strong> library. Finally, we will need <strong>JSTL</strong> library to use in application’s view.</p>
+<p>We have to define all these dependencies in our pom.xml file. The IDE will automatically download the corresponding libraries and add to the artifact.</p>
+<h3 id="5-Create-persistence-xml"><a href="#5-Create-persistence-xml" class="headerlink" title="5. Create persistence.xml"></a>5. Create persistence.xml</h3><p>Now let’s define resources/META-INF/persistence.xml file to initialize <strong>Hibernate</strong>‘s entity manager over <strong>JPA</strong>.</p>
+<h3 id="6-Define-model-classes"><a href="#6-Define-model-classes" class="headerlink" title="6. Define model classes"></a>6. Define model classes</h3><p>Define a model class for user entity using <strong>JPA</strong> annotations.</p>
+<p>Define a <strong>Spring</strong> repository for the user entity.</p>
+<h3 id="7-Register-repository-entity-manager-factory-and-transaction-manager"><a href="#7-Register-repository-entity-manager-factory-and-transaction-manager" class="headerlink" title="7. Register repository, entity manager factory and transaction manager"></a>7. Register repository, entity manager factory and transaction manager</h3><p>Now we have to register the user repository, an entity manager factory and a transaction manager in webapp/WEB-INF/mvc-dispatcher-servlet.xmlfile.</p>
+<p>The model for our application is ready, so we can implement the controller.</p>
+<h3 id="8-Define-controller"><a href="#8-Define-controller" class="headerlink" title="8. Define controller"></a>8. Define controller</h3><p>Let’s rename HelloController to UserController and add the following code:</p>
+<p>As you can see, we have defined three methods for listing, adding and deleting user entities. The methods are mapped to the corresponding URLs.</p>
+<h3 id="9-Define-view"><a href="#9-Define-view" class="headerlink" title="9. Define view"></a>9. Define view</h3><p>Let’s rename hello view (and corresponding hello.jsp file) to users (and users.jsp , respectively). If you rename the view name from usage,<strong>IntelliJ IDEA</strong> applies the corresponding changes to JSP files automatically.</p>
+<h3 id="10-Run-the-application"><a href="#10-Run-the-application" class="headerlink" title="10. Run the application"></a>10. Run the application</h3><p>The application should be ready now.</p>
+<p><img src="https://confluence.jetbrains.com/download/attachments/51186020/mvc_application.png?version=1&amp;modificationDate=1364888515000" alt="img"></p>
+<h3 id="11-Debug-application"><a href="#11-Debug-application" class="headerlink" title="11. Debug application"></a>11. Debug application</h3><p>If you need to debug your application, just add a breakpoint and re-run the application in debug mode via Run → Debug ‘Tomcat 7.0’….</p>
+<p><img src="https://confluence.jetbrains.com/download/attachments/51186020/mvc_debug.png?version=1&amp;modificationDate=1364888515000" alt="img"></p>
+<h3 id="12-Add-JSON-API"><a href="#12-Add-JSON-API" class="headerlink" title="12. Add JSON API"></a>12. Add JSON API</h3><p>Finally, let’s output the created users via JSON by implementing this simple Controller’s method:</p>
+<p>Run the application and open <a href="undefined">http://localhost:8080/api/users</a>.</p>
+<p><img src="https://confluence.jetbrains.com/download/attachments/51186020/mvc_json.png?version=1&amp;modificationDate=1364888534000" alt="img">                                   </p>
+<p>​     </p>
+<p>​                     </p>
+<p>Download the final code and <strong>IntelliJ IDEA</strong>‘s project files from <a href="undefined">GitHub</a>.</p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: document.location.href, 
+    sourceId: "",
+    productKey: "32ac72d384f9484b9b8275cbb53e27c1",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/07/25/about-spring-annotation-config/" id="post_nav-older" class="next-content">
+            Older
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
