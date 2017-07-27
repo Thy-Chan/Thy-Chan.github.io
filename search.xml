@@ -326,8 +326,7 @@
     <entry>
       <title><![CDATA[ProcessOn with me]]></title>
       <url>/2017/07/26/processon/</url>
-      <content type="html"><![CDATA[<p>#ProcessOn简介</p>
-<p><img src="\imgs\processon\processon.png" alt="processon"><br><a href="https://www.processon.com" target="_blank" rel="external"><br><img src="https://www.processon.com/assets/imgs/logo_small.png" style="zoom:20%"><strong></strong></a>是一个在线作图工具的聚合平台，它可以在线画流程图、思维导图、UI原型图、UML、网络拓扑图、组织结构图等等，您无需担心下载和更新的问题，不管Mac还是Windows，一个浏览器就可以随时随地的发挥创意，规划工作. </p>
+      <content type="html"><![CDATA[<h1 id="ProcessOn简介"><a href="#ProcessOn简介" class="headerlink" title="ProcessOn简介"></a>ProcessOn简介</h1><p><img src="\imgs\processon\processon.png" alt="processon"><br><a href="https://www.processon.com" target="_blank" rel="external"><br><img src="https://www.processon.com/assets/imgs/logo_small.png" style="zoom:20%"><strong></strong></a>是一个在线作图工具的聚合平台，它可以在线画流程图、思维导图、UI原型图、UML、网络拓扑图、组织结构图等等，您无需担心下载和更新的问题，不管Mac还是Windows，一个浏览器就可以随时随地的发挥创意，规划工作. </p>
 <h1 id="个人经历"><a href="#个人经历" class="headerlink" title="个人经历"></a>个人经历</h1><p>​    从最早接触思维导图算起, 应该是在大二那时. 那时的我, 发现无论是知识总结还是演讲提纲前期的准备, 利用作图的方式, 学习效率将会极大地提高. 因为思维导图是从问题的本质, 本原为起点和终点进行思考. 思维可视化的形式依不同问题的性质而自由变化和创造, 不必拘泥于思维导图的结构和风格. </p>
 <p>​    这一点极大地激发了我对其兴趣, 便开始找相关的工具. 期间用过Mindjet MindManager, XMind, 以及亿图图示. 然而虽然自身是计算机专业出生, 但我并不在意作图工具的专业性. 思维导图也好, 逻辑图也罢, 都是帮助我们从抽象中来, 到具象中去的方法, 因此我反而追求简洁与高效. 而当时我用的那几款软件却十分地专业与复杂, 仅仅针对于某一方面作图, 且跨平台性也很差. 总之, 想要做好优秀的图示, 必须对软件运用得非常熟悉才行, 这便导致我的需求不能得到满足.</p>
 <p>​    大三时由于课程, 项目的需要, 需要制作各种类型的图示. 而这时, 偶然间在知乎上发现有人推荐<code>ProcessOn</code>, 号称是一个在线作图工具的聚合平台. 果然是”好奇心害死猫”, 当我打开官网浏览简介时, 查看的过程中便有种相见恨晚的感觉, 于是毫不犹豫地暗道: “就它了”.</p>
