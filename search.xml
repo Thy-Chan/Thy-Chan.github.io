@@ -324,19 +324,28 @@
     </entry>
     
     <entry>
-      <title><![CDATA[ProcessOn和我的不解之缘]]></title>
+      <title><![CDATA[ProcessOn with me]]></title>
       <url>/2017/07/26/processon/</url>
-      <content type="html"><![CDATA[<p><img src="\imgs\processon\processon.png" alt="processon"><br><a href="https://www.processon.com" target="_blank" rel="external"><br><img src="https://www.processon.com/assets/imgs/logo_small.png" style="zoom:20%"><strong></strong></a>是一个在线作图工具的聚合平台，它可以在线画流程图、思维导图、UI原型图、UML、网络拓扑图、组织结构图等等，您无需担心下载和更新的问题，不管Mac还是Windows，一个浏览器就可以随时随地的发挥创意，规划工作. </p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    从最早接触思维导图算起, 应该是在大二那时. 那时的我, 发现无论是知识总结还是演讲提纲前期的准备, 利用作图的方式, 学习效率将会极大地提高. 因为思维导图是从问题的本质, 本原为起点和终点进行思考. 思维可视化的形式依不同问题的性质而自由变化和创造, 不必拘泥于思维导图的结构和风格. </p>
+      <content type="html"><![CDATA[<p>#ProcessOn简介</p>
+<p><img src="\imgs\processon\processon.png" alt="processon"><br><a href="https://www.processon.com" target="_blank" rel="external"><br><img src="https://www.processon.com/assets/imgs/logo_small.png" style="zoom:20%"><strong></strong></a>是一个在线作图工具的聚合平台，它可以在线画流程图、思维导图、UI原型图、UML、网络拓扑图、组织结构图等等，您无需担心下载和更新的问题，不管Mac还是Windows，一个浏览器就可以随时随地的发挥创意，规划工作. </p>
+<h1 id="个人经历"><a href="#个人经历" class="headerlink" title="个人经历"></a>个人经历</h1><p>​    从最早接触思维导图算起, 应该是在大二那时. 那时的我, 发现无论是知识总结还是演讲提纲前期的准备, 利用作图的方式, 学习效率将会极大地提高. 因为思维导图是从问题的本质, 本原为起点和终点进行思考. 思维可视化的形式依不同问题的性质而自由变化和创造, 不必拘泥于思维导图的结构和风格. </p>
 <p>​    这一点极大地激发了我对其兴趣, 便开始找相关的工具. 期间用过Mindjet MindManager, XMind, 以及亿图图示. 然而虽然自身是计算机专业出生, 但我并不在意作图工具的专业性. 思维导图也好, 逻辑图也罢, 都是帮助我们从抽象中来, 到具象中去的方法, 因此我反而追求简洁与高效. 而当时我用的那几款软件却十分地专业与复杂, 仅仅针对于某一方面作图, 且跨平台性也很差. 总之, 想要做好优秀的图示, 必须对软件运用得非常熟悉才行, 这便导致我的需求不能得到满足.</p>
 <p>​    大三时由于课程, 项目的需要, 需要制作各种类型的图示. 而这时, 偶然间在知乎上发现有人推荐<code>ProcessOn</code>, 号称是一个在线作图工具的聚合平台. 果然是”好奇心害死猫”, 当我打开官网浏览简介时, 查看的过程中便有种相见恨晚的感觉, 于是毫不犹豫地暗道: “就它了”.</p>
-<p>​    接下来的时间段里用它制作过网络拓扑图, 软件开发用例图, 数据流图, 数据库设计ER图等等. <code>ProcessOn</code>的易用性也是不言而喻的, 在作图的过程中, 逐渐了解各种操作, 使得作图的效率得到了很大的提高. 而令人更赞的是, ProcessOn支持在线多人协作, 我毫不犹豫地便拉小伙伴来到了这里. 而在不经意间, <code>ProcessOn</code>在同学间传播的速度也令人惊叹, 整个班级都开始使用ProcessOn…</p>
-<p>接下来, 就开始大致介绍一下ProcessOn的优点吧</p>
+<p>​    接下来的时间段里用它制作过网络拓扑图, 软件开发用例图, 数据流图, 数据库设计ER图等等. <code>ProcessOn</code>的易用性也是不言而喻的, 在作图的过程中, 逐渐了解各种操作, 使得作图的效率得到了很大的提高. 而令人更赞的是, ProcessOn支持在线多人协作, 且支持多种文件导出方式, 我便毫不犹豫地便拉小伙伴来到了这里. 而在不经意间, <code>ProcessOn</code>在同学间传播的速度也令人惊叹, 整个班级都开始使用ProcessOn…</p>
+<p><strong><em>部分个人作图展示</em></strong><img src="\imgs\processon\production.png" alt="production"></p>
+<p>本计划通过制作<code>GIF</code> 来展示ProcessOn其惊艳的各种高效操作, 特性的. 但由于在写作该文章时处于无网络环境, 外加白天实习没有多余的时间去制作, 构思, 且前段时间已经看到有其他作者总结的非常优秀的文章, 故此作罢. </p>
+<p>接下来便开始大致介绍一下ProcessOn的几大特性, 也欢迎大家的加入~</p>
 <h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><h2 id="1-高效易用、轻松绘制"><a href="#1-高效易用、轻松绘制" class="headerlink" title="1.高效易用、轻松绘制"></a>1.高效易用、轻松绘制</h2><p>不需要掌握什么使用教程, 打开浏览器, 便可以开始进行作图</p>
-<h2 id="2-团队协作、头脑风暴"><a href="#2-团队协作、头脑风暴" class="headerlink" title="2.团队协作、头脑风暴"></a>2.团队协作、头脑风暴</h2><p>提供团队协作的方式,编辑的同时可以查看他人的进展状况, 并随时可以进行评论及修改</p>
-<h2 id="3-海量图库，知识分享"><a href="#3-海量图库，知识分享" class="headerlink" title="3.海量图库，知识分享"></a>3.海量图库，知识分享</h2><p>提供丰富的图库以及各种模板</p>
-<h2 id="4-跨平台性-一处创建-随处编辑"><a href="#4-跨平台性-一处创建-随处编辑" class="headerlink" title="4.跨平台性, 一处创建, 随处编辑"></a>4.跨平台性, 一处创建, 随处编辑</h2><p>由于是基于Web端的, 这便使其具有良好的跨平台性, 一切的已作修改的数据即刻同步在云服务器, 不必担心数据的丢失, 且可以在不同的平台上查看, 编辑.</p>
-<p>​    由于其易用性很好, 就不必再细致说明各种便捷的操作技巧及使用教程, 当然, 若是需要的话, 可以查看官方的 <a href="https://www.processon.com/support" target="_blank" rel="external">帮助文档</a>.</p>
+<p><img src="\imgs\processon\图形管理.png" alt="图形管理">特性吧~</p>
+<h2 id="2-团队协作、头脑风暴"><a href="#2-团队协作、头脑风暴" class="headerlink" title="2.团队协作、头脑风暴"></a>2.团队协作、头脑风暴</h2><p>提供团队协作的方式,编辑的同时可以查看他人的进展状况, 并随时可以进行评论及修改 </p>
+<p> <img src="\imgs\processon\小组动态.png" alt="小组动态"></p>
+<h2 id="3-海量图库，知识分享"><a href="#3-海量图库，知识分享" class="headerlink" title="3.海量图库，知识分享"></a>3.海量图库，知识分享</h2><p>提供丰富的图库以及各种模板, 总有某一个方面能够给予你创作灵感. 与此同时, 你也可以分析你的优质作图.</p>
+<p><img src="\imgs\processon\模板.png" alt="模板"></p>
+<h2 id="4-跨平台性-一处创建-随处编辑"><a href="#4-跨平台性-一处创建-随处编辑" class="headerlink" title="4.跨平台性, 一处创建, 随处编辑"></a>4.跨平台性, 一处创建, 随处编辑</h2><p>由于是基于Web端的, 这便使其具有良好的跨平台性, 一切的已作修改的数据即刻同步在云服务器, 不必担心数据的丢失, 且可以在不同的平台上随时浏览, 编辑.</p>
+<p><img src="\imgs\processon\Screenshot_2017-07-26-21-57-04.png" alt="Screenshot_2017-07-26-21-57-04"></p>
+<p>​    </p>
+<p>由于其易用性很好, 就不必再细致说明各种便捷的操作技巧及使用教程, 当然, 若是需要的话, 可以查看官方的 <strong><a href="https://www.processon.com/support" target="_blank" rel="external">帮助文档</a>.</strong>(各种操作及帮助都很详实) .<img src="\imgs\processon\帮助文档.png" alt="帮助文档"></p>
+<p>最后, 附加一个活动:</p>
 ]]></content>
       
         <categories>
