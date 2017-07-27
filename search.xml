@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[IoC容器和Dependency Injection模式]]></title>
-      <url>/2017/07/26/Inversion%20of%20Control%20Containers%20and%20the%20Dependency%20Injection%20pattern_cn/</url>
+      <url>/2017/07/26/IoC-And-DI_cn/</url>
       <content type="html"><![CDATA[<p>译者：熊节</p>
 <p>英文原文：<a href="https://martinfowler.com/articles/injection.html" target="_blank" rel="external">Inversion of Control Containers and the Dependency Injection pattern</a></p>
 <p><em>（最初发表于2004年1月）</em>IoC容器和Dependency Injection模式</p>
@@ -150,7 +150,7 @@
     
     <entry>
       <title><![CDATA[Inversion of Control Containers and the Dependency Injection pattern]]></title>
-      <url>/2017/07/26/Inversion%20of%20Control%20Containers%20and%20the%20Dependency%20Injection%20pattern/</url>
+      <url>/2017/07/26/IoC-And-DI/</url>
       <content type="html"><![CDATA[<p># </p>
 <p>In the <a href="http://lib.csdn.net/base/java" target="_blank" rel="external">Java </a>community there’s been a rush of lightweight containers that help to assemble components from different projects into a cohesive application. Underlying these containers is a common pattern to how they perform the wiring, a concept they refer under the very generic name of “Inversion of Control”. In this article I dig into how this pattern works, under the more specific name of “Dependency Injection”, and contrast it with the Service Locator alternative. The choice between them is less important than the principle of separating configuration from use.</p>
 <p>One of the entertaining things about the enterprise Java world is the huge amount of activity in building alternatives to the mainstream J2EE technologies, much of it happening in open source. A lot of this is a reaction to the heavyweight complexity in the mainstream J2EE world, but much of it is also exploring alternatives and coming up with creative ideas. A common issue to deal with is how to wire together different elements: how do you fit together this web controller architecture with that database interface backing when they were built by different teams with little knowledge of each other.A number of frameworks have taken a stab at this problem, and several are branching out to provide a general capability to assemble components from different layers. These are often referred to as lightweight containers, examples include <a href="http://picocontainer.com/" target="_blank" rel="external">PicoContainer</a>, and <a href="http://www.springsource.org/" target="_blank" rel="external">Spring</a>.</p>
